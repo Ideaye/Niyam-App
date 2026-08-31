@@ -95,7 +95,6 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.autostarter)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.play.services.ads)
     implementation(libs.androidx.work.runtime)
 
     // Supabase backend (SP-P2): Auth + Postgrest on a Ktor/OkHttp engine.

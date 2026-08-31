@@ -30,9 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.myniyam.app.R
-import com.myniyam.app.billing.AdBanner
 import com.myniyam.app.billing.Entitlements
-import com.myniyam.app.billing.PremiumState
 import com.myniyam.app.data.MantraRepository
 import com.myniyam.app.data.UserPrefs
 import com.myniyam.app.onboarding.mantraGist
@@ -130,9 +128,6 @@ fun FavouritesScreen(onOpenDetail: (String) -> Unit) {
                     }
                 }
 
-                if (state == PremiumState.FREE) {
-                    AdBanner()
-                }
             }
         }
     }
