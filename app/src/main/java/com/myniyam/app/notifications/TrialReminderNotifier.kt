@@ -34,6 +34,17 @@ object TrialReminderNotifier {
         manager.createNotificationChannel(channel)
     }
 
+    /**
+     * Free-for-all hygiene: a visible "Trial reminders" channel in the system
+     * notification settings would be misleading while the app has no trial.
+     * Deleting a non-existent channel is a safe no-op, so this also cleans up
+     * devices updated from paid-era builds.
+     */
+    fun removeChannel(context: Context) {
+        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.deleteNotificationChannel(CHANNEL_ID)
+    }
+
     /** Builds + posts the reminder. Caller guards with TrialReminder.shouldRemind. */
     fun notifyTrialEnding(context: Context) {
         val intent = Intent(context, MainActivity::class.java).apply {

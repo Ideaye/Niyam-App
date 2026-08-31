@@ -53,7 +53,6 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.myniyam.app.data.CurrentSadhana
 import com.myniyam.app.data.MantraRepository
 import com.myniyam.app.data.UserPrefs
-import java.time.LocalDate
 import com.myniyam.app.permissions.PermissionChecker
 import com.myniyam.app.progress.ProgressRepository
 import com.myniyam.app.ui.theme.NiyamBackground

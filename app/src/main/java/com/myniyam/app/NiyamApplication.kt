@@ -18,7 +18,11 @@ class NiyamApplication : Application() {
         super.onCreate()
         registerForegroundServiceChannel()
         CompletionNotifier.registerChannel(this)
-        TrialReminderNotifier.registerChannel(this)
+        if (Entitlements.FREE_FOR_ALL) {
+            TrialReminderNotifier.removeChannel(this)
+        } else {
+            TrialReminderNotifier.registerChannel(this)
+        }
         Thread {
             MantraRepository.ensureLoaded(this)
             UserPrefs.ensureLoaded(this)
