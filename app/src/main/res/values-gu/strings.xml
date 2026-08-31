@@ -3,17 +3,17 @@
 
     <!-- Welcome screen -->
     <string name="welcome_title">નિયમ</string>
-    <string name="welcome_subtitle">સ્ક્રોલ પહેલાં એક ક્ષણ ઠહરો.</string>
+    <string name="welcome_subtitle">સ્ક્રોલ પહેલાં એક ક્ષણ થોભો.</string>
     <string name="welcome_cta">શરૂ કરો</string>
 
     <!-- Onboarding -->
-    <string name="onb_step_fmt">4 માંથી પગલું %1$d</string>
+    <string name="onb_step_fmt">4માંથી પગલું %1$d</string>
     <string name="onb_continue">આગળ વધો</string>
     <string name="onb_intention_title">તમે અહીં શા માટે છો?</string>
-    <string name="onb_intention_focus">વધુ ધ્યાન, ઓછું સ્ક્રોલ</string>
+    <string name="onb_intention_focus">વધુ એકાગ્રતા, ઓછું સ્ક્રોલ</string>
     <string name="onb_intention_calm">અશાંત મનને શાંત કરો</string>
     <string name="onb_intention_sadhana">રોજની સાધના શરૂ કરો</string>
-    <string name="onb_intention_dharma">ધર્મ સાથે વધુ જોડાવ અનુભવો</string>
+    <string name="onb_intention_dharma">ધર્મ સાથે વધુ જોડાયેલા અનુભવો</string>
     <string name="onb_intention_devotion">મારી ભક્તિ ઊંડી કરો</string>
     <string name="onb_mantra_title">તમારો પ્રારંભિક મંત્ર પસંદ કરો</string>
     <string name="onb_read_time_fmt">~%1$d સેકન્ડ</string>
@@ -21,16 +21,16 @@
     <string name="onb_apps_title">તમને શું ખેંચે છે?</string>
 
     <!-- Permission screens (placeholder copy — refined when UI references arrive) -->
-    <string name="perm_usage_title">તમે અવરોધિત એપ ખોલો ત્યારે જાણો</string>
-    <string name="perm_usage_body">તમે Instagram, Facebook કે YouTube ક્યારે ખોલો છો એ જોવા માટે — જેથી અમે પહેલાં તમારો મંત્ર બતાવી શકીએ.</string>
-    <string name="perm_overlay_title">બીજી એપ ઉપર બતાવો</string>
-    <string name="perm_overlay_body">અવરોધિત એપ ઉપર તમારો મંત્ર બતાવવા માટે.</string>
+    <string name="perm_usage_title">કઈ એપ ખુલી છે એ નિયમને જોવા દો</string>
+    <string name="perm_usage_body">તમે તમારી અવરોધિત એપમાંથી કોઈ ખોલો એ ક્ષણ નિયમને જાણવી જરૂરી છે, જેથી પહેલાં તમારો મંત્ર દેખાઈ શકે. તે ફક્ત કઈ એપ સામે છે એટલું જ જુએ છે — તમે તેની અંદર શું કરો છો એ ક્યારેય નહીં.</string>
+    <string name="perm_overlay_title">નિયમને તમારો મંત્ર બતાવવા દો</string>
+    <string name="perm_overlay_body">આનાથી નિયમ તમે ખોલેલી એપ ઉપર તમારો મંત્ર હળવેથી મૂકી શકે છે, જેથી સ્ક્રોલ કરતાં પહેલાં તમે થોભીને વાંચી શકો.</string>
     <string name="perm_accessibility_title">એપ ખૂલે કે તરત ઓળખો</string>
-    <string name="perm_accessibility_body">Instagram, Facebook કે YouTube ખૂલે એ ચોક્કસ ક્ષણ ઓળખવા માટે — તરત, કોઈ વિલંબ વગર.</string>
-    <string name="perm_accessibility_disclosure">નિયમ Android ની AccessibilityService API નો ઉપયોગ ફક્ત એક જ હેતુ માટે કરે છે: તમે જે એપ બ્લોક કરવાનું પસંદ કર્યું છે તે ક્યારે ખૂલે છે તે ઓળખવા માટે, જેથી પહેલાં તમારો મંત્ર દેખાઈ શકે. આ સેવા દ્વારા નિયમ સ્ક્રીનની સામગ્રી, સંદેશા કે કોઈ વ્યક્તિગત ડેટા એકત્ર કરતું નથી, વાંચતું નથી, સંગ્રહતું નથી કે મોકલતું નથી. આ ઓળખ સંપૂર્ણપણે તમારા ઉપકરણ પર જ થાય છે. તમે તેને તમારા ફોનની Accessibility સેટિંગ્સમાં ગમે ત્યારે બંધ કરી શકો છો.</string>
+    <string name="perm_accessibility_body">આના લીધે જ અવરોધિત એપ ખૂલે એ જ ક્ષણે નિયમ પ્રતિભાવ આપી શકે છે — કોઈ વિલંબ વગર — જેથી તમારો મંત્ર હંમેશાં પહેલો હાજર હોય.</string>
+    <string name="perm_accessibility_disclosure">નિયમ Android ની AccessibilityService API નો ઉપયોગ ફક્ત એક જ હેતુ માટે કરે છે: તમે જે એપ અવરોધિત કરવાનું પસંદ કર્યું છે તે ક્યારે ખૂલે છે તે ઓળખવા માટે, જેથી પહેલાં તમારો મંત્ર દેખાઈ શકે. આ સેવા દ્વારા નિયમ સ્ક્રીનની સામગ્રી, સંદેશા કે કોઈ વ્યક્તિગત ડેટા એકત્ર કરતું નથી, વાંચતું નથી, સંગ્રહ કરતું નથી કે મોકલતું નથી. આ ઓળખ સંપૂર્ણપણે તમારા ઉપકરણ પર જ થાય છે. તમે તેને તમારા ફોનની Accessibility સેટિંગ્સમાં ગમે ત્યારે બંધ કરી શકો છો.</string>
     <string name="perm_accessibility_agree">હું સંમત છું — ચાલુ કરો</string>
-    <string name="perm_battery_title">પૃષ્ઠભૂમિમાં અમને બંધ ન કરો</string>
-    <string name="perm_battery_body">જેથી તમે બીજે ક્યાંક વ્યસ્ત હો ત્યારે તમારો ફોન નિયમને બંધ ન કરી દે.</string>
+    <string name="perm_battery_title">નિયમને જાગતું રાખો</string>
+    <string name="perm_battery_body">ફોન ઘણી વાર વીજળી બચાવવા પૃષ્ઠભૂમિની એપ બંધ કરી દે છે. આ મંજૂરી નિયમને ચાલુ રાખે છે, જેથી તમે અવરોધિત એપ ખોલો એ ક્ષણ તે ક્યારેય ચૂકે નહીં.</string>
     <string name="perm_oem_title">પૃષ્ઠભૂમિ પ્રવૃત્તિને મંજૂરી આપો</string>
     <string name="perm_oem_body_miui">Xiaomi, Redmi અને POCO ફોન પૃષ્ઠભૂમિની એપને આક્રમક રીતે બંધ કરે છે. મંજૂરી આપો પર ટેપ કરો, યાદીમાં નિયમ શોધો, અને ઓટોસ્ટાર્ટ ચાલુ કરો.</string>
     <string name="perm_oem_body_color_os">OPPO અને realme ફોન બેટરી બચાવવા પૃષ્ઠભૂમિની એપ બંધ કરે છે. મંજૂરી આપો પર ટેપ કરો અને નિયમને આપમેળે શરૂ થવા દો.</string>
@@ -45,8 +45,8 @@
 
     <!-- Home -->
     <string name="home_overline">તમારી સાધના</string>
-    <string name="home_day_fmt">%2$d માંથી દિવસ %1$d</string>
-    <string name="home_streak_fmt">%1$d-દિવસની સળંગ</string>
+    <string name="home_day_fmt">%2$dમાંથી દિવસ %1$d</string>
+    <string name="home_streak_fmt">સળંગ %1$d દિવસ</string>
     <plurals name="home_today_plural">
         <item quantity="one">આજે %1$d વાર વાંચ્યું</item>
         <item quantity="other">આજે %1$d વાર વાંચ્યું</item>
@@ -57,7 +57,7 @@
 
     <!-- Celebration / next sadhana -->
     <string name="celebration_overline">યાત્રા પૂર્ણ</string>
-    <string name="celebration_title_fmt">%2$s ના %1$d દિવસ</string>
+    <string name="celebration_title_fmt">%2$sના %1$d દિવસ</string>
     <string name="celebration_body">તમે ટકી રહ્યા. એ જ શિસ્ત સાધનાનો સાર છે.</string>
     <string name="celebration_next">તમારી આગલી સાધના પસંદ કરો</string>
     <string name="celebration_keep">આ જ મંત્ર સાથે ચાલુ રાખો</string>
@@ -65,7 +65,7 @@
 
     <!-- Overlay -->
     <string name="overlay_continue">આગળ વધો</string>
-    <string name="overlay_unlocking_in">%1$d માં ખૂલશે…</string>
+    <string name="overlay_unlocking_in">%1$d સેકન્ડમાં ખૂલશે…</string>
     <string name="overlay_label_fmt">તમારી સાધના · %1$s</string>
 
     <!-- Foreground service notification -->
@@ -88,19 +88,19 @@
     <string name="library_completed_marker">પૂર્ણ</string>
     <string name="detail_make_current">આને મારી સાધના બનાવો</string>
     <string name="detail_is_current">તમારી હાલની સાધના</string>
-    <string name="detail_practice_again">ફરી અભ્યાસ કરો</string>
+    <string name="detail_practice_again">ફરી સાધના કરો</string>
     <string name="detail_switch_title">તમારી સાધના બદલવી છે?</string>
     <plurals name="detail_switch_body_plural">
-        <item quantity="one">તમે %2$s માં %1$d દિવસ આગળ વધ્યા છો. જો તમે બદલશો, તો આ યાત્રા તમે પાછા આવશો ત્યારે ફરી શરૂ થશે.</item>
-        <item quantity="other">તમે %2$s માં %1$d દિવસ આગળ વધ્યા છો. જો તમે બદલશો, તો આ યાત્રા તમે પાછા આવશો ત્યારે ફરી શરૂ થશે.</item>
+        <item quantity="one">તમે %2$sમાં %1$d દિવસ આગળ વધ્યા છો. જો તમે બદલશો, તો આ યાત્રા તમે પાછા આવશો ત્યારે ફરી શરૂ થશે.</item>
+        <item quantity="other">તમે %2$sમાં %1$d દિવસ આગળ વધ્યા છો. જો તમે બદલશો, તો આ યાત્રા તમે પાછા આવશો ત્યારે ફરી શરૂ થશે.</item>
     </plurals>
-    <string name="detail_switch_body_nocount_fmt">તમે %1$s માં થોડે સુધી આગળ વધ્યા છો. જો તમે બદલશો, તો આ યાત્રા તમે પાછા આવશો ત્યારે ફરી શરૂ થશે.</string>
+    <string name="detail_switch_body_nocount_fmt">તમે %1$sમાં થોડે સુધી આગળ વધ્યા છો. જો તમે બદલશો, તો આ યાત્રા તમે પાછા આવશો ત્યારે ફરી શરૂ થશે.</string>
     <string name="detail_switch_confirm">બદલો</string>
     <string name="detail_switch_cancel">હાલની રાખો</string>
 
     <!-- Settings -->
     <string name="settings_title">સેટિંગ્સ</string>
-    <string name="settings_section_sadhana">તમારો અભ્યાસ</string>
+    <string name="settings_section_sadhana">તમારી સાધના</string>
     <string name="settings_row_current_sadhana">હાલની સાધના</string>
     <string name="settings_row_language">પ્રદર્શન ભાષા</string>
     <string name="settings_row_apps">અવરોધિત એપ</string>
@@ -120,6 +120,16 @@
     <string name="settings_apps_title">અવરોધિત એપ</string>
     <string name="settings_apps_empty_hint">ઓછામાં ઓછી એક એપ અવરોધિત રાખો.</string>
     <string name="settings_intention_title">ઉદ્દેશ</string>
+    <string name="settings_row_pause">વિરામની રીત</string>
+    <string name="settings_pause_title">વિરામની રીત</string>
+    <!-- Pause behaviour (onboarding step 5 + settings) -->
+    <string name="onb_pause_title">નિયમ તમને કેવી રીતે થોભાવે છે</string>
+    <string name="pause_length_label">દરેક વિરામ કેટલો લાંબો?</string>
+    <string name="pause_secs_fmt">%1$d સેકન્ડ</string>
+    <string name="pause_interval_toggle">સ્ક્રોલ ચાલુ હોય ત્યારે પણ યાદ કરાવો</string>
+    <string name="pause_interval_caption">અવરોધિત એપની અંદર થોડી વારે નિયમ ફરી હળવેથી દેખાશે — ફક્ત તમે એપ ખોલો ત્યારે જ નહીં.</string>
+    <string name="pause_freq_label">કેટલી વારે?</string>
+    <string name="pause_mins_fmt">દર %1$d મિનિટે</string>
     <!-- Settings entry -->
     <string name="settings_content_desc">સેટિંગ્સ</string>
 
@@ -178,7 +188,7 @@
     <string name="len_under30">30 સેકન્ડથી ઓછું</string>
     <string name="len_30to60">30–60 સેકન્ડ</string>
     <string name="len_over60">1 મિનિટથી વધુ</string>
-    <string name="intent_focus">ધ્યાન</string>
+    <string name="intent_focus">એકાગ્રતા</string>
     <string name="intent_calm">શાંતિ</string>
     <string name="intent_sadhana">સાધના</string>
     <string name="intent_dharma">ધર્મ</string>
@@ -192,12 +202,12 @@
     <string name="deity_rama">રામ</string>
     <string name="deity_saraswati">સરસ્વતી</string>
     <string name="deity_lakshmi">લક્ષ્મી</string>
-    <string name="deity_universal">સાર્વત્રિક</string>
+    <string name="deity_universal">સર્વ દેવ</string>
 
     <!-- Navigation -->
     <string name="nav_today">આજે</string>
     <string name="nav_library">લાઇબ્રેરી</string>
-    <string name="nav_favourites">પ્રિય</string>
+    <string name="nav_favourites">મનપસંદ</string>
     <string name="nav_settings">સેટિંગ્સ</string>
 
     <!-- Common actions -->
@@ -205,11 +215,11 @@
     <string name="back">પાછળ</string>
 
     <!-- Favourites -->
-    <string name="favourites_overline">પ્રિય</string>
+    <string name="favourites_overline">મનપસંદ</string>
     <string name="favourites_title">સાચવેલા મંત્રો</string>
-    <string name="favourites_empty">હજી કોઈ પ્રિય નથી. કોઈપણ મંત્ર પરના હૃદય પર ટેપ કરીને તેને અહીં સાચવો.</string>
-    <string name="detail_favourite_add">પ્રિયમાં ઉમેરો</string>
-    <string name="detail_favourite_remove">પ્રિયમાંથી દૂર કરો</string>
+    <string name="favourites_empty">હજી કોઈ મનપસંદ મંત્ર નથી. કોઈપણ મંત્ર પરના હૃદય પર ટેપ કરીને તેને અહીં સાચવો.</string>
+    <string name="detail_favourite_add">મનપસંદમાં ઉમેરો</string>
+    <string name="detail_favourite_remove">મનપસંદમાંથી દૂર કરો</string>
 
     <!-- Sign-in -->
     <string name="signin_title">તમારી સાધના શરૂ કરો</string>
@@ -220,7 +230,7 @@
 
     <!-- Settings — account -->
     <string name="settings_section_account">ખાતું</string>
-    <string name="settings_row_email">આ રીતે સાઇન ઇન છો</string>
+    <string name="settings_row_email">આ ખાતાથી સાઇન ઇન</string>
     <string name="settings_row_signout">સાઇન આઉટ કરો</string>
     <string name="settings_row_delete">ખાતું કાઢી નાખો</string>
     <string name="settings_version_fmt">નિયમ v%1$s</string>

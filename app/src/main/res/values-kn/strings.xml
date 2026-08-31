@@ -21,16 +21,16 @@
     <string name="onb_apps_title">ನಿಮ್ಮನ್ನು ಯಾವುದು ಸೆಳೆಯುತ್ತದೆ?</string>
 
     <!-- Permission screens (placeholder copy — refined when UI references arrive) -->
-    <string name="perm_usage_title">ನೀವು ನಿರ್ಬಂಧಿತ ಆ್ಯಪ್‌ಗಳನ್ನು ತೆರೆದಾಗ ಗಮನಿಸಲು</string>
-    <string name="perm_usage_body">ನೀವು Instagram, Facebook ಅಥವಾ YouTube ತೆರೆದಾಗ ಗಮನಿಸಲು — ಆಗ ನಾವು ಮೊದಲು ನಿಮ್ಮ ಮಂತ್ರವನ್ನು ತೋರಿಸಬಹುದು.</string>
-    <string name="perm_overlay_title">ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ತೋರಿಸಲು</string>
-    <string name="perm_overlay_body">ನಿರ್ಬಂಧಿತ ಆ್ಯಪ್‌ನ ಮೇಲೆ ನಿಮ್ಮ ಮಂತ್ರವನ್ನು ತೋರಿಸಲು.</string>
-    <string name="perm_accessibility_title">ಆ್ಯಪ್ ತೆರೆಯುವಿಕೆಯನ್ನು ತಕ್ಷಣ ಗುರುತಿಸಲು</string>
-    <string name="perm_accessibility_body">Instagram, Facebook ಅಥವಾ YouTube ತೆರೆಯುವ ನಿಖರ ಕ್ಷಣವನ್ನು ಗುರುತಿಸಲು — ತಕ್ಷಣ, ಯಾವುದೇ ವಿಳಂಬವಿಲ್ಲದೆ.</string>
-    <string name="perm_accessibility_disclosure">ನಿಯಮ Android ನ AccessibilityService API ಅನ್ನು ಕೇವಲ ಒಂದೇ ಉದ್ದೇಶಕ್ಕಾಗಿ ಬಳಸುತ್ತದೆ: ನೀವು ಬ್ಲಾಕ್ ಮಾಡಲು ಆರಿಸಿಕೊಂಡ ಆ್ಯಪ್ ಯಾವಾಗ ತೆರೆಯುತ್ತದೆ ಎಂಬುದನ್ನು ಗುರುತಿಸಲು, ಆ ಮೂಲಕ ಮೊದಲು ನಿಮ್ಮ ಮಂತ್ರ ಕಾಣಿಸಬಹುದು. ಈ ಸೇವೆಯ ಮೂಲಕ ನಿಯಮ ಪರದೆಯ ವಿಷಯ, ಸಂದೇಶಗಳು ಅಥವಾ ಯಾವುದೇ ವೈಯಕ್ತಿಕ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸುವುದಿಲ್ಲ, ಓದುವುದಿಲ್ಲ, ಸಂಗ್ರಹಿಸಿ ಇಡುವುದಿಲ್ಲ ಅಥವಾ ರವಾನಿಸುವುದಿಲ್ಲ. ಈ ಗುರುತಿಸುವಿಕೆ ಸಂಪೂರ್ಣವಾಗಿ ನಿಮ್ಮ ಸಾಧನದಲ್ಲೇ ನಡೆಯುತ್ತದೆ. ನಿಮ್ಮ ಫೋನ್‌ನ Accessibility ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು ಇದನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಆಫ್ ಮಾಡಬಹುದು.</string>
+    <string name="perm_usage_title">ಯಾವ ಆ್ಯಪ್ ತೆರೆದಿದೆ ಎಂಬುದನ್ನು ನಿಯಮ ನೋಡಲಿ</string>
+    <string name="perm_usage_body">ನೀವು ನಿರ್ಬಂಧಿಸಿದ ಆ್ಯಪ್‌ಗಳಲ್ಲಿ ಒಂದನ್ನು ತೆರೆದ ಕ್ಷಣವೇ ನಿಯಮಕ್ಕೆ ತಿಳಿಯಬೇಕು — ಆಗಲೇ ನಿಮ್ಮ ಮಂತ್ರ ಮೊದಲು ಕಾಣಿಸಿಕೊಳ್ಳಬಲ್ಲದು. ಯಾವ ಆ್ಯಪ್ ಮುಂದಿದೆ ಎಂಬುದನ್ನಷ್ಟೇ ಅದು ನೋಡುತ್ತದೆ — ಅದರೊಳಗೆ ನೀವು ಏನು ಮಾಡುತ್ತೀರಿ ಎಂಬುದನ್ನು ಎಂದಿಗೂ ಅಲ್ಲ.</string>
+    <string name="perm_overlay_title">ನಿಮ್ಮ ಮಂತ್ರವನ್ನು ನಿಯಮ ತೋರಿಸಲಿ</string>
+    <string name="perm_overlay_body">ನೀವು ತೆರೆದ ಆ್ಯಪ್‌ನ ಮೇಲೆ ನಿಮ್ಮ ಮಂತ್ರವನ್ನು ನಿಯಮ ಮೃದುವಾಗಿ ಇರಿಸುತ್ತದೆ — ಸ್ಕ್ರಾಲ್ ಮಾಡುವ ಮೊದಲು ನೀವು ಒಮ್ಮೆ ನಿಂತು ಓದಬಹುದು.</string>
+    <string name="perm_accessibility_title">ಆ್ಯಪ್ ತೆರೆದ ಕ್ಷಣವೇ ಸ್ಪಂದಿಸಲಿ</string>
+    <string name="perm_accessibility_body">ನಿರ್ಬಂಧಿತ ಆ್ಯಪ್ ತೆರೆದ ನಿಖರ ಕ್ಷಣದಲ್ಲೇ ನಿಯಮ ಸ್ಪಂದಿಸುವುದು ಇದರಿಂದಲೇ — ಯಾವುದೇ ವಿಳಂಬವಿಲ್ಲದೆ, ನಿಮ್ಮ ಮಂತ್ರ ಯಾವಾಗಲೂ ಮೊದಲು ಇರುತ್ತದೆ.</string>
+    <string name="perm_accessibility_disclosure">ನಿಯಮ Android-ನ AccessibilityService API ಅನ್ನು ಕೇವಲ ಒಂದೇ ಉದ್ದೇಶಕ್ಕಾಗಿ ಬಳಸುತ್ತದೆ: ನೀವು ಬ್ಲಾಕ್ ಮಾಡಲು ಆರಿಸಿಕೊಂಡ ಆ್ಯಪ್ ಯಾವಾಗ ತೆರೆಯುತ್ತದೆ ಎಂಬುದನ್ನು ಗುರುತಿಸಲು, ಆ ಮೂಲಕ ಮೊದಲು ನಿಮ್ಮ ಮಂತ್ರ ಕಾಣಿಸಬಹುದು. ಈ ಸೇವೆಯ ಮೂಲಕ ನಿಯಮ ಪರದೆಯ ವಿಷಯ, ಸಂದೇಶಗಳು ಅಥವಾ ಯಾವುದೇ ವೈಯಕ್ತಿಕ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸುವುದಿಲ್ಲ, ಓದುವುದಿಲ್ಲ, ಸಂಗ್ರಹಿಸಿ ಇಡುವುದಿಲ್ಲ ಅಥವಾ ರವಾನಿಸುವುದಿಲ್ಲ. ಈ ಗುರುತಿಸುವಿಕೆ ಸಂಪೂರ್ಣವಾಗಿ ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲೇ ನಡೆಯುತ್ತದೆ. ನಿಮ್ಮ ಫೋನ್‌ನ Accessibility ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು ಇದನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಆಫ್ ಮಾಡಬಹುದು.</string>
     <string name="perm_accessibility_agree">ನಾನು ಒಪ್ಪುತ್ತೇನೆ — ಆನ್ ಮಾಡಿ</string>
-    <string name="perm_battery_title">ಹಿನ್ನೆಲೆಯಲ್ಲಿ ನಮ್ಮನ್ನು ಮುಚ್ಚಬೇಡಿ</string>
-    <string name="perm_battery_body">ನೀವು ಬೇರೆಡೆ ಫೋನ್ ಬಳಸುತ್ತಿರುವಾಗ ಅದು ನಿಯಮವನ್ನು ಮುಚ್ಚದಂತೆ.</string>
+    <string name="perm_battery_title">ನಿಯಮ ಎಚ್ಚರವಾಗಿರಲಿ</string>
+    <string name="perm_battery_body">ಬ್ಯಾಟರಿ ಉಳಿಸಲು ಫೋನ್‌ಗಳು ಹಿನ್ನೆಲೆ ಆ್ಯಪ್‌ಗಳನ್ನು ಆಗಾಗ ಮುಚ್ಚುತ್ತವೆ. ಇದಕ್ಕೆ ಅನುಮತಿಸಿದರೆ ನಿಯಮ ಚಾಲನೆಯಲ್ಲಿ ಉಳಿಯುತ್ತದೆ — ನೀವು ನಿರ್ಬಂಧಿತ ಆ್ಯಪ್ ತೆರೆಯುವ ಕ್ಷಣವನ್ನು ಅದು ಎಂದಿಗೂ ತಪ್ಪಿಸಿಕೊಳ್ಳುವುದಿಲ್ಲ.</string>
     <string name="perm_oem_title">ಹಿನ್ನೆಲೆ ಚಟುವಟಿಕೆಗೆ ಅನುಮತಿಸಿ</string>
     <string name="perm_oem_body_miui">Xiaomi, Redmi ಮತ್ತು POCO ಫೋನ್‌ಗಳು ಹಿನ್ನೆಲೆ ಆ್ಯಪ್‌ಗಳನ್ನು ಒತ್ತಾಯವಾಗಿ ಮುಚ್ಚುತ್ತವೆ. ಅನುಮತಿಸಿ ಒತ್ತಿ, ಪಟ್ಟಿಯಲ್ಲಿ ನಿಯಮವನ್ನು ಹುಡುಕಿ, ಮತ್ತು Autostart ಅನ್ನು ಆನ್ ಮಾಡಿ.</string>
     <string name="perm_oem_body_color_os">OPPO ಮತ್ತು realme ಫೋನ್‌ಗಳು ಬ್ಯಾಟರಿ ಉಳಿಸಲು ಹಿನ್ನೆಲೆ ಆ್ಯಪ್‌ಗಳನ್ನು ಮುಚ್ಚುತ್ತವೆ. ಅನುಮತಿಸಿ ಒತ್ತಿ ಮತ್ತು ನಿಯಮ ತಾನಾಗಿ ಆರಂಭವಾಗಲು ಅನುಮತಿಸಿ.</string>
@@ -57,7 +57,7 @@
 
     <!-- Celebration / next sadhana -->
     <string name="celebration_overline">ಯಾತ್ರೆ ಪೂರ್ಣಗೊಂಡಿದೆ</string>
-    <string name="celebration_title_fmt">%2$s ನ %1$d ದಿನಗಳು</string>
+    <string name="celebration_title_fmt">%2$s · %1$d ದಿನಗಳು</string>
     <string name="celebration_body">ನೀವು ಅದರೊಂದಿಗೆ ಉಳಿದಿರಿ. ಆ ಶಿಸ್ತೇ ಸಾಧನೆ.</string>
     <string name="celebration_next">ನಿಮ್ಮ ಮುಂದಿನ ಸಾಧನೆಯನ್ನು ಆರಿಸಿ</string>
     <string name="celebration_keep">ಇದೇ ಮಂತ್ರದೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ</string>
@@ -91,10 +91,10 @@
     <string name="detail_practice_again">ಮತ್ತೆ ಅಭ್ಯಾಸ ಮಾಡಿ</string>
     <string name="detail_switch_title">ನಿಮ್ಮ ಸಾಧನೆ ಬದಲಿಸುವುದೇ?</string>
     <plurals name="detail_switch_body_plural">
-        <item quantity="one">ನೀವು %2$s ನ %1$d ದಿನದಲ್ಲಿದ್ದೀರಿ. ನೀವು ಬದಲಿಸಿದರೆ, ನೀವು ಮತ್ತೆ ಮರಳಿದಾಗ ಈ ಯಾತ್ರೆ ಮೊದಲಿನಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.</item>
-        <item quantity="other">ನೀವು %2$s ನ %1$d ದಿನಗಳಲ್ಲಿದ್ದೀರಿ. ನೀವು ಬದಲಿಸಿದರೆ, ನೀವು ಮತ್ತೆ ಮರಳಿದಾಗ ಈ ಯಾತ್ರೆ ಮೊದಲಿನಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.</item>
+        <item quantity="one">%2$s — ನೀವು %1$d ದಿನವನ್ನು ದಾಟಿದ್ದೀರಿ. ಈಗ ಬದಲಿಸಿದರೆ, ಮತ್ತೆ ಮರಳಿದಾಗ ಈ ಯಾತ್ರೆ ಮೊದಲಿನಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.</item>
+        <item quantity="other">%2$s — ನೀವು %1$d ದಿನಗಳನ್ನು ದಾಟಿದ್ದೀರಿ. ಈಗ ಬದಲಿಸಿದರೆ, ಮತ್ತೆ ಮರಳಿದಾಗ ಈ ಯಾತ್ರೆ ಮೊದಲಿನಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.</item>
     </plurals>
-    <string name="detail_switch_body_nocount_fmt">ನೀವು %1$s ನ ಮಧ್ಯದಲ್ಲಿದ್ದೀರಿ. ನೀವು ಬದಲಿಸಿದರೆ, ನೀವು ಮತ್ತೆ ಮರಳಿದಾಗ ಈ ಯಾತ್ರೆ ಮೊದಲಿನಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.</string>
+    <string name="detail_switch_body_nocount_fmt">%1$s — ನೀವು ಈ ಯಾತ್ರೆಯ ಮಧ್ಯದಲ್ಲಿದ್ದೀರಿ. ಈಗ ಬದಲಿಸಿದರೆ, ಮತ್ತೆ ಮರಳಿದಾಗ ಇದು ಮೊದಲಿನಿಂದ ಆರಂಭವಾಗುತ್ತದೆ.</string>
     <string name="detail_switch_confirm">ಬದಲಿಸಿ</string>
     <string name="detail_switch_cancel">ಪ್ರಸ್ತುತದ್ದನ್ನೇ ಇರಿಸಿ</string>
 
@@ -120,6 +120,16 @@
     <string name="settings_apps_title">ನಿರ್ಬಂಧಿತ ಆ್ಯಪ್‌ಗಳು</string>
     <string name="settings_apps_empty_hint">ಕನಿಷ್ಠ ಒಂದು ಆ್ಯಪ್ ಅನ್ನಾದರೂ ನಿರ್ಬಂಧಿಸಿ ಇರಿಸಿ.</string>
     <string name="settings_intention_title">ಉದ್ದೇಶ</string>
+    <string name="settings_row_pause">ವಿರಾಮದ ರೀತಿ</string>
+    <string name="settings_pause_title">ವಿರಾಮದ ರೀತಿ</string>
+    <!-- Pause behaviour (onboarding step 5 + settings) -->
+    <string name="onb_pause_title">ನಿಯಮ ನಿಮಗೆ ಹೇಗೆ ವಿರಾಮ ನೀಡುತ್ತದೆ</string>
+    <string name="pause_length_label">ಪ್ರತಿ ವಿರಾಮ ಎಷ್ಟು ಹೊತ್ತು?</string>
+    <string name="pause_secs_fmt">%1$d ಸೆಕೆಂಡ್</string>
+    <string name="pause_interval_toggle">ಸ್ಕ್ರಾಲ್ ಮಾಡುವಾಗಲೂ ನೆನಪಿಸಿ</string>
+    <string name="pause_interval_caption">ನಿರ್ಬಂಧಿತ ಆ್ಯಪ್‌ನೊಳಗೆ ಸ್ವಲ್ಪ ಹೊತ್ತಿನ ನಂತರ ನಿಯಮ ಮೃದುವಾಗಿ ಮತ್ತೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ — ನೀವು ಅದನ್ನು ತೆರೆದಾಗ ಮಾತ್ರವಲ್ಲ.</string>
+    <string name="pause_freq_label">ಎಷ್ಟು ಸಮಯಕ್ಕೊಮ್ಮೆ?</string>
+    <string name="pause_mins_fmt">ಪ್ರತಿ %1$d ನಿಮಿಷಕ್ಕೊಮ್ಮೆ</string>
     <!-- Settings entry -->
     <string name="settings_content_desc">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
 
@@ -136,7 +146,7 @@
     <string name="paywall_plan_annual_fmt">ವಾರ್ಷಿಕ — ₹%1$d</string>
     <string name="paywall_plan_annual_subline_fmt">≈ ತಿಂಗಳಿಗೆ ₹%1$d, ವಾರ್ಷಿಕ ಬಿಲ್</string>
     <string name="paywall_plan_monthly_fmt">ಮಾಸಿಕ — ₹%1$d</string>
-    <string name="paywall_plan_monthly_subline">ಹೊಂದಿಕೊಳ್ಳುವ, ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದುಗೊಳಿಸಿ</string>
+    <string name="paywall_plan_monthly_subline">ಬೇಕಾದಂತೆ — ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದುಗೊಳಿಸಿ</string>
     <string name="paywall_plan_weekly_fmt">ಸಾಪ್ತಾಹಿಕ — ₹%1$d</string>
     <string name="paywall_plan_weekly_subline">ಒಂದೊಂದು ವಾರ ಪ್ರಯತ್ನಿಸಿ</string>
     <string name="paywall_best_value">ಅತ್ಯುತ್ತಮ ಮೌಲ್ಯ</string>
@@ -175,8 +185,8 @@
     <string name="cat_upanishad">ಉಪನಿಷತ್ತುಗಳು</string>
     <string name="cat_gita">ಭಗವದ್ಗೀತೆ</string>
     <string name="cat_stotra">ಸ್ತೋತ್ರಗಳು</string>
-    <string name="len_under30">30 ಸೆ.ಗಿಂತ ಕಡಿಮೆ</string>
-    <string name="len_30to60">30–60 ಸೆ.</string>
+    <string name="len_under30">30 ಸೆಕೆಂಡ್‌ಗಿಂತ ಕಡಿಮೆ</string>
+    <string name="len_30to60">30–60 ಸೆಕೆಂಡ್</string>
     <string name="len_over60">1 ನಿಮಿಷಕ್ಕಿಂತ ಹೆಚ್ಚು</string>
     <string name="intent_focus">ಏಕಾಗ್ರತೆ</string>
     <string name="intent_calm">ಶಾಂತಿ</string>
@@ -192,7 +202,7 @@
     <string name="deity_rama">ರಾಮ</string>
     <string name="deity_saraswati">ಸರಸ್ವತಿ</string>
     <string name="deity_lakshmi">ಲಕ್ಷ್ಮಿ</string>
-    <string name="deity_universal">ಸಾರ್ವತ್ರಿಕ</string>
+    <string name="deity_universal">ಸರ್ವದೇವ</string>
 
     <!-- Common actions / navigation (SP-18 Kannada) -->
     <string name="action_cancel">ರದ್ದುಗೊಳಿಸಿ</string>
@@ -205,31 +215,31 @@
     <!-- Favourites -->
     <string name="detail_favourite_add">ಮೆಚ್ಚಿನವುಗಳಿಗೆ ಸೇರಿಸಿ</string>
     <string name="detail_favourite_remove">ಮೆಚ್ಚಿನವುಗಳಿಂದ ತೆಗೆದುಹಾಕಿ</string>
-    <string name="favourites_overline">ಮೆಚ್ಚಿನವು</string>
+    <string name="favourites_overline">ಮೆಚ್ಚಿನವುಗಳು</string>
     <string name="favourites_title">ಉಳಿಸಿದ ಮಂತ್ರಗಳು</string>
-    <string name="favourites_empty">ಇನ್ನೂ ಮೆಚ್ಚಿನವು ಇಲ್ಲ. ಇಲ್ಲಿ ಉಳಿಸಲು ಯಾವುದೇ ಮಂತ್ರದ ಹೃದಯ ಚಿಹ್ನೆಯನ್ನು ಒತ್ತಿ.</string>
+    <string name="favourites_empty">ಇನ್ನೂ ಯಾವುದೇ ಮೆಚ್ಚಿನವುಗಳಿಲ್ಲ. ಇಲ್ಲಿ ಉಳಿಸಲು ಯಾವುದೇ ಮಂತ್ರದ ಹೃದಯ ಚಿಹ್ನೆಯನ್ನು ಒತ್ತಿ.</string>
 
     <!-- Paywall additions -->
     <string name="paywall_restore_none">ಯಾವುದೇ ಸಕ್ರಿಯ ಚಂದಾದಾರಿಕೆ ಸಿಗಲಿಲ್ಲ.</string>
-    <string name="paywall_trust">Google Play ನಲ್ಲಿ ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದುಗೊಳಿಸಿ</string>
+    <string name="paywall_trust">Google Play-ನಲ್ಲಿ ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದುಗೊಳಿಸಿ</string>
 
     <!-- Sign-in -->
     <string name="signin_title">ನಿಮ್ಮ ಸಾಧನೆ ಆರಂಭಿಸಿ</string>
-    <string name="signin_subtitle">ನಿಮ್ಮ ಅಭ್ಯಾಸವನ್ನು ಉಳಿಸಲು ಮತ್ತು ನಿಮ್ಮ ಸಾಧನಗಳ ನಡುವೆ ಸಿಂಕ್ ಮಾಡಲು Google ನೊಂದಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.</string>
-    <string name="signin_google">Google ನೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ</string>
+    <string name="signin_subtitle">ನಿಮ್ಮ ಅಭ್ಯಾಸವನ್ನು ಉಳಿಸಲು ಮತ್ತು ನಿಮ್ಮ ಫೋನ್‌ಗಳ ನಡುವೆ ಸಿಂಕ್ ಮಾಡಲು Google-ನೊಂದಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.</string>
+    <string name="signin_google">Google-ನೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ</string>
     <string name="signin_privacy_note">ನಾವು ನಿಮ್ಮ ಅಭ್ಯಾಸವನ್ನು ಮಾತ್ರ ಉಳಿಸುತ್ತೇವೆ — ಇತರ ಆ್ಯಪ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ಚಟುವಟಿಕೆಯನ್ನು ಎಂದಿಗೂ ಅಲ್ಲ.</string>
     <string name="signin_error">ಸೈನ್ ಇನ್ ಪೂರ್ಣಗೊಳ್ಳಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
 
     <!-- Settings — account section -->
     <string name="settings_section_account">ಖಾತೆ</string>
-    <string name="settings_row_email">ಸೈನ್ ಇನ್ ಆಗಿರುವವರು</string>
+    <string name="settings_row_email">ಸೈನ್ ಇನ್ ಆಗಿರುವ ಖಾತೆ</string>
     <string name="settings_row_signout">ಸೈನ್ ಔಟ್</string>
     <string name="settings_row_delete">ಖಾತೆ ಅಳಿಸಿ</string>
     <string name="settings_signout_confirm_title">ಸೈನ್ ಔಟ್ ಮಾಡುವುದೇ?</string>
-    <string name="settings_signout_confirm_body">ನಿಮ್ಮ ಅಭ್ಯಾಸ ಈ ಸಾಧನದಲ್ಲೇ ಉಳಿಯುತ್ತದೆ. ಅದನ್ನು ಸಿಂಕ್ ಮಾಡಲು ನೀವು ಯಾವಾಗ ಬೇಕಾದರೂ ಮತ್ತೆ ಸೈನ್ ಇನ್ ಮಾಡಬಹುದು.</string>
+    <string name="settings_signout_confirm_body">ನಿಮ್ಮ ಅಭ್ಯಾಸ ಈ ಫೋನ್‌ನಲ್ಲೇ ಉಳಿಯುತ್ತದೆ. ಅದನ್ನು ಸಿಂಕ್ ಮಾಡಲು ನೀವು ಯಾವಾಗ ಬೇಕಾದರೂ ಮತ್ತೆ ಸೈನ್ ಇನ್ ಮಾಡಬಹುದು.</string>
     <string name="settings_signout_confirm_cta">ಸೈನ್ ಔಟ್</string>
     <string name="settings_delete_confirm_title">ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸುವುದೇ?</string>
-    <string name="settings_delete_confirm_body">ಇದು ನಿಮ್ಮ ನಿಯಮ ಖಾತೆ ಮತ್ತು ಸಿಂಕ್ ಆದ ಎಲ್ಲಾ ಅಭ್ಯಾಸವನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸುತ್ತದೆ. ಇದನ್ನು ಹಿಂಪಡೆಯಲಾಗದು. ಈ ಸಾಧನದಲ್ಲಿ ಆ್ಯಪ್ ಮರುಹೊಂದಿಸಲಾಗುತ್ತದೆ.</string>
+    <string name="settings_delete_confirm_body">ಇದು ನಿಮ್ಮ ನಿಯಮ ಖಾತೆ ಮತ್ತು ಸಿಂಕ್ ಆದ ಎಲ್ಲಾ ಅಭ್ಯಾಸವನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸುತ್ತದೆ. ಇದನ್ನು ಹಿಂಪಡೆಯಲಾಗದು. ಈ ಫೋನ್‌ನಲ್ಲಿ ಆ್ಯಪ್ ಮರುಹೊಂದಿಸಲಾಗುತ್ತದೆ.</string>
     <string name="settings_delete_confirm_cta">ಅಳಿಸಿ</string>
     <string name="settings_delete_error">ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಅಳಿಸಲಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
     <string name="settings_version_fmt">ನಿಯಮ v%1$s</string>

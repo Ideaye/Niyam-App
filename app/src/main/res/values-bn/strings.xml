@@ -21,23 +21,23 @@
     <string name="onb_apps_title">কী আপনাকে টেনে নেয়?</string>
 
     <!-- Permission screens (placeholder copy — refined when UI references arrive) -->
-    <string name="perm_usage_title">আপনি কখন ব্লক করা অ্যাপ খোলেন তা জানুন</string>
-    <string name="perm_usage_body">আপনি কখন Instagram, Facebook বা YouTube খোলেন তা জানতে — যাতে আমরা আগে আপনার মন্ত্র দেখাতে পারি।</string>
-    <string name="perm_overlay_title">অন্য অ্যাপের উপরে দেখান</string>
-    <string name="perm_overlay_body">ব্লক করা অ্যাপের উপরে আপনার মন্ত্র দেখানোর জন্য।</string>
-    <string name="perm_accessibility_title">অ্যাপ খোলা তৎক্ষণাৎ শনাক্ত করুন</string>
-    <string name="perm_accessibility_body">Instagram, Facebook বা YouTube ঠিক যে মুহূর্তে খোলে সেটি শনাক্ত করতে — তৎক্ষণাৎ, কোনো বিলম্ব ছাড়াই।</string>
+    <string name="perm_usage_title">কোন অ্যাপ খোলা আছে নিয়মকে দেখতে দিন</string>
+    <string name="perm_usage_body">আপনি ব্লক করা কোনো অ্যাপ খোলার সঙ্গে সঙ্গেই নিয়মকে তা জানতে হয়, যাতে আগে আপনার মন্ত্র দেখাতে পারে। সামনে কোন অ্যাপ আছে শুধু সেটুকুই দেখে — ভিতরে আপনি কী করেন তা কখনও নয়।</string>
+    <string name="perm_overlay_title">নিয়মকে আপনার মন্ত্র দেখাতে দিন</string>
+    <string name="perm_overlay_body">এই অনুমতি দিলে নিয়ম আপনার খোলা অ্যাপের উপরে আলতো করে মন্ত্রটি রাখতে পারে, যাতে স্ক্রোল করার আগে আপনি একটু থেমে পড়তে পারেন।</string>
+    <string name="perm_accessibility_title">অ্যাপ খোলার সঙ্গে সঙ্গেই সাড়া</string>
+    <string name="perm_accessibility_body">এর ফলেই ব্লক করা অ্যাপ খোলার ঠিক সেই মুহূর্তে নিয়ম সাড়া দিতে পারে — কোনো বিলম্ব ছাড়াই — যাতে আপনার মন্ত্র সবসময় আগে থাকে।</string>
     <string name="perm_accessibility_disclosure">নিয়ম Android-এর AccessibilityService API শুধুমাত্র একটি উদ্দেশ্যেই ব্যবহার করে: আপনি যে অ্যাপটি ব্লক করতে বেছে নিয়েছেন তা কখন খোলে তা শনাক্ত করতে, যাতে আগে আপনার মন্ত্র দেখাতে পারে। এই পরিষেবার মাধ্যমে নিয়ম স্ক্রিনের বিষয়বস্তু, বার্তা বা কোনো ব্যক্তিগত তথ্য সংগ্রহ করে না, পড়ে না, সংরক্ষণ করে না বা পাঠায় না। এই শনাক্তকরণ সম্পূর্ণরূপে আপনার ডিভাইসেই হয়। আপনি এটি যেকোনো সময় আপনার ফোনের Accessibility সেটিংসে বন্ধ করতে পারেন।</string>
     <string name="perm_accessibility_agree">আমি সম্মত — চালু করুন</string>
-    <string name="perm_battery_title">পটভূমিতে আমাদের বন্ধ করবেন না</string>
-    <string name="perm_battery_body">যাতে আপনি অন্য কোথাও থাকার সময় আপনার ফোন নিয়ম-কে বন্ধ করে না দেয়।</string>
-    <string name="perm_oem_title">পটভূমিতে চলার অনুমতি দিন</string>
-    <string name="perm_oem_body_miui">Xiaomi, Redmi ও POCO ফোন পটভূমির অ্যাপগুলিকে জোর করে বন্ধ করে দেয়। Grant-এ ট্যাপ করুন, তালিকায় নিয়ম খুঁজে নিন এবং Autostart চালু করুন।</string>
-    <string name="perm_oem_body_color_os">OPPO ও realme ফোন ব্যাটারি বাঁচাতে পটভূমির অ্যাপ বন্ধ করে দেয়। Grant-এ ট্যাপ করুন এবং নিয়ম-কে স্বয়ংক্রিয়ভাবে চালু হতে দিন।</string>
-    <string name="perm_oem_body_funtouch_os">vivo ও iQOO ফোন ব্যাটারি বাঁচাতে পটভূমির অ্যাপ বন্ধ করে দেয়। Grant-এ ট্যাপ করুন এবং নিয়ম-কে পটভূমিতে চালু হতে দিন।</string>
-    <string name="perm_oem_body_oxygen_os">OnePlus ফোন ব্যাটারিকে জোরালোভাবে অপ্টিমাইজ করে। Grant-এ ট্যাপ করুন, তারপর নিয়ম-এর ব্যাটারি ব্যবহার \"Don\'t optimise\"-এ সেট করুন।</string>
-    <string name="perm_oem_body_one_ui">Samsung ফোন অব্যবহৃত অ্যাপগুলিকে ঘুম পাড়িয়ে দেয়। Grant-এ ট্যাপ করুন, তারপর নিশ্চিত করুন যে নিয়ম কখনও \"Sleeping apps\"-এ যোগ না হয়।</string>
-    <string name="perm_oem_body_generic">কিছু ফোন ব্যাটারি বাঁচাতে নীরবে পটভূমির অ্যাপ বন্ধ করে দেয়। আপনার ফোনে যদি নিয়ম-এর জন্য Autostart বা পটভূমি-কার্যকলাপের কোনো বিকল্প দেখায়, সেটি চালু করুন। যদি কোনোটি না দেখেন, আপনার সব ঠিক আছে — Done-এ ট্যাপ করুন।</string>
+    <string name="perm_battery_title">নিয়মকে জেগে থাকতে দিন</string>
+    <string name="perm_battery_body">ব্যাটারি বাঁচাতে ফোন প্রায়ই ব্যাকগ্রাউন্ডের অ্যাপ বন্ধ করে দেয়। এই অনুমতি দিলে নিয়ম চলতে থাকে, তাই আপনি কখন ব্লক করা অ্যাপ খোলেন সেই মুহূর্তটি কখনও ফসকে যায় না।</string>
+    <string name="perm_oem_title">ব্যাকগ্রাউন্ডে চলার অনুমতি দিন</string>
+    <string name="perm_oem_body_miui">Xiaomi, Redmi ও POCO ফোন ব্যাকগ্রাউন্ডের অ্যাপগুলিকে জোর করে বন্ধ করে দেয়। \"অনুমতি দিন\"-এ ট্যাপ করুন, তালিকায় নিয়ম খুঁজে নিন এবং Autostart চালু করুন।</string>
+    <string name="perm_oem_body_color_os">OPPO ও realme ফোন ব্যাটারি বাঁচাতে ব্যাকগ্রাউন্ডের অ্যাপ বন্ধ করে দেয়। \"অনুমতি দিন\"-এ ট্যাপ করুন এবং নিয়মকে স্বয়ংক্রিয়ভাবে চালু হতে দিন।</string>
+    <string name="perm_oem_body_funtouch_os">vivo ও iQOO ফোন ব্যাটারি বাঁচাতে ব্যাকগ্রাউন্ডের অ্যাপ বন্ধ করে দেয়। \"অনুমতি দিন\"-এ ট্যাপ করুন এবং নিয়মকে ব্যাকগ্রাউন্ডে চালু হতে দিন।</string>
+    <string name="perm_oem_body_oxygen_os">OnePlus ফোন ব্যাটারিকে জোরালোভাবে অপ্টিমাইজ করে। \"অনুমতি দিন\"-এ ট্যাপ করুন, তারপর নিয়মের ব্যাটারি ব্যবহার \"Don\'t optimise\"-এ সেট করুন।</string>
+    <string name="perm_oem_body_one_ui">Samsung ফোন অব্যবহৃত অ্যাপগুলিকে ঘুম পাড়িয়ে দেয়। \"অনুমতি দিন\"-এ ট্যাপ করুন, তারপর নিশ্চিত করুন যে নিয়ম কখনও \"Sleeping apps\"-এ যোগ না হয়।</string>
+    <string name="perm_oem_body_generic">বেশিরভাগ ফোনে এখানে কিছুই করার দরকার নেই। আপনার ফোনে যদি \"Autostart\" বা \"background-activity\" সেটিং থাকে, আপনি যেকোনো সময় সেটিংসে গিয়ে নিয়মের জন্য সেটি চালু করতে পারেন। শেষ করতে \"সম্পন্ন\"-এ ট্যাপ করুন।</string>
 
     <string name="grant">অনুমতি দিন</string>
     <string name="done">সম্পন্ন</string>
@@ -46,7 +46,7 @@
     <!-- Home -->
     <string name="home_overline">আপনার সাধনা</string>
     <string name="home_day_fmt">%2$d দিনের মধ্যে %1$d দিন</string>
-    <string name="home_streak_fmt">%1$d দিনের ধারা</string>
+    <string name="home_streak_fmt">টানা %1$d দিন</string>
     <plurals name="home_today_plural">
         <item quantity="one">আজ %1$d বার পাঠ</item>
         <item quantity="other">আজ %1$d বার পাঠ</item>
@@ -86,7 +86,7 @@
     <string name="library_empty">কিছুই মিলছে না — একটি ফিল্টার সরান।</string>
     <string name="library_current_marker">বর্তমান</string>
     <string name="library_completed_marker">সম্পূর্ণ</string>
-    <string name="detail_make_current">এটিকে আমার সাধনা করুন</string>
+    <string name="detail_make_current">এটিই হোক আমার সাধনা</string>
     <string name="detail_is_current">আপনার বর্তমান সাধনা</string>
     <string name="detail_practice_again">আবার অভ্যাস করুন</string>
     <string name="detail_switch_title">আপনার সাধনা বদলাবেন?</string>
@@ -107,7 +107,7 @@
     <string name="settings_row_intention">উদ্দেশ্য</string>
     <string name="settings_section_app">অ্যাপ</string>
     <string name="settings_row_appearance">চেহারা</string>
-    <string name="settings_appearance_light">উজ্জ্বল</string>
+    <string name="settings_appearance_light">হালকা</string>
     <string name="settings_appearance_dark">গাঢ়</string>
     <string name="settings_appearance_system">সিস্টেম</string>
     <string name="settings_row_notify">সমাপ্তির বিজ্ঞপ্তি</string>
@@ -120,6 +120,16 @@
     <string name="settings_apps_title">ব্লক করা অ্যাপ</string>
     <string name="settings_apps_empty_hint">অন্তত একটি অ্যাপ ব্লক করে রাখুন।</string>
     <string name="settings_intention_title">উদ্দেশ্য</string>
+    <!-- Pause behaviour (onboarding step 5 + settings) -->
+    <string name="settings_row_pause">থামার ধরন</string>
+    <string name="settings_pause_title">থামার ধরন</string>
+    <string name="onb_pause_title">নিয়ম আপনাকে কীভাবে থামায়</string>
+    <string name="pause_length_label">প্রতিবার কতক্ষণ থামবেন?</string>
+    <string name="pause_secs_fmt">%1$d সেকেন্ড</string>
+    <string name="pause_interval_toggle">স্ক্রোল করার সময়ও মনে করিয়ে দিন</string>
+    <string name="pause_interval_caption">ব্লক করা অ্যাপের ভিতরে কিছুক্ষণ পরে নিয়ম আবার আলতো করে সামনে আসবে — শুধু অ্যাপ খোলার সময় নয়।</string>
+    <string name="pause_freq_label">কত ঘন ঘন?</string>
+    <string name="pause_mins_fmt">প্রতি %1$d মিনিট অন্তর</string>
     <!-- Settings entry -->
     <string name="settings_content_desc">সেটিংস</string>
 
@@ -128,10 +138,10 @@
     <string name="paywall_close_desc">বন্ধ করুন</string>
     <string name="paywall_hero">প্রতিটি মন্ত্র।\nপ্রতিটি ভাষা।</string>
     <string name="paywall_timeline_today_title">আজ</string>
-    <string name="paywall_timeline_today_body">সবকিছু আনলক করা — আপনার 7-দিনের ট্রায়াল ইতিমধ্যেই চালু।</string>
-    <string name="paywall_timeline_day6_title">দিন 6</string>
+    <string name="paywall_timeline_today_body">সবকিছু আনলক করা আছে — আপনার ৭-দিনের ট্রায়াল ইতিমধ্যেই চালু।</string>
+    <string name="paywall_timeline_day6_title">দিন ৬</string>
     <string name="paywall_timeline_day6_body">শেষ হওয়ার আগে আমরা আপনাকে মনে করিয়ে দেব।</string>
-    <string name="paywall_timeline_day7_title">দিন 7</string>
+    <string name="paywall_timeline_day7_title">দিন ৭</string>
     <string name="paywall_timeline_day7_body">ট্রায়াল শেষ — প্রিমিয়াম দিয়ে সবকিছু ধরে রাখুন।</string>
     <string name="paywall_plan_annual_fmt">বার্ষিক — ₹%1$d</string>
     <string name="paywall_plan_annual_subline_fmt">≈ মাসে ₹%1$d, বছরে বিল করা হয়</string>
@@ -166,7 +176,7 @@
     <!-- Library filters (SP-17) -->
     <string name="filter_heading">ফিল্টার</string>
     <string name="filter_clear_all">সব মুছে ফেলুন</string>
-    <string name="filter_show_count">দেখান %1$d</string>
+    <string name="filter_show_count">%1$dটি দেখান</string>
     <string name="filter_section_source">উৎস</string>
     <string name="filter_section_length">দৈর্ঘ্য</string>
     <string name="filter_section_intention">উদ্দেশ্য</string>
@@ -175,10 +185,10 @@
     <string name="cat_upanishad">উপনিষদ</string>
     <string name="cat_gita">ভগবদ্গীতা</string>
     <string name="cat_stotra">স্তোত্র</string>
-    <string name="len_under30">30 সেকেন্ডের কম</string>
-    <string name="len_30to60">30–60 সেকেন্ড</string>
-    <string name="len_over60">1 মিনিটের বেশি</string>
-    <string name="intent_focus">মনোযোগ</string>
+    <string name="len_under30">৩০ সেকেন্ডের কম</string>
+    <string name="len_30to60">৩০–৬০ সেকেন্ড</string>
+    <string name="len_over60">১ মিনিটের বেশি</string>
+    <string name="intent_focus">একাগ্রতা</string>
     <string name="intent_calm">প্রশান্তি</string>
     <string name="intent_sadhana">সাধনা</string>
     <string name="intent_dharma">ধর্ম</string>
@@ -192,7 +202,7 @@
     <string name="deity_rama">রাম</string>
     <string name="deity_saraswati">সরস্বতী</string>
     <string name="deity_lakshmi">লক্ষ্মী</string>
-    <string name="deity_universal">সর্বজনীন</string>
+    <string name="deity_universal">সবার জন্য</string>
 
     <!-- Navigation -->
     <string name="nav_today">আজ</string>
@@ -207,7 +217,7 @@
     <!-- Favourites -->
     <string name="favourites_overline">প্রিয়</string>
     <string name="favourites_title">সংরক্ষিত মন্ত্র</string>
-    <string name="favourites_empty">এখনও কোনো প্রিয় নেই। এখানে সংরক্ষণ করতে যেকোনো মন্ত্রের হৃদয়-চিহ্নে ট্যাপ করুন।</string>
+    <string name="favourites_empty">প্রিয় তালিকায় এখনও কোনো মন্ত্র নেই। এখানে সংরক্ষণ করতে যেকোনো মন্ত্রের হৃদয়-চিহ্নে ট্যাপ করুন।</string>
     <string name="detail_favourite_add">প্রিয় তালিকায় যোগ করুন</string>
     <string name="detail_favourite_remove">প্রিয় তালিকা থেকে সরান</string>
 
@@ -220,7 +230,7 @@
 
     <!-- Settings — account -->
     <string name="settings_section_account">অ্যাকাউন্ট</string>
-    <string name="settings_row_email">সাইন ইন করেছেন</string>
+    <string name="settings_row_email">সাইন-ইন করা অ্যাকাউন্ট</string>
     <string name="settings_row_signout">সাইন আউট করুন</string>
     <string name="settings_row_delete">অ্যাকাউন্ট মুছুন</string>
     <string name="settings_signout_confirm_title">সাইন আউট করবেন?</string>

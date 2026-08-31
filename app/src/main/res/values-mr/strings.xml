@@ -10,27 +10,27 @@
     <string name="onb_step_fmt">पायरी %1$d / 4</string>
     <string name="onb_continue">पुढे चला</string>
     <string name="onb_intention_title">तुम्ही इथे का आला आहात?</string>
-    <string name="onb_intention_focus">अधिक एकाग्रता, कमी स्क्रोल</string>
-    <string name="onb_intention_calm">अस्वस्थ मन शांत करा</string>
-    <string name="onb_intention_sadhana">रोजची साधना सुरू करा</string>
-    <string name="onb_intention_dharma">धर्माशी अधिक जोडलेले वाटावे</string>
-    <string name="onb_intention_devotion">माझी भक्ती अधिक खोल करा</string>
+    <string name="onb_intention_focus">एकाग्रता वाढावी, स्क्रोल कमी व्हावा</string>
+    <string name="onb_intention_calm">चंचल मन शांत व्हावे</string>
+    <string name="onb_intention_sadhana">रोजची साधना सुरू व्हावी</string>
+    <string name="onb_intention_dharma">धर्माशी अधिक जवळीक वाटावी</string>
+    <string name="onb_intention_devotion">भक्ती अधिक खोल व्हावी</string>
     <string name="onb_mantra_title">तुमचा सुरुवातीचा मंत्र निवडा</string>
     <string name="onb_read_time_fmt">~%1$d सेकंद</string>
     <string name="onb_language_title">तुमची भाषा</string>
-    <string name="onb_apps_title">तुम्हाला कशात गुंतवून ठेवतं?</string>
+    <string name="onb_apps_title">तुम्हाला कोणती अ‍ॅप्स गुंतवून ठेवतात?</string>
 
     <!-- Permission screens (placeholder copy — refined when UI references arrive) -->
-    <string name="perm_usage_title">तुम्ही ब्लॉक केलेले अ‍ॅप्स कधी उघडता ते पाहा</string>
-    <string name="perm_usage_body">तुम्ही Instagram, Facebook किंवा YouTube कधी उघडता हे पाहण्यासाठी — म्हणजे आम्ही आधी तुमचा मंत्र दाखवू शकू.</string>
-    <string name="perm_overlay_title">इतर अ‍ॅप्सच्या वर दाखवा</string>
-    <string name="perm_overlay_body">ब्लॉक केलेल्या अ‍ॅपच्या वर तुमचा मंत्र दाखवण्यासाठी.</string>
-    <string name="perm_accessibility_title">अ‍ॅप उघडल्याचं लगेच ओळखा</string>
-    <string name="perm_accessibility_body">Instagram, Facebook किंवा YouTube उघडण्याचा नेमका क्षण ओळखण्यासाठी — कोणताही विलंब न करता, तत्काळ.</string>
+    <string name="perm_usage_title">कोणते अ‍ॅप उघडे आहे ते नियमला पाहू द्या</string>
+    <string name="perm_usage_body">तुम्ही ब्लॉक केलेल्यांपैकी एखादे अ‍ॅप उघडता, तो क्षण नियमला कळायला हवा — म्हणजे आधी तुमचा मंत्र दिसू शकेल. ते फक्त कोणते अ‍ॅप समोर आहे एवढेच पाहते — तुम्ही त्यात काय करता ते कधीच नाही.</string>
+    <string name="perm_overlay_title">नियमला तुमचा मंत्र दाखवू द्या</string>
+    <string name="perm_overlay_body">यामुळे नियम तुम्ही उघडलेल्या अ‍ॅपवर तुमचा मंत्र हळुवारपणे ठेवू शकते — म्हणजे स्क्रोल करण्याआधी तुम्हाला क्षणभर थांबून तो वाचता येईल.</string>
+    <string name="perm_accessibility_title">अ‍ॅप उघडताच नियमला प्रतिसाद देऊ द्या</string>
+    <string name="perm_accessibility_body">ब्लॉक केलेले अ‍ॅप उघडते त्याच क्षणी नियमला प्रतिसाद देता यावा, यासाठी हे आवश्यक आहे — कोणताही विलंब न होता, म्हणजे तुमचा मंत्र नेहमी आधी समोर येईल.</string>
     <string name="perm_accessibility_disclosure">नियम, Android च्या AccessibilityService API चा वापर फक्त एकाच उद्देशासाठी करतं: तुम्ही ब्लॉक करायचं ठरवलेलं अ‍ॅप कधी उघडतं हे ओळखण्यासाठी, म्हणजे आधी तुमचा मंत्र दाखवता येईल. या सेवेद्वारे नियम स्क्रीनवरील मजकूर, संदेश किंवा कोणताही वैयक्तिक डेटा गोळा करत नाही, वाचत नाही, साठवत नाही किंवा पाठवत नाही. ही ओळख पूर्णपणे तुमच्या डिव्हाइसवरच होते. तुम्ही ते तुमच्या फोनच्या Accessibility सेटिंग्जमध्ये कधीही बंद करू शकता.</string>
     <string name="perm_accessibility_agree">मी सहमत आहे — चालू करा</string>
-    <string name="perm_battery_title">पार्श्वभूमीत आम्हाला बंद करू नका</string>
-    <string name="perm_battery_body">म्हणजे तुम्ही दुसरीकडे काम करत असताना तुमचा फोन नियमला बंद करणार नाही.</string>
+    <string name="perm_battery_title">नियमला जागे राहू द्या</string>
+    <string name="perm_battery_body">वीज वाचवण्यासाठी फोन बहुधा पार्श्वभूमीतले अ‍ॅप्स बंद करतात. ही परवानगी दिल्याने नियम सुरू राहते — म्हणजे तुम्ही ब्लॉक केलेले अ‍ॅप उघडण्याचा क्षण ते कधीच चुकवणार नाही.</string>
     <string name="perm_oem_title">पार्श्वभूमीत सुरू राहण्याची परवानगी द्या</string>
     <string name="perm_oem_body_miui">Xiaomi, Redmi आणि POCO फोन पार्श्वभूमीतले अ‍ॅप्स जोरकसपणे बंद करतात. परवानगी द्या वर टॅप करा, यादीत नियम शोधा आणि ऑटोस्टार्ट चालू करा.</string>
     <string name="perm_oem_body_color_os">OPPO आणि realme फोन बॅटरी वाचवण्यासाठी पार्श्वभूमीतले अ‍ॅप्स बंद करतात. परवानगी द्या वर टॅप करा आणि नियमला आपोआप सुरू होऊ द्या.</string>
@@ -46,18 +46,18 @@
     <!-- Home -->
     <string name="home_overline">तुमची साधना</string>
     <string name="home_day_fmt">दिवस %1$d / %2$d</string>
-    <string name="home_streak_fmt">%1$d दिवसांची सलगता</string>
+    <string name="home_streak_fmt">सलग %1$d दिवस</string>
     <plurals name="home_today_plural">
         <item quantity="one">आज %1$d वाचन</item>
         <item quantity="other">आज %1$d वाचने</item>
     </plurals>
     <string name="home_protection_ok">संरक्षण सुरू आहे</string>
     <string name="home_protection_fix">लक्ष द्या — दुरुस्त करण्यासाठी टॅप करा</string>
-    <string name="home_browse_library">ग्रंथसंग्रह पाहा</string>
+    <string name="home_browse_library">मंत्रसंग्रह पाहा</string>
 
     <!-- Celebration / next sadhana -->
     <string name="celebration_overline">प्रवास पूर्ण</string>
-    <string name="celebration_title_fmt">%2$s चे %1$d दिवस</string>
+    <string name="celebration_title_fmt">%1$d दिवस · %2$s</string>
     <string name="celebration_body">तुम्ही टिकून राहिलात. तीच शिस्त म्हणजे साधना.</string>
     <string name="celebration_next">तुमची पुढची साधना निवडा</string>
     <string name="celebration_keep">याच मंत्रासह पुढे चालू ठेवा</string>
@@ -65,12 +65,12 @@
 
     <!-- Overlay -->
     <string name="overlay_continue">पुढे चला</string>
-    <string name="overlay_unlocking_in">%1$d मध्ये उघडत आहे…</string>
+    <string name="overlay_unlocking_in">%1$d सेकंदांत उघडेल…</string>
     <string name="overlay_label_fmt">तुमची साधना · %1$s</string>
 
     <!-- Foreground service notification -->
     <string name="notif_channel_foreground">नियम संरक्षण</string>
-    <string name="notif_text">डूम-स्क्रोलपासून पहारा देत आहे.</string>
+    <string name="notif_text">निरर्थक स्क्रोलपासून तुमचे रक्षण करत आहे.</string>
 
     <!-- Completion notification -->
     <string name="notif_completion_title">प्रवास पूर्ण 🎉</string>
@@ -80,7 +80,7 @@
     <string name="accessibility_service_description">तुम्ही Instagram, Facebook किंवा YouTube कधी उघडता हे ओळखण्यासाठी नियम अ‍ॅक्सेसिबिलिटीचा वापर करतं, म्हणजे आधी तुमचा मंत्र दाखवता येईल. ते तुमच्या स्क्रीनवरील इतर कोणताही मजकूर वाचत नाही.</string>
 
     <!-- Library -->
-    <string name="library_overline">ग्रंथसंग्रह</string>
+    <string name="library_overline">मंत्रसंग्रह</string>
     <string name="library_title">सर्व मंत्र</string>
     <string name="library_filter_all">सर्व</string>
     <string name="library_empty">काहीही जुळत नाही — एखादा फिल्टर काढून टाका.</string>
@@ -91,35 +91,45 @@
     <string name="detail_practice_again">पुन्हा साधना करा</string>
     <string name="detail_switch_title">तुमची साधना बदलायची?</string>
     <plurals name="detail_switch_body_plural">
-        <item quantity="one">तुम्ही %2$s मध्ये %1$d दिवस पुढे आहात. बदललात, तर परत आल्यावर हा प्रवास पुन्हा सुरुवातीपासून सुरू होईल.</item>
-        <item quantity="other">तुम्ही %2$s मध्ये %1$d दिवस पुढे आहात. बदललात, तर परत आल्यावर हा प्रवास पुन्हा सुरुवातीपासून सुरू होईल.</item>
+        <item quantity="one">%2$s — इथे तुमचे %1$d दिवस झाले आहेत. बदललात, तर परत आल्यावर हा प्रवास पुन्हा सुरुवातीपासून सुरू होईल.</item>
+        <item quantity="other">%2$s — इथे तुमचे %1$d दिवस झाले आहेत. बदललात, तर परत आल्यावर हा प्रवास पुन्हा सुरुवातीपासून सुरू होईल.</item>
     </plurals>
-    <string name="detail_switch_body_nocount_fmt">तुम्ही %1$s मध्ये अर्ध्यावर आहात. बदललात, तर परत आल्यावर हा प्रवास पुन्हा सुरुवातीपासून सुरू होईल.</string>
+    <string name="detail_switch_body_nocount_fmt">%1$s — तुम्ही इथे अर्ध्यावर आहात. बदललात, तर परत आल्यावर हा प्रवास पुन्हा सुरुवातीपासून सुरू होईल.</string>
     <string name="detail_switch_confirm">बदला</string>
-    <string name="detail_switch_cancel">सध्याचाच ठेवा</string>
+    <string name="detail_switch_cancel">सध्याचीच ठेवा</string>
 
     <!-- Settings -->
     <string name="settings_title">सेटिंग्ज</string>
     <string name="settings_section_sadhana">तुमची साधना</string>
     <string name="settings_row_current_sadhana">सध्याची साधना</string>
-    <string name="settings_row_language">प्रदर्शन भाषा</string>
+    <string name="settings_row_language">अ‍ॅपची भाषा</string>
     <string name="settings_row_apps">ब्लॉक केलेले अ‍ॅप्स</string>
     <string name="settings_row_intention">हेतू</string>
+    <string name="settings_row_pause">थांब्याची पद्धत</string>
     <string name="settings_section_app">अ‍ॅप</string>
-    <string name="settings_row_appearance">रूप</string>
+    <string name="settings_row_appearance">स्वरूप</string>
     <string name="settings_appearance_light">उजळ</string>
     <string name="settings_appearance_dark">गडद</string>
     <string name="settings_appearance_system">सिस्टमनुसार</string>
-    <string name="settings_row_notify">पूर्तता सूचना</string>
+    <string name="settings_row_notify">प्रवास पूर्ण झाल्याची सूचना</string>
     <string name="settings_notify_caption">14-दिवसांचा प्रवास पूर्ण झाल्यावर सूचना मिळवा.</string>
     <string name="settings_notify_blocked">सिस्टम सेटिंग्जमध्ये सूचना ब्लॉक केल्या आहेत.</string>
     <string name="settings_apps_count_fmt">%1$d ब्लॉक केले</string>
     <!-- Settings editors -->
     <string name="settings_save">जतन करा</string>
-    <string name="settings_language_title">प्रदर्शन भाषा</string>
+    <string name="settings_language_title">अ‍ॅपची भाषा</string>
     <string name="settings_apps_title">ब्लॉक केलेले अ‍ॅप्स</string>
     <string name="settings_apps_empty_hint">किमान एक अ‍ॅप ब्लॉक ठेवा.</string>
     <string name="settings_intention_title">हेतू</string>
+    <string name="settings_pause_title">थांब्याची पद्धत</string>
+    <!-- Pause behaviour (onboarding step 5 + settings) -->
+    <string name="onb_pause_title">नियम तुम्हाला कसे थांबवते</string>
+    <string name="pause_length_label">प्रत्येक थांबा किती वेळाचा?</string>
+    <string name="pause_secs_fmt">%1$d सेकंद</string>
+    <string name="pause_interval_toggle">स्क्रोल करत असतानाही मध्येच आठवण करून द्या</string>
+    <string name="pause_interval_caption">ब्लॉक केलेल्या अ‍ॅपमध्ये थोड्या वेळाने नियम पुन्हा हळुवारपणे समोर येईल — फक्त तुम्ही ते उघडता तेव्हाच नाही.</string>
+    <string name="pause_freq_label">किती वेळाने?</string>
+    <string name="pause_mins_fmt">दर %1$d मिनिटांनी</string>
     <!-- Settings entry -->
     <string name="settings_content_desc">सेटिंग्ज</string>
 
@@ -175,7 +185,7 @@
     <string name="cat_upanishad">उपनिषदे</string>
     <string name="cat_gita">भगवद्गीता</string>
     <string name="cat_stotra">स्तोत्रे</string>
-    <string name="len_under30">30 सेकंदांखाली</string>
+    <string name="len_under30">30 सेकंदांहून कमी</string>
     <string name="len_30to60">30–60 सेकंद</string>
     <string name="len_over60">1 मिनिटाहून अधिक</string>
     <string name="intent_focus">एकाग्रता</string>
@@ -192,18 +202,18 @@
     <string name="deity_rama">राम</string>
     <string name="deity_saraswati">सरस्वती</string>
     <string name="deity_lakshmi">लक्ष्मी</string>
-    <string name="deity_universal">सार्वत्रिक</string>
+    <string name="deity_universal">सर्वदेवता</string>
 
     <!-- Bottom navigation -->
     <string name="nav_today">आज</string>
-    <string name="nav_library">ग्रंथसंग्रह</string>
+    <string name="nav_library">संग्रह</string>
     <string name="nav_favourites">आवडते</string>
     <string name="nav_settings">सेटिंग्ज</string>
 
     <!-- Favourites -->
     <string name="favourites_overline">आवडते</string>
     <string name="favourites_title">जतन केलेले मंत्र</string>
-    <string name="favourites_empty">अजून एकही आवडता नाही. इथे जतन करण्यासाठी कोणत्याही मंत्रावरील हृदयावर टॅप करा.</string>
+    <string name="favourites_empty">अजून एकही आवडता मंत्र जतन केलेला नाही. इथे जतन करण्यासाठी कोणत्याही मंत्रावरील हृदयाच्या चिन्हावर टॅप करा.</string>
     <string name="detail_favourite_add">आवडत्यांमध्ये जोडा</string>
     <string name="detail_favourite_remove">आवडत्यांमधून काढा</string>
 
@@ -213,14 +223,14 @@
 
     <!-- Sign-in -->
     <string name="signin_title">तुमची साधना सुरू करा</string>
-    <string name="signin_subtitle">तुमची साधना जतन करण्यासाठी आणि तुमच्या सर्व डिव्हाइसवर सिंक करण्यासाठी Google ने साइन इन करा.</string>
-    <string name="signin_google">Google सह पुढे चला</string>
+    <string name="signin_subtitle">तुमची साधना जतन करण्यासाठी आणि तुमच्या सर्व डिव्हाइसवर सिंक करण्यासाठी Google खात्याने साइन इन करा.</string>
+    <string name="signin_google">Google खात्याने पुढे चला</string>
     <string name="signin_privacy_note">आम्ही फक्त तुमची साधना साठवतो — इतर अ‍ॅप्समधील तुमची हालचाल कधीही नाही.</string>
     <string name="signin_error">साइन-इन पूर्ण झाले नाही. कृपया पुन्हा प्रयत्न करा.</string>
 
     <!-- Settings — account -->
     <string name="settings_section_account">खाते</string>
-    <string name="settings_row_email">यांच्या नावे साइन इन</string>
+    <string name="settings_row_email">साइन इन केलेले खाते</string>
     <string name="settings_row_signout">साइन आउट करा</string>
     <string name="settings_row_delete">खाते हटवा</string>
     <string name="settings_version_fmt">नियम v%1$s</string>

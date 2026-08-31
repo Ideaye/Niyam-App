@@ -3,38 +3,38 @@
 
     <!-- Welcome screen -->
     <string name="welcome_title">నియమ్</string>
-    <string name="welcome_subtitle">స్క్రోల్‌కు ముందు ఒక నిమిషం నిలువు.</string>
+    <string name="welcome_subtitle">స్క్రోల్ చేయకముందు ఒక్క క్షణం ఆగండి.</string>
     <string name="welcome_cta">మొదలుపెట్టండి</string>
 
     <!-- Onboarding -->
     <string name="onb_step_fmt">4లో %1$dవ అడుగు</string>
     <string name="onb_continue">కొనసాగించండి</string>
     <string name="onb_intention_title">మీరు ఇక్కడకు ఎందుకు వచ్చారు?</string>
-    <string name="onb_intention_focus">బాగా దృష్టి పెట్టండి, తక్కువ స్క్రోల్ చేయండి</string>
+    <string name="onb_intention_focus">మెరుగైన ఏకాగ్రత, తక్కువ స్క్రోలింగ్</string>
     <string name="onb_intention_calm">అలసిన మనసుకు ప్రశాంతత</string>
-    <string name="onb_intention_sadhana">రోజువారీ సాధన మొదలుపెట్టండి</string>
+    <string name="onb_intention_sadhana">రోజువారీ సాధన ఆరంభం</string>
     <string name="onb_intention_dharma">ధర్మంతో మరింత అనుబంధం</string>
-    <string name="onb_intention_devotion">నా భక్తిని మరింత లోతుగా చేసుకోండి</string>
+    <string name="onb_intention_devotion">మరింత లోతైన భక్తి</string>
     <string name="onb_mantra_title">మీ తొలి మంత్రాన్ని ఎంచుకోండి</string>
     <string name="onb_read_time_fmt">~%1$d సెకన్లు</string>
     <string name="onb_language_title">మీ భాష</string>
     <string name="onb_apps_title">మిమ్మల్ని ఏది ఆకర్షిస్తుంది?</string>
 
     <!-- Permission screens (placeholder copy — refined when UI references arrive) -->
-    <string name="perm_usage_title">మీరు బ్లాక్ చేసిన యాప్‌లను తెరిచినప్పుడు తెలుసుకోవడానికి</string>
-    <string name="perm_usage_body">మీరు Instagram, Facebook లేదా YouTube తెరిచినప్పుడు తెలుసుకోవడానికి — తద్వారా మేము ముందుగా మీ మంత్రాన్ని చూపగలం.</string>
-    <string name="perm_overlay_title">ఇతర యాప్‌ల పైన చూపడానికి</string>
-    <string name="perm_overlay_body">బ్లాక్ చేసిన యాప్ పైన మీ మంత్రాన్ని చూపడానికి.</string>
-    <string name="perm_accessibility_title">యాప్‌లు తెరుచుకున్నది వెంటనే గుర్తించడానికి</string>
-    <string name="perm_accessibility_body">Instagram, Facebook లేదా YouTube తెరుచుకునే సరిగ్గా ఆ క్షణాన్ని గుర్తించడానికి — వెంటనే, ఎలాంటి ఆలస్యం లేకుండా.</string>
-    <string name="perm_accessibility_disclosure">నియమ్ Android యొక్క AccessibilityService API ను ఒకే ఒక్క ఉద్దేశ్యం కోసం మాత్రమే ఉపయోగిస్తుంది: మీరు బ్లాక్ చేయాలని ఎంచుకున్న యాప్ ఎప్పుడు తెరుచుకుంటుందో గుర్తించడానికి, తద్వారా ముందుగా మీ మంత్రం కనిపించగలదు. ఈ సేవ ద్వారా నియమ్ స్క్రీన్ కంటెంట్‌ను, సందేశాలను లేదా ఏ వ్యక్తిగత డేటానూ సేకరించదు, చదవదు, నిల్వ చేయదు లేదా పంపదు. ఈ గుర్తింపు పూర్తిగా మీ పరికరంలోనే జరుగుతుంది. మీరు దీన్ని మీ ఫోన్ యొక్క Accessibility సెట్టింగ్‌లలో ఎప్పుడైనా ఆఫ్ చేయవచ్చు.</string>
+    <string name="perm_usage_title">ఏ యాప్ తెరిచి ఉందో నియమ్ చూడనివ్వండి</string>
+    <string name="perm_usage_body">మీరు బ్లాక్ చేసిన యాప్‌లలో ఒకదాన్ని తెరిచిన క్షణాన్ని నియమ్ తెలుసుకోవాలి, అప్పుడే మీ మంత్రం ముందుగా కనిపిస్తుంది. ఏ యాప్ ముందు ఉందో అది మాత్రమే చూస్తుంది — దాని లోపల మీరు ఏం చేస్తారో ఎప్పటికీ చూడదు.</string>
+    <string name="perm_overlay_title">మీ మంత్రాన్ని నియమ్ చూపనివ్వండి</string>
+    <string name="perm_overlay_body">మీరు తెరిచిన యాప్ పైన మీ మంత్రాన్ని నియమ్ మెల్లగా ఉంచడానికి ఇది అనుమతిస్తుంది — స్క్రోల్ చేయకముందు మీరు ఒక్క క్షణం ఆగి చదువుకోవచ్చు.</string>
+    <string name="perm_accessibility_title">యాప్ తెరుచుకున్న క్షణంలోనే స్పందిస్తుంది</string>
+    <string name="perm_accessibility_body">బ్లాక్ చేసిన యాప్ తెరుచుకున్న సరిగ్గా ఆ క్షణంలోనే నియమ్ స్పందించడానికి ఇదే కారణం — ఏ ఆలస్యమూ లేకుండా. అందుకే మీ మంత్రం ఎప్పుడూ ముందుగానే ఉంటుంది.</string>
+    <string name="perm_accessibility_disclosure">నియమ్ Android AccessibilityService APIని ఒకే ఒక్క ఉద్దేశ్యం కోసం మాత్రమే ఉపయోగిస్తుంది: మీరు బ్లాక్ చేయాలని ఎంచుకున్న యాప్ ఎప్పుడు తెరుచుకుంటుందో గుర్తించడానికి, తద్వారా ముందుగా మీ మంత్రం కనిపించగలదు. ఈ సేవ ద్వారా నియమ్ స్క్రీన్ కంటెంట్‌ను, సందేశాలను లేదా ఏ వ్యక్తిగత డేటానూ సేకరించదు, చదవదు, నిల్వ చేయదు లేదా పంపదు. ఈ గుర్తింపు పూర్తిగా మీ పరికరంలోనే జరుగుతుంది. మీరు దీన్ని మీ ఫోన్ Accessibility సెట్టింగ్‌లలో ఎప్పుడైనా ఆఫ్ చేయవచ్చు.</string>
     <string name="perm_accessibility_agree">నేను అంగీకరిస్తున్నాను — ఆన్ చేయి</string>
-    <string name="perm_battery_title">నేపథ్యంలో మమ్మల్ని ఆపివేయకండి</string>
-    <string name="perm_battery_body">మీరు మరెక్కడో ఉన్నప్పుడు మీ ఫోన్ నియమ్‌ను మూసివేయకుండా ఉండటానికి.</string>
+    <string name="perm_battery_title">నియమ్ మేల్కొని ఉండేలా చూడండి</string>
+    <string name="perm_battery_body">బ్యాటరీ ఆదా కోసం ఫోన్‌లు తరచూ నేపథ్య యాప్‌లను మూసివేస్తాయి. దీన్ని అనుమతిస్తే నియమ్ పని చేస్తూనే ఉంటుంది — మీరు బ్లాక్ చేసిన యాప్ తెరిచిన క్షణాన్ని అది ఎన్నడూ వదిలిపెట్టదు.</string>
     <string name="perm_oem_title">నేపథ్య కార్యకలాపాన్ని అనుమతించండి</string>
-    <string name="perm_oem_body_miui">Xiaomi, Redmi మరియు POCO ఫోన్‌లు నేపథ్య యాప్‌లను తీవ్రంగా మూసివేస్తాయి. అనుమతించు నొక్కి, జాబితాలో నియమ్‌ను కనుగొని, ఆటోస్టార్ట్‌ను ఆన్ చేయండి.</string>
-    <string name="perm_oem_body_color_os">OPPO మరియు realme ఫోన్‌లు బ్యాటరీ ఆదా కోసం నేపథ్య యాప్‌లను మూసివేస్తాయి. అనుమతించు నొక్కి, నియమ్ తనంతటతానే మొదలయ్యేందుకు అనుమతించండి.</string>
-    <string name="perm_oem_body_funtouch_os">vivo మరియు iQOO ఫోన్‌లు బ్యాటరీ ఆదా కోసం నేపథ్య యాప్‌లను మూసివేస్తాయి. అనుమతించు నొక్కి, నియమ్ నేపథ్యంలో మొదలయ్యేందుకు అనుమతించండి.</string>
+    <string name="perm_oem_body_miui">Xiaomi, Redmi, POCO ఫోన్‌లు నేపథ్య యాప్‌లను తీవ్రంగా మూసివేస్తాయి. అనుమతించు నొక్కి, జాబితాలో నియమ్‌ను కనుగొని, ఆటోస్టార్ట్‌ను ఆన్ చేయండి.</string>
+    <string name="perm_oem_body_color_os">OPPO, realme ఫోన్‌లు బ్యాటరీ ఆదా కోసం నేపథ్య యాప్‌లను మూసివేస్తాయి. అనుమతించు నొక్కి, నియమ్ తనంతటతానే మొదలయ్యేందుకు అనుమతించండి.</string>
+    <string name="perm_oem_body_funtouch_os">vivo, iQOO ఫోన్‌లు బ్యాటరీ ఆదా కోసం నేపథ్య యాప్‌లను మూసివేస్తాయి. అనుమతించు నొక్కి, నియమ్ నేపథ్యంలో మొదలయ్యేందుకు అనుమతించండి.</string>
     <string name="perm_oem_body_oxygen_os">OnePlus ఫోన్‌లు బ్యాటరీని తీవ్రంగా ఆప్టిమైజ్ చేస్తాయి. అనుమతించు నొక్కి, నియమ్ బ్యాటరీ వినియోగాన్ని \"ఆప్టిమైజ్ చేయవద్దు\"గా సెట్ చేయండి.</string>
     <string name="perm_oem_body_one_ui">Samsung ఫోన్‌లు ఉపయోగించని యాప్‌లను నిద్రపోయేలా చేస్తాయి. అనుమతించు నొక్కి, నియమ్ ఎప్పటికీ \"నిద్రపోతున్న యాప్‌లు\"లో చేరకుండా చూసుకోండి.</string>
     <string name="perm_oem_body_generic">కొన్ని ఫోన్‌లు బ్యాటరీ ఆదా కోసం నేపథ్య యాప్‌లను నిశ్శబ్దంగా ఆపేస్తాయి. మీ ఫోన్ నియమ్ కోసం ఆటోస్టార్ట్ లేదా నేపథ్య-కార్యకలాప ఎంపికను చూపిస్తే, దాన్ని ఆన్ చేయండి. మీకు ఏదీ కనిపించకపోతే, అంతా సిద్ధం — పూర్తయింది నొక్కండి.</string>
@@ -51,13 +51,13 @@
         <item quantity="one">ఈరోజు %1$d పఠనం</item>
         <item quantity="other">ఈరోజు %1$d పఠనాలు</item>
     </plurals>
-    <string name="home_protection_ok">రక్షణ చురుకుగా ఉంది</string>
+    <string name="home_protection_ok">రక్షణ పని చేస్తోంది</string>
     <string name="home_protection_fix">శ్రద్ధ అవసరం — సరిచేయడానికి నొక్కండి</string>
     <string name="home_browse_library">లైబ్రరీని చూడండి</string>
 
     <!-- Celebration / next sadhana -->
     <string name="celebration_overline">ప్రయాణం పూర్తయింది</string>
-    <string name="celebration_title_fmt">%2$s యొక్క %1$d రోజులు</string>
+    <string name="celebration_title_fmt">%2$s · %1$d రోజులు</string>
     <string name="celebration_body">మీరు దీనితో నిలిచారు. ఆ నిష్ఠయే నిజమైన సాధన.</string>
     <string name="celebration_next">మీ తదుపరి సాధనను ఎంచుకోండి</string>
     <string name="celebration_keep">ఈ మంత్రంతో కొనసాగండి</string>
@@ -70,7 +70,7 @@
 
     <!-- Foreground service notification -->
     <string name="notif_channel_foreground">నియమ్ రక్షణ</string>
-    <string name="notif_text">డూమ్-స్క్రోల్‌కు కాపలాగా నిలిచి ఉంది.</string>
+    <string name="notif_text">అనవసర స్క్రోలింగ్ నుండి మిమ్మల్ని కాపాడుతోంది.</string>
 
     <!-- Completion notification -->
     <string name="notif_completion_title">ప్రయాణం పూర్తయింది 🎉</string>
@@ -110,9 +110,9 @@
     <string name="settings_appearance_light">లేత</string>
     <string name="settings_appearance_dark">ముదురు</string>
     <string name="settings_appearance_system">సిస్టమ్</string>
-    <string name="settings_row_notify">పూర్తి సూచన</string>
-    <string name="settings_notify_caption">14-రోజుల ప్రయాణం పూర్తయినప్పుడు సూచన పొందండి.</string>
-    <string name="settings_notify_blocked">సిస్టమ్ సెట్టింగ్‌లలో సూచనలు బ్లాక్ చేయబడ్డాయి.</string>
+    <string name="settings_row_notify">ప్రయాణం పూర్తయిన నోటిఫికేషన్</string>
+    <string name="settings_notify_caption">14-రోజుల ప్రయాణం పూర్తయినప్పుడు నోటిఫికేషన్ పొందండి.</string>
+    <string name="settings_notify_blocked">సిస్టమ్ సెట్టింగ్‌లలో నోటిఫికేషన్‌లు ఆఫ్‌లో ఉన్నాయి.</string>
     <string name="settings_apps_count_fmt">%1$d బ్లాక్ చేయబడ్డాయి</string>
     <!-- Settings editors -->
     <string name="settings_save">భద్రపరచు</string>
@@ -120,6 +120,16 @@
     <string name="settings_apps_title">బ్లాక్ చేసిన యాప్‌లు</string>
     <string name="settings_apps_empty_hint">కనీసం ఒక యాప్‌ను బ్లాక్‌లో ఉంచండి.</string>
     <string name="settings_intention_title">సంకల్పం</string>
+    <!-- Pause behaviour (onboarding step 5 + settings) -->
+    <string name="settings_row_pause">విరామ తీరు</string>
+    <string name="settings_pause_title">విరామ తీరు</string>
+    <string name="onb_pause_title">నియమ్ మిమ్మల్ని ఎలా ఆపుతుంది</string>
+    <string name="pause_length_label">ప్రతి విరామం ఎంత సేపు?</string>
+    <string name="pause_secs_fmt">%1$d సెకన్లు</string>
+    <string name="pause_interval_toggle">నేను స్క్రోల్ చేస్తున్నప్పుడు కూడా గుర్తు చేయి</string>
+    <string name="pause_interval_caption">బ్లాక్ చేసిన యాప్‌లో కొంతసేపటి తర్వాత నియమ్ మెల్లగా మళ్లీ కనిపిస్తుంది — మీరు తెరిచినప్పుడు మాత్రమే కాదు.</string>
+    <string name="pause_freq_label">ఎంత తరచుగా?</string>
+    <string name="pause_mins_fmt">ప్రతి %1$d నిమిషాలకు</string>
     <!-- Settings entry -->
     <string name="settings_content_desc">సెట్టింగ్‌లు</string>
 
@@ -156,7 +166,7 @@
     <string name="settings_language_premium_suffix">" · ప్రీమియం"</string>
     <string name="settings_section_premium">నియమ్ ప్రీమియం</string>
     <string name="settings_row_premium">ప్రీమియం</string>
-    <string name="settings_premium_active">చురుకుగా ఉంది</string>
+    <string name="settings_premium_active">అమల్లో ఉంది</string>
     <string name="settings_premium_free">ఉచిత ప్లాన్</string>
     <plurals name="settings_premium_trial_left">
         <item quantity="one">ట్రయల్ %1$d రోజు మిగిలి ఉంది</item>
@@ -166,7 +176,7 @@
     <!-- Library filters (SP-17) -->
     <string name="filter_heading">ఫిల్టర్‌లు</string>
     <string name="filter_clear_all">అన్నీ తొలగించు</string>
-    <string name="filter_show_count">చూపించు %1$d</string>
+    <string name="filter_show_count">%1$d చూపించు</string>
     <string name="filter_section_source">మూలం</string>
     <string name="filter_section_length">నిడివి</string>
     <string name="filter_section_intention">సంకల్పం</string>
@@ -178,42 +188,42 @@
     <string name="len_under30">30 సెకన్ల లోపు</string>
     <string name="len_30to60">30–60 సెకన్లు</string>
     <string name="len_over60">1 నిమిషం పైగా</string>
-    <string name="intent_focus">దృష్టి</string>
+    <string name="intent_focus">ఏకాగ్రత</string>
     <string name="intent_calm">ప్రశాంతత</string>
     <string name="intent_sadhana">సాధన</string>
     <string name="intent_dharma">ధర్మం</string>
     <string name="intent_devotion">భక్తి</string>
-    <string name="deity_shiva">శివ</string>
-    <string name="deity_vishnu">విష్ణు</string>
+    <string name="deity_shiva">శివుడు</string>
+    <string name="deity_vishnu">విష్ణువు</string>
     <string name="deity_devi">దేవి</string>
-    <string name="deity_ganesha">గణేశ</string>
+    <string name="deity_ganesha">గణేశుడు</string>
     <string name="deity_hanuman">హనుమాన్</string>
-    <string name="deity_krishna">కృష్ణ</string>
-    <string name="deity_rama">రామ</string>
+    <string name="deity_krishna">కృష్ణుడు</string>
+    <string name="deity_rama">రాముడు</string>
     <string name="deity_saraswati">సరస్వతి</string>
     <string name="deity_lakshmi">లక్ష్మి</string>
-    <string name="deity_universal">విశ్వవ్యాప్త</string>
+    <string name="deity_universal">విశ్వజనీనం</string>
 
     <!-- Navigation + favourites + sign-in + account (SP-18) -->
     <string name="action_cancel">రద్దు చేయి</string>
     <string name="back">వెనుకకు</string>
     <string name="detail_favourite_add">ఇష్టమైనవాటికి జోడించు</string>
     <string name="detail_favourite_remove">ఇష్టమైనవాటి నుండి తీసివేయి</string>
-    <string name="favourites_empty">ఇంకా ఇష్టమైనవి ఏవీ లేవు. ఇక్కడ భద్రపరచడానికి ఏదైనా మంత్రంపై ఉన్న హృదయాన్ని నొక్కండి.</string>
+    <string name="favourites_empty">ఇంకా ఇష్టమైనవి ఏవీ లేవు. ఇక్కడ భద్రపరచడానికి ఏదైనా మంత్రంపై ఉన్న హృదయ గుర్తును నొక్కండి.</string>
     <string name="favourites_overline">ఇష్టమైనవి</string>
     <string name="favourites_title">భద్రపరచిన మంత్రాలు</string>
     <string name="nav_favourites">ఇష్టమైనవి</string>
     <string name="nav_library">లైబ్రరీ</string>
     <string name="nav_settings">సెట్టింగ్‌లు</string>
     <string name="nav_today">ఈరోజు</string>
-    <string name="paywall_restore_none">చురుకైన సబ్‌స్క్రిప్షన్ ఏదీ కనబడలేదు.</string>
+    <string name="paywall_restore_none">యాక్టివ్ సబ్‌స్క్రిప్షన్ ఏదీ కనబడలేదు.</string>
     <string name="paywall_trust">Google Playలో ఎప్పుడైనా రద్దు చేయండి</string>
-    <string name="settings_delete_confirm_body">ఇది మీ నియమ్ ఖాతాను మరియు సింక్ చేసిన మొత్తం సాధనను శాశ్వతంగా తొలగిస్తుంది. దీన్ని తిరిగి పొందలేరు. ఈ పరికరంలో యాప్ రీసెట్ అవుతుంది.</string>
+    <string name="settings_delete_confirm_body">ఇది మీ నియమ్ ఖాతాను, సింక్ అయిన మీ సాధన మొత్తాన్ని శాశ్వతంగా తొలగిస్తుంది. దీన్ని తిరిగి పొందలేరు. ఈ పరికరంలో యాప్ రీసెట్ అవుతుంది.</string>
     <string name="settings_delete_confirm_cta">తొలగించు</string>
     <string name="settings_delete_confirm_title">మీ ఖాతాను తొలగించాలా?</string>
     <string name="settings_delete_error">మీ ఖాతాను తొలగించలేకపోయాం. మీ కనెక్షన్‌ను తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.</string>
     <string name="settings_row_delete">ఖాతాను తొలగించు</string>
-    <string name="settings_row_email">ఇలా సైన్ ఇన్ అయ్యారు</string>
+    <string name="settings_row_email">సైన్ ఇన్ అయిన ఖాతా</string>
     <string name="settings_row_signout">సైన్ అవుట్</string>
     <string name="settings_section_account">ఖాతా</string>
     <string name="settings_signout_confirm_body">మీ సాధన ఈ పరికరంలోనే ఉంటుంది. దాన్ని సింక్ చేయడానికి మీరు ఎప్పుడైనా మళ్లీ సైన్ ఇన్ చేయవచ్చు.</string>
@@ -222,7 +232,7 @@
     <string name="settings_version_fmt">నియమ్ v%1$s</string>
     <string name="signin_error">సైన్-ఇన్ పూర్తి కాలేదు. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
     <string name="signin_google">Googleతో కొనసాగించండి</string>
-    <string name="signin_privacy_note">మేము మీ సాధనను మాత్రమే నిల్వ చేస్తాం — ఇతర యాప్‌లలో మీ కార్యకలాపాన్ని ఎప్పటికీ కాదు.</string>
+    <string name="signin_privacy_note">మేము మీ సాధనను మాత్రమే నిల్వ చేస్తాం — ఇతర యాప్‌లలో మీ కార్యకలాపాన్ని ఎప్పటికీ నిల్వ చేయం.</string>
     <string name="signin_subtitle">మీ సాధనను భద్రపరచి, మీ పరికరాల మధ్య సింక్ చేయడానికి Googleతో సైన్ ఇన్ చేయండి.</string>
     <string name="signin_title">మీ సాధనను ప్రారంభించండి</string>
     <string name="settings_debug_clear_premium">శాండ్‌బాక్స్: ప్రీమియం + ట్రయల్ క్లియర్ చేయి</string>
