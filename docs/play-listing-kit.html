@@ -20,7 +20,7 @@
 
 <h2>0. Create the app</h2>
 <ol>
-  <li>Play Console → <b>Create app</b> → App name: <b>Niyam — Mantra App Blocker</b> · Default language: <b>English (en-IN if offered, else en-US)</b> · App: <b>App</b> · Free/paid: <b>Free</b> (in-app purchases declared later).</li>
+  <li>Play Console → <b>Create app</b> → App name: <b>Niyam — Mantra App Blocker</b> · Default language: <b>English (en-IN if offered, else en-US)</b> · App: <b>App</b> · Free/paid: <b>Free</b> (no in-app purchases — the app is fully free).</li>
   <li>Declarations on that page: accept Developer Program Policies + US export laws.</li>
 </ol>
 
@@ -47,12 +47,11 @@ THE LIBRARY
 
 PRIVACY AS PRINCIPLE
 • Sign in with Google so your practice syncs across your devices — and delete your account and everything we hold, any time, from inside the app
-• We never see your payment details, and we never read or collect your activity in any other app
+• No ads, no in-app purchases — and we never read or collect your activity in any other app
 • The accessibility service detects only the launch of apps you chose to block — it cannot and does not read your screen, messages, or anything else
 
 FAIR AND FREE
-• Blocking and the mantra pause are free forever (5 starter mantras, English + Hindi, small banner ads on the home and library screens only)
-• Premium — ₹15/week, ₹49/month, or ₹399/year with a 7-day full trial — unlocks all 26 mantras, all 9 languages, unlimited switching, and removes ads
+• Niyam is completely free: all 26 mantras, all 9 languages, unlimited switching — no ads, no in-app purchases
 • Three vows: the mantra screen never carries an ad, is never locked behind payment, and an active journey is never broken by a paywall
 
 Niyam (नियम) is the yogic practice of chosen discipline — not imposed from outside, but taken up daily, as devotion. Built in India, for the world's most distracted decade.</pre>
@@ -80,16 +79,14 @@ Niyam (नियम) is the yogic practice of chosen discipline — not imposed 
 <tr><td>Does your app collect or share any of the required user data types?</td><td><b>Yes</b></td></tr>
 <tr><td><b>Personal info → Email address</b></td><td>Collected — Yes · Shared — No · Processed ephemerally — No · Required — Yes (sign-in is required) · Purpose: <b>Account management, App functionality</b> · Linked to identity — Yes</td></tr>
 <tr><td><b>App activity → Other user-generated content</b> (your mantras, sadhana progress, favourites)</td><td>Collected — Yes · Shared — No · Processed ephemerally — No · Required — Yes · Purpose: <b>App functionality</b> (sync across devices) · Linked to identity — Yes</td></tr>
-<tr><td><b>Financial info → Purchase history</b> (subscription status)</td><td>Collected — Yes · Shared — No · Processed ephemerally — No · Required — No · Purpose: <b>App functionality</b> · Linked to identity — Yes</td></tr>
-<tr><td><b>Device or other IDs → Device or other IDs</b> (AdMob)</td><td>Collected — Yes · Shared — Yes (with Google AdMob) · Processed ephemerally — No · Required — No (only free tier) · Purpose: <b>Advertising or marketing</b> · Linked to identity — No</td></tr>
-<tr><td>Everything else (location, messages, photos, contacts, browsing…)</td><td><b>Not collected</b></td></tr>
+<tr><td>Everything else (financial info, device IDs, location, messages, photos, contacts, browsing…)</td><td><b>Not collected</b> — the app has no purchases and no ads</td></tr>
 <tr><td>Is all user data encrypted in transit?</td><td>Yes</td></tr>
 <tr><td>Do you provide a way to request deletion?</td><td>Yes — <b>in-app Settings → Delete account</b> erases the account and all synced data; grievance email also available</td></tr>
 </table>
-<p class="note">Payment card details are handled by Google Play and are <b>not</b> declared as collected by us. We sign in with Google (email + account id), store practice/favourites and entitlement status in Supabase tied to the account, and verify purchases server-side. The accessibility service still reads no screen content and collects nothing. Account email + synced practice are linked to identity but never sold or shared for advertising; only the AdMob device id (free tier) is shared, and only with Google AdMob.</p>
+<p class="note">The app is fully free (2026-08-31 decision): no purchase history, no ad SDK, no advertising identifiers — the play-services-ads dependency and its auto-merged AD_ID permission were removed from the build. We sign in with Google (email + account id) and store practice/favourites in Supabase tied to the account. The accessibility service still reads no screen content and collects nothing. Account email + synced practice are linked to identity but never sold or shared for advertising.</p>
 
 <h3>4b. Ads</h3>
-<pre>Yes, my app contains ads. (AdMob banners on Home and Library screens, free tier only.)</pre>
+<pre>No, my app does not contain ads.</pre>
 
 <h3>4c. Content rating questionnaire (IARC)</h3>
 <ul>
@@ -130,19 +127,17 @@ The user can disable the service at any time in system Accessibility settings.</
   <li>Health apps: No (we make no health claims).</li>
 </ul>
 
-<h2>5. Subscriptions (Monetize → Products → Subscriptions) — create 3</h2>
-<table>
-<tr><th>Product ID</th><th>Name</th><th>Base plan ID</th><th>Billing</th><th>Price (INR)</th></tr>
-<tr><td>niyam.premium.weekly</td><td>Niyam Premium (Weekly)</td><td>weekly</td><td>Every 1 week, auto-renewing</td><td>₹15</td></tr>
-<tr><td>niyam.premium.monthly</td><td>Niyam Premium (Monthly)</td><td>monthly</td><td>Every 1 month, auto-renewing</td><td>₹49</td></tr>
-<tr><td>niyam.premium.yearly</td><td>Niyam Premium (Yearly)</td><td>yearly</td><td>Every 1 year, auto-renewing</td><td>₹399</td></tr>
-</table>
-<p class="note">Don't add Play-side free-trial offers: our 7-day trial is app-side by design (starts without payment details). Benefits description for all three: "All 26 mantras · all 9 languages · unlimited switching · no ads".</p>
+<h2>5. Subscriptions — NOT APPLICABLE (app is fully free)</h2>
+<p class="note">Skip this whole section: as of 2026-08-31 Niyam launches free for everyone — do NOT create any
+subscription products. The dormant paid machinery (client billing code, product ids
+niyam.premium.weekly/monthly/yearly, Edge Functions) stays in the codebase behind the
+<code>Entitlements.FREE_FOR_ALL</code> switch; if monetization returns, restore this section from git
+history (commit 4bf848c and earlier) and flip the switch.</p>
 
 <h2>6. Closed testing (the 12 × 14-day requirement)</h2>
 <ol>
   <li>Testing → Closed testing → Create track ("Niyam beta").</li>
-  <li>Upload the AAB: <b>app/build/outputs/bundle/release/app-release.aab</b> (signed, v1.0.0, code 2). On first upload, accept <b>Play App Signing</b> (Google manages the signing key; ours is the upload key).</li>
+  <li>Upload the AAB: <b>app/build/outputs/bundle/release/app-release.aab</b> (signed; current: v1.1.0, code 10 — the free-for-everyone build). On first upload, accept <b>Play App Signing</b> (Google manages the signing key; ours is the upload key).</li>
   <li>Testers: create an email list — recruit from the website waitlist + friends/family. Need ≥12 who opt in and stay 14 continuous days.</li>
   <li>Release notes (paste):</li>
 </ol>
