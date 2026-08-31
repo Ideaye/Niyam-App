@@ -79,6 +79,24 @@
 - **Originated from:** Pranav's pre-AAB review question about user-configurable trigger timing.
 - **Completed:** 2026-06-23 (v1.0.4).
 
+### 15. REMOVE temp 5-min interval option before production
+- **What:** `PauseConfig.ALLOWED_MINUTES` was temporarily changed from `listOf(30, 60, 120)` to `listOf(5, 30, 60, 120)` so internal testers can trigger an interval check-in in 5 min instead of waiting 30. Revert the leading `5` (and delete the `// TEMP TEST` comment) in `app/src/main/java/com/myniyam/app/service/PauseConfig.kt`.
+- **Why:** "Every 5 minutes" is a testing convenience, not a shipping option — a real user picking 5 min would get interrupted too aggressively, against the "a pause, not punishment" positioning.
+- **Scope:** One-line revert in `PauseConfig.kt` + remove the 2-line TEMP comment. No UI/string/test changes needed (UI renders straight from the list; no test asserts the full set).
+- **Status:** ⚠️ ACTIVE — shipped to internal test only in versionCode 9 (2026-07-07). **Must be reverted before promoting any build to production.**
+- **Date added:** 2026-07-07
+- **Originated from:** Founder request to shorten the interval for testing the mindful-pause feature.
+- **Trigger to revisit:** Before the first production/closed→production promotion, or when interval testing is done — whichever first.
+
+### 16. C1b — close the sign-in identity-owner gap (same cross-account class as C1)
+- **What:** C1 (shipped) wipes local user-scoped state on explicit sign-out + account deletion. But one sibling in the same class remains OPEN: if the Supabase session is lost involuntarily (token expired/revoked), the AppNavHost sign-in gate bounces the user to SIGN_IN **without wiping**, and `seedFromServerIfPresent` then no-ops because `onboardingComplete` is still true — so if a DIFFERENT account signs in at that screen, they inherit the previous user's practice/favourites/language (premium now reconciles correctly post-C1, but practice data still leaks). Root cause: sign-in never verifies that local state belongs to the signing-in user.
+- **Fix direction (complete closure):** persist a `state_owner_uid` in UserPrefs; on sign-in, if a stored owner uid exists and differs from `currentUserId()`, wipe local state (UserPrefs.clearAll + ProgressRepository.clearAll) BEFORE seed/route, then stamp the new owner. This single sign-in-side check closes every identity-change vector (including the ones C1 already covers) as a belt-and-suspenders backstop.
+- **Why not folded into C1:** C1's approved scope was the sign-out/delete teardown + the required reconcile-reset (H1). Owner-tracking is a distinct mechanism (new persisted field + sign-in-flow change); flagged per the scope rule rather than silently expanded.
+- **Status:** ✅ DONE 2026-07-08 — shipped in this session. Added `stateOwnerUid` to UserPrefs (+ `setStateOwner`); AppNavHost `onSignedIn` now wipes + re-reconciles when the signing-in user differs from the local-state owner, then stamps the new owner; reconcile effect migration-stamps existing (pre-C1b) users' owner on next launch. Premium-clobber race (concurrent launch-reconcile vs the wipe) closed by an ordered re-reconcile in the identity-change branch. Compiles + unit tests green. Cross-account class now fully closed (both explicit sign-out via C1 and involuntary expiry→different-account via C1b).
+- **Date added:** 2026-07-08
+- **Originated from:** Sign-up flow audit (C1 self-audit).
+- **Completed:** 2026-07-08.
+
 ## In progress
 
 _(empty)_

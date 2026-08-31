@@ -342,7 +342,7 @@ fun SettingsScreen(
                 TextButton(onClick = {
                     showSignOutConfirm = false
                     scope.launch {
-                        AuthRepository.signOut()
+                        AuthRepository.signOut(ctx)
                         onSignedOut()
                     }
                 }) { Text(stringResource(R.string.settings_signout_confirm_cta)) }
@@ -367,9 +367,7 @@ fun SettingsScreen(
                         deleting = true
                         scope.launch {
                             try {
-                                AuthRepository.deleteAccount()
-                                UserPrefs.clearAll(ctx)
-                                com.myniyam.app.progress.ProgressRepository.clearAll(ctx)
+                                AuthRepository.deleteAccount(ctx)
                                 showDeleteConfirm = false
                                 onAccountDeleted()
                             } catch (e: Exception) {

@@ -42,6 +42,9 @@ object UserPrefs {
     private val KEY_INTERVAL_ENABLED = booleanPreferencesKey("interval_checkin_enabled")
     private val KEY_INTERVAL_MINUTES = intPreferencesKey("interval_checkin_minutes")
     private val KEY_PAUSE_LENGTH_SECONDS = intPreferencesKey("pause_length_seconds")
+    // Which Supabase user id owns the current local state (audit C1b). Compared
+    // at sign-in to detect an identity change and wipe stale user-scoped data.
+    private val KEY_STATE_OWNER_UID = stringPreferencesKey("state_owner_uid")
 
     data class Snapshot(
         val onboardingComplete: Boolean,
@@ -62,7 +65,8 @@ object UserPrefs {
         val favouriteMantraIds: Set<String>,
         val intervalCheckInEnabled: Boolean,
         val intervalMinutes: Int,
-        val pauseLengthSeconds: Int
+        val pauseLengthSeconds: Int,
+        val stateOwnerUid: String?
     ) {
         companion object {
             val DEFAULTS = Snapshot(
@@ -84,7 +88,8 @@ object UserPrefs {
                 favouriteMantraIds = emptySet(),
                 intervalCheckInEnabled = false,
                 intervalMinutes = 60,
-                pauseLengthSeconds = 20
+                pauseLengthSeconds = 20,
+                stateOwnerUid = null
             )
 
             fun fromRaw(
@@ -106,7 +111,8 @@ object UserPrefs {
                 favourites: Set<String>? = null,
                 intervalCheckIn: Boolean? = null,
                 intervalMinutes: Int? = null,
-                pauseLengthSeconds: Int? = null
+                pauseLengthSeconds: Int? = null,
+                stateOwnerUid: String? = null
             ): Snapshot = Snapshot(
                 onboardingComplete = onboardingComplete ?: DEFAULTS.onboardingComplete,
                 currentMantraId = mantraId?.takeIf { it.isNotBlank() } ?: DEFAULTS.currentMantraId,
@@ -132,7 +138,8 @@ object UserPrefs {
                 favouriteMantraIds = favourites ?: DEFAULTS.favouriteMantraIds,
                 intervalCheckInEnabled = intervalCheckIn ?: DEFAULTS.intervalCheckInEnabled,
                 intervalMinutes = intervalMinutes ?: DEFAULTS.intervalMinutes,
-                pauseLengthSeconds = pauseLengthSeconds ?: DEFAULTS.pauseLengthSeconds
+                pauseLengthSeconds = pauseLengthSeconds ?: DEFAULTS.pauseLengthSeconds,
+                stateOwnerUid = stateOwnerUid ?: DEFAULTS.stateOwnerUid
             )
         }
     }
@@ -169,7 +176,8 @@ object UserPrefs {
                     favourites = p[KEY_FAVOURITE_MANTRAS],
                     intervalCheckIn = p[KEY_INTERVAL_ENABLED],
                     intervalMinutes = p[KEY_INTERVAL_MINUTES],
-                    pauseLengthSeconds = p[KEY_PAUSE_LENGTH_SECONDS]
+                    pauseLengthSeconds = p[KEY_PAUSE_LENGTH_SECONDS],
+                    stateOwnerUid = p[KEY_STATE_OWNER_UID]
                 )
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to load prefs; using defaults", e)
@@ -384,6 +392,16 @@ object UserPrefs {
             displayLanguage = resolvedLang,
             favouriteMantraIds = favourites
         ) }
+    }
+
+    /**
+     * Stamp the Supabase user id that owns the current local state (audit C1b).
+     * Read at sign-in to detect an identity change and wipe stale user-scoped
+     * data before seeding the new user. Cleared by [clearAll].
+     */
+    suspend fun setStateOwner(context: Context, uid: String) {
+        context.niyamDataStore.edit { it[KEY_STATE_OWNER_UID] = uid }
+        mutate { it.copy(stateOwnerUid = uid) }
     }
 
     fun setSnapshotForTest(snapshot: Snapshot) { current = snapshot }

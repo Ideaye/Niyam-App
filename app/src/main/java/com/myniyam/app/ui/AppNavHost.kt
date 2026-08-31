@@ -117,11 +117,32 @@ fun AppNavHost(
     // premium on a new device; revokes when the server says inactive). Runs once
     // per Authenticated transition; idempotent and best-effort.
     val reconcileCtx = LocalContext.current
-    var reconciled by remember { mutableStateOf(false) }
+    // Reconcile once per DISTINCT signed-in user. Keyed to the user id (not a
+    // one-shot bool) so a sign-out → sign-in as a different account in the same
+    // process still reconciles that account's entitlements, and reset on sign-out
+    // so a later sign-in re-reconciles. Pairs with the sign-out local-state wipe
+    // (audit C1/H1): without this reset, a second user would keep the free tier
+    // even when the server says they are premium.
+    var reconciledUserId by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(sessionStatus) {
-        if (sessionStatus is SessionStatus.Authenticated && !reconciled) {
-            reconciled = true
-            EntitlementSync.reconcileOnLaunch(reconcileCtx)
+        when (sessionStatus) {
+            is SessionStatus.Authenticated -> {
+                val uid = AuthRepository.currentUserId()
+                if (uid != null && uid != reconciledUserId) {
+                    reconciledUserId = uid
+                    // Migration/backstop (C1b): populate the state-owner stamp for an
+                    // already-signed-in user (installs predating C1b carry none) so the
+                    // sign-in identity check has a value to compare against on a later
+                    // expiry→different-account event. Only fills a null — never
+                    // overwrites — so it can't mask a real mismatch.
+                    if (UserPrefs.snapshot().stateOwnerUid == null) {
+                        UserPrefs.setStateOwner(reconcileCtx, uid)
+                    }
+                    EntitlementSync.reconcileOnLaunch(reconcileCtx)
+                }
+            }
+            is SessionStatus.NotAuthenticated -> reconciledUserId = null
+            else -> { /* Initializing / RefreshFailure: keep last state */ }
         }
     }
 
@@ -144,6 +165,29 @@ fun AppNavHost(
             val signInCtx = LocalContext.current
             SignInScreen(onSignedIn = {
                 signInScope.launch {
+                    // Identity-owner backstop (audit C1b): if local state belongs to a
+                    // DIFFERENT user than the one who just signed in (e.g. the session
+                    // expired → the gate bounced here → another account signed in), wipe
+                    // stale user-scoped state BEFORE seeding so no practice/favourites/
+                    // language leaks across accounts. Then stamp the new owner. A null
+                    // owner (first sign-in, or a returning user's fresh device) means
+                    // "nothing to protect" → no wipe.
+                    val signedInUid = AuthRepository.currentUserId()
+                    val owner = UserPrefs.snapshot().stateOwnerUid
+                    val identityChanged = signedInUid != null && owner != null && owner != signedInUid
+                    if (identityChanged) {
+                        UserPrefs.clearAll(signInCtx)
+                        com.myniyam.app.progress.ProgressRepository.clearAll(signInCtx)
+                    }
+                    if (signedInUid != null) UserPrefs.setStateOwner(signInCtx, signedInUid)
+                    if (identityChanged) {
+                        // The wipe cleared premium/trial; re-fetch THIS user's server
+                        // entitlement here (ordered after the wipe) so a concurrent
+                        // launch-reconcile that landed BEFORE the wipe can't leave the
+                        // new user stranded on the free tier. Idempotent with the
+                        // sessionStatus-driven reconcile.
+                        EntitlementSync.reconcileOnLaunch(signInCtx)
+                    }
                     // Returning user on a fresh device → seed practice from the server
                     // and skip onboarding (P5). recreate() lets the seeded display
                     // language apply and recomputes the start destination to Home.
