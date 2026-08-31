@@ -58,6 +58,27 @@ class UserPrefsTest {
     }
 
     @Test
+    fun `fromRaw sanitizes stale pause-behaviour values`() {
+        // Prefs written by an older build (e.g. the temp 5-min test interval,
+        // forlater #15) must load as valid values, not leak into the snapshot.
+        val stale = UserPrefs.Snapshot.fromRaw(
+            onboardingComplete = null, mantraId = null, language = null, blocked = null,
+            intervalMinutes = 5,
+            pauseLengthSeconds = 90
+        )
+        assertEquals(60, stale.intervalMinutes)
+        assertEquals(60, stale.pauseLengthSeconds)
+
+        val valid = UserPrefs.Snapshot.fromRaw(
+            onboardingComplete = null, mantraId = null, language = null, blocked = null,
+            intervalMinutes = 30,
+            pauseLengthSeconds = 45
+        )
+        assertEquals(30, valid.intervalMinutes)
+        assertEquals(45, valid.pauseLengthSeconds)
+    }
+
+    @Test
     fun `snapshot is replaced atomically for tests`() {
         UserPrefs.setSnapshotForTest(UserPrefs.Snapshot.DEFAULTS.copy(currentMantraId = "om"))
         assertEquals("om", UserPrefs.snapshot().currentMantraId)

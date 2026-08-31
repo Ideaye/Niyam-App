@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.myniyam.app.service.PauseConfig
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -137,8 +138,13 @@ object UserPrefs {
                 accessibilityConsentAt = accessibilityConsentAt ?: DEFAULTS.accessibilityConsentAt,
                 favouriteMantraIds = favourites ?: DEFAULTS.favouriteMantraIds,
                 intervalCheckInEnabled = intervalCheckIn ?: DEFAULTS.intervalCheckInEnabled,
-                intervalMinutes = intervalMinutes ?: DEFAULTS.intervalMinutes,
-                pauseLengthSeconds = pauseLengthSeconds ?: DEFAULTS.pauseLengthSeconds,
+                // Persisted pause-behaviour values are re-validated at read time:
+                // prefs written by an older build may hold values this build no
+                // longer offers (e.g. the temp 5-min test interval, forlater #15).
+                // The engine already sanitizes at use; this makes the snapshot
+                // canonical for every consumer, UI included.
+                intervalMinutes = PauseConfig.sanitizeMinutes(intervalMinutes ?: DEFAULTS.intervalMinutes),
+                pauseLengthSeconds = PauseConfig.clampPauseSeconds(pauseLengthSeconds ?: DEFAULTS.pauseLengthSeconds),
                 stateOwnerUid = stateOwnerUid ?: DEFAULTS.stateOwnerUid
             )
         }
