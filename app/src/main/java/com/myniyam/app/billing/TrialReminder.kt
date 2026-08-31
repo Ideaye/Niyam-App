@@ -11,10 +11,11 @@ object TrialReminder {
         premiumActive: Boolean,
         trialStartEpochDay: Long,
         todayEpochDay: Long,
-        alreadyShown: Boolean
+        alreadyShown: Boolean,
+        freeForAll: Boolean = Entitlements.FREE_FOR_ALL
     ): Boolean {
         if (alreadyShown) return false
-        val state = Entitlements.state(premiumActive, trialStartEpochDay, todayEpochDay)
+        val state = Entitlements.state(premiumActive, trialStartEpochDay, todayEpochDay, freeForAll)
         if (state != PremiumState.TRIAL) return false
         return Entitlements.trialDaysLeft(trialStartEpochDay, todayEpochDay) <= 1
     }

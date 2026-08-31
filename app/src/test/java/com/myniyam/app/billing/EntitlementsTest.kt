@@ -8,36 +8,56 @@ import org.junit.Test
 
 class EntitlementsTest {
 
-    // --- state() ---
+    // --- FREE_FOR_ALL (master monetization switch) ---
+    // These pin the live build behavior: while the app is free for everyone,
+    // state() reports PREMIUM regardless of purchase/trial inputs.
+
+    @Test
+    fun `free-for-all build default reports PREMIUM for a brand-new user`() {
+        assertTrue(Entitlements.FREE_FOR_ALL)
+        assertEquals(PremiumState.PREMIUM, Entitlements.state(false, 0L, 100L))
+    }
+
+    @Test
+    fun `free-for-all reports PREMIUM even after an expired trial`() {
+        assertEquals(PremiumState.PREMIUM, Entitlements.state(false, 100L, 200L))
+    }
+
+    @Test
+    fun `free-for-all reports PREMIUM on clock rollback`() {
+        assertEquals(PremiumState.PREMIUM, Entitlements.state(false, 100L, 99L))
+    }
+
+    // --- state() — dormant paid-tier logic (freeForAll = false) ---
 
     @Test
     fun `unset trial is FREE`() {
-        assertEquals(PremiumState.FREE, Entitlements.state(false, 0L, 100L))
+        assertEquals(PremiumState.FREE, Entitlements.state(false, 0L, 100L, freeForAll = false))
     }
 
     @Test
     fun `trial day 0 is TRIAL`() {
-        assertEquals(PremiumState.TRIAL, Entitlements.state(false, 100L, 100L))
+        assertEquals(PremiumState.TRIAL, Entitlements.state(false, 100L, 100L, freeForAll = false))
     }
 
     @Test
     fun `trial day 6 is still TRIAL`() {
-        assertEquals(PremiumState.TRIAL, Entitlements.state(false, 100L, 106L))
+        assertEquals(PremiumState.TRIAL, Entitlements.state(false, 100L, 106L, freeForAll = false))
     }
 
     @Test
     fun `trial day 7 exactly is FREE (exclusive boundary)`() {
-        assertEquals(PremiumState.FREE, Entitlements.state(false, 100L, 107L))
+        assertEquals(PremiumState.FREE, Entitlements.state(false, 100L, 107L, freeForAll = false))
     }
 
     @Test
     fun `premiumActive overrides expired trial`() {
-        assertEquals(PremiumState.PREMIUM, Entitlements.state(true, 100L, 200L))
+        assertEquals(PremiumState.PREMIUM, Entitlements.state(true, 100L, 200L, freeForAll = false))
     }
 
     @Test
     fun `clock rollback (today before start) is FREE`() {
-        assertEquals(PremiumState.FREE, Entitlements.state(false, 100L, 99L))
+        assertEquals(PremiumState.FREE, Entitlements.state(false, 100L, 99L, freeForAll = false))
     }
 
     // --- canUseMantra() ---
