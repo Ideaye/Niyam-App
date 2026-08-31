@@ -590,3 +590,106 @@ Pranav: "propose a plan, no patches" → executed all three phases as solid, cla
 - Phase C (billing): launch-time Billing.gateway.restorePurchases() re-queries owned purchases and acknowledges/verifies any that slipped through → durable acknowledgement (Play won't auto-refund an unacked purchase); no-op in debug/free.
 
 versionCode 7→8, versionName 1.0.5→1.0.6. 125/125 tests, debug+release compile. Unified AAB (audit + A + B + C) on Desktop as niyam-1.0.6-release.aab. Server deploy still pending from the audit: migration 0003 + redeploy verify-entitlement & sync-trial.
+
+### 2026-08-28 — Devotional tech exploration (branch `discuss/devotional-tech`)
+
+Pranav: "Do not keep these discussions in the main branch… if we are to build devotional tech, what should it be" + "integrate Notebook LLM" for a study of Indian user behaviour, existing devotional apps, and what we could build.
+
+**Branch created:** `discuss/devotional-tech` off main. The 8 uncommitted app files (build.gradle.kts, AuthRepository, UserPrefs, PauseConfig, SettingsScreen, AppNavHost, forlater.md, supabase/.temp) came along in the working tree — deliberately untouched, not committed.
+
+**NotebookLM — told Pranav plainly:** there is no NotebookLM API and no MCP connector; programmatic integration is impossible. Offered three real paths; he chose **option 1** — I research here and produce a NotebookLM-ready source pack. Also flagged that NotebookLM does not ingest HTML (accepts PDF/.txt/Markdown/Google Docs/URLs/pasted text), so the HTML-first rule and NotebookLM ingestion needed splitting.
+
+**Delivered (docs/, uncommitted at time of writing):**
+- `devotional-tech-research-pack.html` — readable dossier, ToC, print CSS, confidence-graded
+- `devotional-tech-research-pack.md` — same content, NotebookLM-ingestible
+- `devotional-tech-sources.txt` — 37 de-duplicated source URLs
+
+**Method:** ~11 web searches + 4 full-page fetches (TechCrunch Jun-2025 Sri Mandir, Tigerfeathers Mar-2023 deep dive, Inc42 landscape, The India Notes UX audit). Every claim graded A/B/C; [C] explicitly barred from decisions.
+
+**Analytical findings worth carrying forward:**
+- Sri Mandir MAU/downloads fell ~30% (Mar 2023) → ~9% (Jun 2025) while downloads 4x'd and MAU rose only 17%. That is in tension with the claimed ~55% six-month retention. Flagged as the number to interrogate.
+- Whale economics: ~20% of chadhava revenue from <2% of chadhava users. Not a subscription market.
+- Diaspora ARPU ₹7,000 vs domestic ₹600–800 (~10x); US offering-conversion ~50% vs India 20–25%.
+- **Astrotalk (FY25 rev ₹1,214 Cr, PBT ₹285 Cr, profitable) is ~10x the entire funded devotional-app cohort combined.** Astrology pays; devotion largely doesn't, yet.
+- Consistent user complaint pattern: commerce contaminating the sacred moment (upsell pop-ups mid-prayer). Design constraint, not marketing.
+- Six identified gaps; Gap 3 (the attention problem) is where Niyam already uniquely sits — the category is funded for engagement, Niyam is a restraint product.
+- Five candidate theses stated with failure modes. Explicit "would not build": another e-puja marketplace, another astrology marketplace, a devotional feed.
+
+**Honest holes recorded in the pack itself:** no survivorship-bias correction (failure record absent), no usage measurement independent of company-supplied figures, Pew data 6+ years stale, nothing on ops unit economics or temple-endowment regulation, Gen Z claims almost entirely [C].
+
+**Open thread:** docs not committed — awaiting Pranav's go. Until committed on this branch they follow him back to main.
+**Still pending from prior session:** migration 0003 + redeploy `verify-entitlement` and `sync-trial`.
+
+### 2026-08-28 (cont.) — "Which app should we build" → recommendation + audit
+
+Pranav asked for a pick, plus NotebookLM, plus a deeper audit.
+
+**NotebookLM, third time:** checked `list_connected_browsers` — returns empty, so no Chrome extension is connected to this account. Neither the API route (doesn't exist) nor the browser-automation route is available. Told him plainly and stopped relitigating: I prepare the inputs, he operates it.
+
+**Closed the biggest hole in the pack first (survivorship bias) — and it caught my own error:**
+- **DevDham has SHUT DOWN.** I had listed it as an active player in §3.2, sourced from a stale Inc42 landscape piece. Corrected in both .md and .html (row now flagged, regraded C→B).
+- **My Tirth India** shut Aug 2024 (funding crisis after Subrata Roy's death).
+- **Pattern in the deaths = ops-heavy supply-side aggregators.** Sri Mandir survives the same model only on $53M + own fulfilment hubs. This became the decisive elimination criterion.
+
+**Other new research:** Drik Panchang 4.5M downloads free (kills the naive festival/panchang thesis — and its free-ness is evidence that layer doesn't monetise); diaspora sizing hardened to [A] (US 3.37M / UK 1.07M / CA 828k / AU 684k Hindus; Indian-American median household income $151,200, Pew 2024); Chinmaya Bala Vihar Bay Area chapter 6 children (1981) → 2,150 today (revealed-preference demand evidence for transmission, and a beloved incumbent).
+
+**Recommendation: a shloka tutor for diaspora Hindu families — parent-bought, child-used, pronunciation-first.** Stated confidence ~55–60%, deliberately not higher. Survives because: zero ops, corpus already exists (208 mantras × 8 languages), buyer is the best-evidenced payer in the category, and pronunciation feedback is the one thing YouTube structurally cannot do.
+
+**Audit found 8 risks, 2 of them potential kill-shots:**
+1. **Sanskrit pronunciation scoring may not work** — off-the-shelf ASR isn't trained on Sanskrit; retroflex/dental, aspiration, vowel length, visarga distinctions collapse. Likely needs forced phoneme alignment / fine-tuned acoustic model. Flagged as genuinely uncertain, not oversold. Proposed a 1-week feasibility test BEFORE any build.
+2. **Re-enters child-directed app regulation** (COPPA, UK AADC, DPDP, Play Families) — the exact burden Pranav deliberately avoided in June by marking Niyam 18+. Founder call, not technical.
+Plus: content-authenticity dependency (forlater #1 backlog is the tell — needs a credentialed Sanskrit reviewer, partially reintroducing a supply side); two-audience kids-app retention trap; abandons the accessibility-engine asset; Bala Vihar as beloved incumbent; community-only distribution; and diaspora WTP being extrapolated across both category and payment model.
+
+**Strongest advice given (§6):** before building anything, test diaspora willingness-to-pay using Niyam, which already ships worldwide. Costs days, tests the single assumption the whole new-app case rests on.
+
+**Runner-up if child-compliance is a "no":** same product aimed at adults who never learned / have forgotten. Removes both kill-risks, weaker emotional pull.
+
+**Files:** `docs/devotional-tech-recommendation.html` (new); research pack .md gained §9 addendum with corrections + failure record + diaspora table + 8 new sources; sources.txt regenerated (45 URLs).
+
+**Open — three questions put to Pranav, none started without his call:** (1) willing to do child-directed compliance? (2) run the pronunciation feasibility test? (3) run the Niyam diaspora pricing test regardless?
+**Still pending from prior session:** migration 0003 + redeploy `verify-entitlement` and `sync-trial`. Docs still uncommitted.
+
+### 2026-08-28 (cont.) — Recommendation WITHDRAWN; ad-test design instead
+
+Pranav asked two things: (a) don't such apps already exist — a realistic AI voice speaking mantras slowly for practice? (b) run ads in India/US/UK to test demand + willingness-to-pay before building anything.
+
+**(a) killed the recommendation. He was right.**
+- **Slow-voice practice already exists, free.** Srimad Gita app: 0.5x–2x playback, verse/range continuous loop, *configurable pause between repetitions to chant along*, synced line highlighting, offline, all 700 verses. Plus Memorize Shloka (per-line/verse repeat), Shloka Recitation, Sloka Saagar (500+ slokas, audio+video).
+- **The differentiator I proposed is also taken.** **Vāgbodhinī** (Dr. Prathosh A.P., IISc Bengaluru) — public-beta tutor doing **syllable-by-syllable scoring against the known text**. Backed by **Vāgdhenu** (metre-aware Sanskrit TTS, ~4.6/5 expert rating, weights on GitHub + HuggingFace) and **Su-śrotā** (Sanskrit ASR, WER 86%→34%, CER 24%→16%, open source). Two consumer apps already shipping: Bhāgavata-VāNi (web/iOS/Android, free), Vedavani (iOS/Android). Recogniser improves on consented user data → compounds.
+- **I was wrong in both directions:** too pessimistic on feasibility (scoring against a *known* text is forced alignment, not open-vocab ASR — much easier than the 62.3% phoneme-accuracy figure I reasoned from), and far too optimistic on opportunity. Open-sourced weights = no moat.
+- `devotional-tech-recommendation.html` given a prominent SUPERSEDED banner, kept unedited as a record of wrong reasoning.
+- **Pattern worth remembering: two turns, two factual reversals (DevDham already dead, then this).** Desk research keeps lagging reality by months. Told Pranav this is the strongest argument for his go-to-market instinct.
+
+**(b) Ad test — designed, not run.** Key findings for the design:
+- **You cannot target Hindus on either platform.** Meta removed religion detailed targeting 19 Jan 2022 (tightened again 15 Jan 2025); Google prohibits personalised targeting on religious belief, treats it as a sensitive interest category (no advertiser-curated audiences), flags ads "Religious belief in personalized advertising". Naive "run an ad to Hindus in US/UK/India" is unbuyable.
+- **Workable routes ranked:** lookalike from our own Niyam user list (best — first-party, policy-clear, and we already have it) > geo radius on diaspora-dense metros (Edison/Jersey City, Fremont/Sunnyvale, Harrow/Wembley/Leicester, Brampton) > language targeting > YouTube placement > weak interest proxies. Expect creative-level policy disapprovals too.
+- **Told him to check Play Console country data FIRST — free, today, possibly conclusive.** Niyam already ships worldwide; install/retention/revenue by country may already answer the diaspora-ARPU question with zero spend. Plus: survey existing international users via Supabase auth emails (his call to send).
+- **Track A design:** don't fake-door a product that exists — sell it. 3 cells (India / US / UK), identical creative, price 3–5x in diaspora cells. Metric = **revenue per install by geo**, not clicks. Pre-registered thresholds: ≥3x = confirmed, 1.5–3x = ambiguous, <1.5x = thesis dead. Budget $300–600, 10–14 days. CPC explicitly flagged as un-researched.
+- **Track B (optional smoke test):** no money taken for a non-existent product; and noted the shloka-tutor variant is now *uninterpretable* because interest confounds with free incumbents.
+- **Division of labour stated:** I write creative, build landing pages, wire Supabase capture, set up tracking + pre-registered analysis. I do **not** create ad accounts, enter payment details, spend money, or publish ads.
+
+**Files:** `docs/devotional-tech-ad-test.html` (new); recommendation doc banner-superseded; sources.txt → 57 URLs.
+**Open:** Play Console country pull (Pranav, free, first); then his go/no-go on the $300–600 test. Docs still uncommitted. Migration 0003 + `verify-entitlement`/`sync-trial` redeploy still pending.
+
+### 2026-08-29 — CORRECTION: Niyam was never published; ad-test plan resequenced
+
+Pranav: "Niyam hasn't been deployed yet." I had written the entire ad-test design assuming it was live on Play. **Third reversal in three turns.**
+
+**What that voids in `devotional-tech-ad-test.html`:**
+- §2 "pull Play Console country data" — no data exists, nothing shipped.
+- §3 "lookalike from your own Niyam user list" — no users. This was the **best** targeting route remaining after the Meta/Google religion-targeting ban; losing it is the most damaging part.
+- §4 Track A "don't fake-door it, sell the real product" — can't run install ads for an app not on the store.
+- §2 "survey existing users via Supabase" — no users.
+None are wrong, all are **premature**; they activate on launch. Doc amended with a correction banner + new §0 rather than rewritten; original left intact below a dated rule.
+
+**Play production-access gate (matters for timeline):** personal developer accounts created after 13 Nov 2023 need a closed test with **12 testers opted in for 14 continuous days** (and since 2026 Google checks they actually used the app) before applying for production. Organization accounts and pre-13-Nov-2023 personal accounts are exempt. **Unknown which Pranav has — asked him; it's the single fact setting the timeline.** Flagged source quality as [C]: nearly all coverage comes from companies selling tester recruitment.
+
+**Revised sequence given:**
+0. Today, free — check Play Console account type + creation date.
+1. This week — clear blockers (migration 0003; redeploy `verify-entitlement` + `sync-trial`; create/activate 3 subscription products) and **upload the AAB**. Clock starts on upload, so every day it sits on the Desktop adds to time-to-revenue.
+2. During the 14 days — **make the forced wait do double duty**: small ad spend to a "join the test" landing page that recruits the 12+ required testers *and* gives a message/geo read for the same money. India vs US/UK split from the start.
+3. After production access — Track A becomes real (geo pricing, revenue per install).
+
+**Position stated on the new-app question:** not now. The research stands and eliminated several expensive mistakes, but marginal information from launching >> marginal information from more analysis, and a finished v1.0.6 asset is currently producing zero. Revisit the category with three months of real usage data. Explicitly left as his call.
+
+**Open:** account type/date; whether he wants me to build the pre-launch landing page + creative; whether to commit these docs. Migration 0003 + edge-function redeploy still pending (needs his explicit go — deploy/migration rule).
