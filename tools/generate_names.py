@@ -10,6 +10,7 @@ Run:  tools/.venv/bin/python tools/generate_names.py
 import json
 from pathlib import Path
 from aksharamukha import transliterate
+from display_overrides import apply_overrides, bengali_digits
 
 MANTRAS = Path(__file__).resolve().parent.parent / "app/src/main/assets/content/mantras.json"
 SRC = "Devanagari"
@@ -81,11 +82,18 @@ SOURCE_DEVA = {
     "ram-raksha-opening": "बुध कौशिक",
 }
 
-def to_scripts(deva: str, roman: str) -> dict:
+def to_scripts(deva: str, roman: str, is_source: bool = False) -> dict:
     out = {"devanagari": deva}
     for field, (target, pre, post) in TARGETS.items():
         out[field] = transliterate.process(SRC, target, deva, pre_options=pre, post_options=post).strip()
     out["roman"] = roman  # pinned to curated English string
+    # Native display conventions per script (2026-09-01 review) — see
+    # display_overrides.py; without this, regeneration would clobber them.
+    for field in list(out):
+        if field != "roman":
+            out[field] = apply_overrides(field, out[field])
+    if is_source:
+        out["bengali"] = bengali_digits(out["bengali"])
     return out
 
 data = json.loads(MANTRAS.read_text(encoding="utf-8"))
@@ -95,7 +103,7 @@ for m in data["mantras"]:
     if mid not in NAME_DEVA or mid not in SOURCE_DEVA:
         missing.append(mid); continue
     m["name"] = to_scripts(NAME_DEVA[mid], m["canonicalName"])
-    m["sourceLabel"] = to_scripts(SOURCE_DEVA[mid], m["source"])
+    m["sourceLabel"] = to_scripts(SOURCE_DEVA[mid], m["source"], is_source=True)
 if missing:
     raise SystemExit(f"missing masters for: {missing}")
 
