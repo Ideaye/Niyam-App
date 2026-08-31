@@ -44,6 +44,18 @@ class TrialReminderWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, 
         private const val WORK_NAME_EXACT = "niyam_trial_reminder_exact"
         private const val DAY_MS = 86_400_000L
 
+        /**
+         * Free-for-all hygiene: cancel BOTH unique works (daily backstop +
+         * event-anchored one-shot). Devices updated from a paid-era build still
+         * carry scheduled workers; shouldRemind already stays silent under
+         * FREE_FOR_ALL, but cancelling closes the zombie-worker class outright.
+         */
+        fun cancelAll(context: Context) {
+            val wm = WorkManager.getInstance(context)
+            wm.cancelUniqueWork(WORK_NAME)
+            wm.cancelUniqueWork(WORK_NAME_EXACT)
+        }
+
         /** Idempotent daily backstop — call at Application start. */
         fun schedule(context: Context) {
             val request = PeriodicWorkRequestBuilder<TrialReminderWorker>(1, TimeUnit.DAYS).build()

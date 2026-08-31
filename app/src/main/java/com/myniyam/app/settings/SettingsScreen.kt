@@ -198,50 +198,55 @@ fun SettingsScreen(
                     )
                 }
 
-                Spacer(Modifier.height(20.dp))
-                SectionLabel(stringResource(R.string.settings_section_premium))
-                SectionCard {
-                    val premiumState = Entitlements.state(
-                        snapState.premiumActive,
-                        snapState.trialStartEpochDay,
-                        java.time.LocalDate.now().toEpochDay()
-                    )
-                    val statusText = when (premiumState) {
-                        PremiumState.PREMIUM -> stringResource(R.string.settings_premium_active)
-                        PremiumState.TRIAL -> {
-                            val daysLeft = Entitlements.trialDaysLeft(
-                                snapState.trialStartEpochDay,
-                                java.time.LocalDate.now().toEpochDay()
-                            )
-                            pluralStringResource(R.plurals.settings_premium_trial_left, daysLeft, daysLeft)
+                // Premium section is a monetization surface — hidden entirely
+                // while the app is free for everyone. Showing "Premium — Active"
+                // to users who never bought anything would be misleading.
+                if (!Entitlements.FREE_FOR_ALL) {
+                    Spacer(Modifier.height(20.dp))
+                    SectionLabel(stringResource(R.string.settings_section_premium))
+                    SectionCard {
+                        val premiumState = Entitlements.state(
+                            snapState.premiumActive,
+                            snapState.trialStartEpochDay,
+                            java.time.LocalDate.now().toEpochDay()
+                        )
+                        val statusText = when (premiumState) {
+                            PremiumState.PREMIUM -> stringResource(R.string.settings_premium_active)
+                            PremiumState.TRIAL -> {
+                                val daysLeft = Entitlements.trialDaysLeft(
+                                    snapState.trialStartEpochDay,
+                                    java.time.LocalDate.now().toEpochDay()
+                                )
+                                pluralStringResource(R.plurals.settings_premium_trial_left, daysLeft, daysLeft)
+                            }
+                            PremiumState.FREE -> stringResource(R.string.settings_premium_free)
                         }
-                        PremiumState.FREE -> stringResource(R.string.settings_premium_free)
-                    }
-                    NavRow(
-                        stringResource(R.string.settings_row_premium),
-                        onOpenPaywall,
-                        trailing = statusText,
-                        leading = Icons.Default.Star
-                    )
-                    if (BuildConfig.DEBUG) {
                         NavRow(
-                            stringResource(R.string.settings_debug_expire_trial),
-                            onClick = {
-                                scope.launch {
-                                    UserPrefs.expireTrialForSandbox(ctx, java.time.LocalDate.now().toEpochDay())
-                                    snapState = UserPrefs.snapshot()
-                                }
-                            }
+                            stringResource(R.string.settings_row_premium),
+                            onOpenPaywall,
+                            trailing = statusText,
+                            leading = Icons.Default.Star
                         )
-                        NavRow(
-                            stringResource(R.string.settings_debug_clear_premium),
-                            onClick = {
-                                scope.launch {
-                                    UserPrefs.clearPremiumForSandbox(ctx)
-                                    snapState = UserPrefs.snapshot()
+                        if (BuildConfig.DEBUG) {
+                            NavRow(
+                                stringResource(R.string.settings_debug_expire_trial),
+                                onClick = {
+                                    scope.launch {
+                                        UserPrefs.expireTrialForSandbox(ctx, java.time.LocalDate.now().toEpochDay())
+                                        snapState = UserPrefs.snapshot()
+                                    }
                                 }
-                            }
-                        )
+                            )
+                            NavRow(
+                                stringResource(R.string.settings_debug_clear_premium),
+                                onClick = {
+                                    scope.launch {
+                                        UserPrefs.clearPremiumForSandbox(ctx)
+                                        snapState = UserPrefs.snapshot()
+                                    }
+                                }
+                            )
+                        }
                     }
                 }
 

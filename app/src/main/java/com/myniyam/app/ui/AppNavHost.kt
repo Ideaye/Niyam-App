@@ -28,6 +28,7 @@ import com.myniyam.app.R
 import com.myniyam.app.backend.AuthRepository
 import com.myniyam.app.backend.EntitlementSync
 import com.myniyam.app.backend.PracticeSync
+import com.myniyam.app.billing.Entitlements
 import com.myniyam.app.billing.PaywallScreen
 import io.github.jan.supabase.auth.status.SessionStatus
 import com.myniyam.app.library.FavouritesScreen
@@ -138,7 +139,12 @@ fun AppNavHost(
                     if (UserPrefs.snapshot().stateOwnerUid == null) {
                         UserPrefs.setStateOwner(reconcileCtx, uid)
                     }
-                    EntitlementSync.reconcileOnLaunch(reconcileCtx)
+                    // Entitlement/trial server reconcile is monetization work —
+                    // dormant while the app is free for everyone. The C1b owner
+                    // stamping above is account hygiene and always runs.
+                    if (!Entitlements.FREE_FOR_ALL) {
+                        EntitlementSync.reconcileOnLaunch(reconcileCtx)
+                    }
                 }
             }
             is SessionStatus.NotAuthenticated -> reconciledUserId = null
@@ -180,12 +186,13 @@ fun AppNavHost(
                         com.myniyam.app.progress.ProgressRepository.clearAll(signInCtx)
                     }
                     if (signedInUid != null) UserPrefs.setStateOwner(signInCtx, signedInUid)
-                    if (identityChanged) {
+                    if (identityChanged && !Entitlements.FREE_FOR_ALL) {
                         // The wipe cleared premium/trial; re-fetch THIS user's server
                         // entitlement here (ordered after the wipe) so a concurrent
                         // launch-reconcile that landed BEFORE the wipe can't leave the
                         // new user stranded on the free tier. Idempotent with the
-                        // sessionStatus-driven reconcile.
+                        // sessionStatus-driven reconcile. Dormant while free-for-all
+                        // (everyone is premium regardless of server state).
                         EntitlementSync.reconcileOnLaunch(signInCtx)
                     }
                     // Returning user on a fresh device → seed practice from the server
@@ -292,7 +299,9 @@ fun AppNavHost(
             OemAutostartScreen(onDone = {
                 scope.launch {
                     UserPrefs.setOnboardingComplete(ctx)
-                    UserPrefs.startTrial(ctx, java.time.LocalDate.now().toEpochDay())
+                    if (!Entitlements.FREE_FOR_ALL) {
+                        UserPrefs.startTrial(ctx, java.time.LocalDate.now().toEpochDay())
+                    }
                     (ctx as? android.app.Activity)?.recreate()
                 }
             })

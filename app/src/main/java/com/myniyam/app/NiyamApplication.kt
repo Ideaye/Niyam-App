@@ -7,6 +7,7 @@ import android.content.Context
 import com.myniyam.app.data.MantraRepository
 import com.myniyam.app.data.UserPrefs
 import com.google.android.gms.ads.MobileAds
+import com.myniyam.app.billing.Entitlements
 import com.myniyam.app.billing.TrialReminderWorker
 import com.myniyam.app.notifications.CompletionNotifier
 import com.myniyam.app.notifications.TrialReminderNotifier
@@ -24,7 +25,11 @@ class NiyamApplication : Application() {
             UserPrefs.ensureLoaded(this)
             ProgressRepository.warmUp(this)
             MobileAds.initialize(this)
-            TrialReminderWorker.schedule(this)
+            if (Entitlements.FREE_FOR_ALL) {
+                TrialReminderWorker.cancelAll(this)
+            } else {
+                TrialReminderWorker.schedule(this)
+            }
         }.start()
     }
 

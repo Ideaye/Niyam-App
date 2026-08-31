@@ -38,23 +38,28 @@ class MainActivity : ComponentActivity() {
         UserPrefs.ensureLoaded(this)
         RemoteConfig.ensureLoaded(this)
         lifecycleScope.launch { RemoteConfig.refresh(this@MainActivity) }
-        // Billing self-heal (audit C): re-query owned purchases on every launch and
-        // acknowledge/verify any that slipped through. A purchase whose original
-        // acknowledgement failed (network blip) would otherwise be auto-refunded by
-        // Play after 3 days; this makes acknowledgement durable. No-op in debug
-        // (sandbox gateway) and for free users with nothing to restore.
-        lifecycleScope.launch {
-            try { com.myniyam.app.billing.Billing.gateway.restorePurchases(this@MainActivity) } catch (e: Exception) {}
-        }
-        val s = UserPrefs.snapshot()
-        if (s.onboardingComplete && s.trialStartEpochDay == 0L) {
-            runBlocking { UserPrefs.startTrial(this@MainActivity, java.time.LocalDate.now().toEpochDay()) }
-        }
-        // Event-anchored trial reminder (audit B2): schedule the day-6 reminder for
-        // the actual trial-end window so a batched daily worker can't miss it.
-        UserPrefs.snapshot().let { snap ->
-            if (snap.trialStartEpochDay > 0L && !snap.trialReminderShown) {
-                com.myniyam.app.billing.TrialReminderWorker.scheduleExact(this, snap.trialStartEpochDay)
+        // Monetization launch work — all dormant while the app is free for
+        // everyone (Entitlements.FREE_FOR_ALL): no purchases to self-heal, no
+        // trial to seed, no reminder to anchor.
+        if (!com.myniyam.app.billing.Entitlements.FREE_FOR_ALL) {
+            // Billing self-heal (audit C): re-query owned purchases on every launch and
+            // acknowledge/verify any that slipped through. A purchase whose original
+            // acknowledgement failed (network blip) would otherwise be auto-refunded by
+            // Play after 3 days; this makes acknowledgement durable. No-op in debug
+            // (sandbox gateway) and for free users with nothing to restore.
+            lifecycleScope.launch {
+                try { com.myniyam.app.billing.Billing.gateway.restorePurchases(this@MainActivity) } catch (e: Exception) {}
+            }
+            val s = UserPrefs.snapshot()
+            if (s.onboardingComplete && s.trialStartEpochDay == 0L) {
+                runBlocking { UserPrefs.startTrial(this@MainActivity, java.time.LocalDate.now().toEpochDay()) }
+            }
+            // Event-anchored trial reminder (audit B2): schedule the day-6 reminder for
+            // the actual trial-end window so a batched daily worker can't miss it.
+            UserPrefs.snapshot().let { snap ->
+                if (snap.trialStartEpochDay > 0L && !snap.trialReminderShown) {
+                    com.myniyam.app.billing.TrialReminderWorker.scheduleExact(this, snap.trialStartEpochDay)
+                }
             }
         }
         ThemeState.set(UserPrefs.snapshot().themePref)
