@@ -83,10 +83,10 @@
 - **What:** `PauseConfig.ALLOWED_MINUTES` was temporarily changed from `listOf(30, 60, 120)` to `listOf(5, 30, 60, 120)` so internal testers can trigger an interval check-in in 5 min instead of waiting 30. Revert the leading `5` (and delete the `// TEMP TEST` comment) in `app/src/main/java/com/myniyam/app/service/PauseConfig.kt`.
 - **Why:** "Every 5 minutes" is a testing convenience, not a shipping option — a real user picking 5 min would get interrupted too aggressively, against the "a pause, not punishment" positioning.
 - **Scope:** One-line revert in `PauseConfig.kt` + remove the 2-line TEMP comment. No UI/string/test changes needed (UI renders straight from the list; no test asserts the full set).
-- **Status:** ⚠️ ACTIVE — shipped to internal test only in versionCode 9 (2026-07-07). **Must be reverted before promoting any build to production.**
+- **Status:** ✅ DONE 2026-09-01 — reverted to `listOf(30, 60, 120)`, TEMP comment removed; v1.1.0 (code 10) AAB rebuilt and Desktop copy refreshed, so the production-ready bundle no longer carries the option. Residue flagged (not fixed): an internal tester who had picked "5" keeps `intervalMinutes = 5` in prefs — the engine honors it and the settings UI shows no selected chip until they re-pick. Affects internal testers only; a read-time clamp in UserPrefs would close it if wanted.
 - **Date added:** 2026-07-07
 - **Originated from:** Founder request to shorten the interval for testing the mindful-pause feature.
-- **Trigger to revisit:** Before the first production/closed→production promotion, or when interval testing is done — whichever first.
+- **Completed:** 2026-09-01.
 
 ### 16. C1b — close the sign-in identity-owner gap (same cross-account class as C1)
 - **What:** C1 (shipped) wipes local user-scoped state on explicit sign-out + account deletion. But one sibling in the same class remains OPEN: if the Supabase session is lost involuntarily (token expired/revoked), the AppNavHost sign-in gate bounces the user to SIGN_IN **without wiping**, and `seedFromServerIfPresent` then no-ops because `onboardingComplete` is still true — so if a DIFFERENT account signs in at that screen, they inherit the previous user's practice/favourites/language (premium now reconciles correctly post-C1, but practice data still leaks). Root cause: sign-in never verifies that local state belongs to the signing-in user.

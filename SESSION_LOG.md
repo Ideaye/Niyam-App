@@ -607,3 +607,9 @@ Pranav: "make Niyam free for everyone now; later we shall figure how to make it 
 - **forlater:** #9 parked (no trial to remind about); **#17 added — re-monetization playbook** (grandfather policy, flag flip, Play products, copy reversal, server deploys).
 - **⚠️ FLAGGED, NOT TOUCHED (out of scope):** website/about.html still claims "We collect nothing. No account, no sign-up" — stale since required Google Sign-In shipped in June. Needs its own fix.
 - **Still pending from June:** migration 0003 + redeploy verify-entitlement & sync-trial (now non-urgent — those functions are dormant while free — but do it before re-monetization).
+
+## 2026-09-01 — about.html vow fixed · paid machinery stays dormant · forlater #15 CLOSED
+
+- **about.html:** stale "We collect nothing. No account, no sign-up" vow (false since June's required sign-in) rewritten to the honest posture ("Your data stays yours" — one sign-in for sync, email+practice only, in-app delete). `37ec318`, deployed, live-verified (new vow present, old claim absent).
+- **Paid machinery decision:** Pranav chose **keep dormant** (vs delete / re-audit) for PaywallScreen, billing gateways, and the 3 Edge Functions. No changes.
+- **forlater #15 CLOSED:** 5-min interval tester option reverted (`PauseConfig.ALLOWED_MINUTES` → 30/60/120, TEMP comment gone). 132/132 tests, signed AAB rebuilt, Desktop `niyam-1.1.0-release.aab` refreshed — **the Desktop bundle is now production-safe**. Residue flagged, not fixed (adjacent-code rule): testers who picked 5 keep it in prefs; read-time clamp in UserPrefs offered.

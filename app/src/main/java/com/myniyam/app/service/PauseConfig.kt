@@ -7,9 +7,7 @@ package com.myniyam.app.service
  */
 object PauseConfig {
 
-    // TEMP TEST (2026-07-07): leading 5 lets testers trigger a check-in in 5 min
-    // instead of waiting 30. REMOVE before production promotion — see forlater.md.
-    val ALLOWED_MINUTES = listOf(5, 30, 60, 120)
+    val ALLOWED_MINUTES = listOf(30, 60, 120)
 
     const val MIN_PAUSE_SECONDS = 15
     const val MAX_PAUSE_SECONDS = 60
