@@ -26,7 +26,7 @@
 - **Scope:** Backend phase work — pairs naturally with whatever server work real-billing analytics eventually needs.
 - **Stack decision (2026-06-11, founder-approved):** Supabase is the chosen backend — Auth, Postgres for synced streaks/journeys, Edge Functions for Google Play purchase-notification verification (server-side entitlements, closes the trial-reinstall loophole) and for scheduled SMS (MSG91/Twilio) + email (Resend) reminders. Payment cards stay with Google Play always.
 - **ACTIVATED 2026-06-15.** Founder reversed course: backend phase starts NOW, BEFORE Play launch. Locked: **login REQUIRED** (reverses the zero-data positioning), **Google Sign-In only**, **Play launch HELD** until backend ships. Engine must stay offline-capable after one-time sign-in. Same push adds 4-tab nav (Today/Library/Favourites/Settings) + user-favourite-mantras + logout. Reminders (this item's original ask) ride along once Auth + contact exist. See memory `project_niyam_backend_phase`.
-- **Status:** IN PROGRESS — phased plan being agreed; per-phase specs to follow.
+- **Status:** PARKED 2026-08-31 — the backend/auth infrastructure this item needed shipped in June, but the app is now free for everyone (item 17): there is no trial to remind about. The original SMS/email ask revives with re-monetization.
 - **Date added:** 2026-06-11
 - **Originated from:** SP-12 paywall v2 approval message.
 
@@ -96,6 +96,19 @@
 - **Date added:** 2026-07-08
 - **Originated from:** Sign-up flow audit (C1 self-audit).
 - **Completed:** 2026-07-08.
+
+### 17. Re-monetization playbook (when "later" arrives)
+- **What:** Pranav (2026-08-31): "make Niyam free for everyone now; later we shall figure how to make it a paid version." The paid machinery was put to sleep, not deleted. Turning it back on requires, in order:
+  1. Decide the **grandfather policy** for users who joined while the app was free (the `Entitlements` grandfather rules for current-mantra/current-language already exist; "early users stay free forever" would be a new rule). Also decide trial treatment — free-era users have no `trialStartEpochDay`, so on flip they'd land on FREE with no trial unless seeded.
+  2. Flip `Entitlements.FREE_FOR_ALL` to `false` — this alone re-arms every gate, paywall surface, trial seeding, reminder scheduling/channel, and the EntitlementSync launch/sign-in reconciles (all call sites read the one switch).
+  3. Re-add ads only if wanted (deleted wholesale in commit 219f0f1: AdBanner.kt + play-services-ads dep + manifest meta-data; one file + one dep to restore, needs a real AdMob account).
+  4. Play Console: create + activate the 3 subscription products (ids preserved in `PlayBillingGateway`/listing kit git history: niyam.premium.weekly/monthly/yearly) + restore listing-kit §5 from git (pre-02468b8); re-answer Data Safety (Purchase history; Ads/Device IDs if ads return); update descriptions.
+  5. Copy sweep back: terms.html §3, privacy.html Purchases/Advertising, faq.html, index.html offer schema, delete-account.html, blog comparison article (all edited in 02468b8 — reverse-reference it).
+  6. Server: confirm migration 0003 applied + verify-entitlement/sync-trial redeployed (was still pending from the June audit when the app went free).
+- **Why:** Single authoritative record so re-monetization is a checklist, not archaeology.
+- **Status:** Queued — trigger: founder decides to charge again.
+- **Date added:** 2026-08-31
+- **Originated from:** Free-for-everyone decision session (v1.1.0).
 
 ## In progress
 

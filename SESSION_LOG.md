@@ -590,3 +590,20 @@ Pranav: "propose a plan, no patches" → executed all three phases as solid, cla
 - Phase C (billing): launch-time Billing.gateway.restorePurchases() re-queries owned purchases and acknowledges/verifies any that slipped through → durable acknowledgement (Play won't auto-refund an unacked purchase); no-op in debug/free.
 
 versionCode 7→8, versionName 1.0.5→1.0.6. 125/125 tests, debug+release compile. Unified AAB (audit + A + B + C) on Desktop as niyam-1.0.6-release.aab. Server deploy still pending from the audit: migration 0003 + redeploy verify-entitlement & sync-trial.
+
+---
+
+## 2026-08-31 — FREE FOR EVERYONE (v1.1.0) + stranded July work landed
+
+Pranav: "make Niyam free for everyone now; later we shall figure how to make it a paid version." Approved plan: dormant monetization behind one switch (not deletion) + remove ads entirely. Executed T0–T5, commit per task, on main.
+
+- **T0 — stranded 2026-07-07/08 work committed** (was uncommitted in the working tree for 7 weeks): `8d1b90c` temp 5-min interval option + versionCode 9 (forlater #15 still gates production); `b3454d4` C1b sign-in identity-owner fix (stateOwnerUid + wipe-on-identity-change + per-user reconcile). The 2026-08-28 devotional-tech SESSION_LOG entries committed on `discuss/devotional-tech` (49f7aa0, pushed) per the "not in main" instruction; the devotional docs stay uncommitted awaiting Pranav's go. **Repo moved on GitHub: pranavadityaneti/Niyam-App → Ideaye/Niyam-App** (push redirects; remote URL should be updated).
+- **T1 (`4be96dc`) — `Entitlements.FREE_FOR_ALL = true`:** state() reports PREMIUM for everyone; dormant paid logic keeps full test coverage via an explicit freeForAll param; 4 new tests pin free-mode. 132/132.
+- **T2 (`f690b0b`) — call-site gates:** launch billing self-heal / trial seeding / reminder scheduling skipped; onboarding no longer starts trials; EntitlementSync reconciles skipped (C1b wipe/stamp still always runs); Settings Premium section hidden (paywall now unreachable from every entry point); TrialReminderWorker.cancelAll() clears zombie workers on updated devices.
+- **T3 (`219f0f1`) — ads removed wholesale:** AdBanner.kt deleted, play-services-ads dep + AdMob manifest meta-data gone; merged manifest verified free of AD_ID → Data Safety can truthfully say no ads/no device IDs. Banners only ever ran Google TEST units (zero revenue lost).
+- **T4 (`02468b8`) — compliance/copy sweep:** terms §3, privacy Purchases/Advertising/processors, faq (body + JSON-LD), index offer schema, delete-account, blog comparison article, play-listing-kit (Data Safety rows dropped, Ads=No, subscriptions section marked NOT APPLICABLE with re-monetization pointer). Effective dates → 31 Aug 2026.
+- **T5 (`3de0663`) — v1.1.0 (code 10);** signed AAB on Desktop as niyam-1.1.0-release.aab (jar verified).
+- **Audit (`a7b941b`):** removed leftover LocalDate import; "Trial reminders" notification channel now deleted at startup under the flag (was still visible in system settings). Verified paywall unreachability, EntitlementSync callers, no stray paid copy, AD_ID absence.
+- **forlater:** #9 parked (no trial to remind about); **#17 added — re-monetization playbook** (grandfather policy, flag flip, Play products, copy reversal, server deploys).
+- **⚠️ FLAGGED, NOT TOUCHED (out of scope):** website/about.html still claims "We collect nothing. No account, no sign-up" — stale since required Google Sign-In shipped in June. Needs its own fix.
+- **Still pending from June:** migration 0003 + redeploy verify-entitlement & sync-trial (now non-urgent — those functions are dormant while free — but do it before re-monetization).
