@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niyam — Native-Speaker Review (AI) — 2026-09-01</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1.2rem; color: #1c1c1c; line-height: 1.55; }
+  h1 { font-size: 1.7rem; border-bottom: 3px solid #E86A33; padding-bottom: .4rem; }
+  h2 { font-size: 1.25rem; margin-top: 2.2rem; border-bottom: 1px solid #E8DCCD; padding-bottom: .25rem; color: #003223; }
+  h3 { font-size: 1.05rem; margin-top: 1.4rem; color: #333; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .92rem; }
+  th, td { border: 1px solid #ddd; padding: .45rem .6rem; text-align: left; vertical-align: top; }
+  th { background: #F5EBE1; }
+  code, .k { font-family: ui-monospace, Menlo, monospace; font-size: .88em; background: #f6f2ec; padding: .06em .3em; border-radius: 4px; }
+  .box { border: 1px solid #E8DCCD; border-left: 5px solid #E86A33; background: #FDF9F3; padding: .8rem 1rem; border-radius: 8px; margin: 1rem 0; }
+  .blocker { color: #B3261E; font-weight: 600; }
+  .rec { color: #7A5C00; font-weight: 600; }
+  .nit { color: #4E5D52; font-weight: 600; }
+  ul { padding-left: 1.3rem; }
+  li { margin: .45rem 0; }
+  .lang h3 { background: #003223; color: #F5EBE1; padding: .3rem .6rem; border-radius: 6px; }
+  .toc { background: #FBF6EF; border: 1px solid #E8DCCD; border-radius: 8px; padding: .8rem 1.2rem; }
+  .toc a { text-decoration: none; color: #003223; }
+  .small { font-size: .85rem; color: #555; }
+  @media print { body { max-width: none; } .box { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>Niyam — Native-Speaker Review of All 7 Languages</h1>
+<p class="small">2026-09-01 · forlater item #1 · 7 parallel Opus reviewers (one per language) · scope: 26 mantra meanings vs the English reference, in-script names + scripture labels, 3 full-text character spot-checks per language, complete <code>values-*/strings.xml</code> UI chrome, and adjudication of every flag accumulated since SP-2. Reviewers reported findings only; <b>no files were changed</b>.</p>
+
+<div class="box"><b>What this is — and is not.</b> These are AI reviewers with native-level fluency, reviewing adversarially (they did not write this content). This is a strong pass and it found real, serious errors — but it is not a human native speaker. A short human spot-check of the highest-stakes lines (the Gita glosses, the permission screens) before wide launch remains worthwhile. Uncertainties are marked in-line where reviewers flagged them (two Unicode rendering questions need a real-device check).</div>
+
+<div class="toc"><b>Contents</b><br>
+<a href="#verdicts">1. Verdicts at a glance</a> ·
+<a href="#systemic">2. Cross-language systemic findings</a> ·
+<a href="#english">3. Errors in the English reference itself</a> ·
+<a href="#hi">4. Hindi</a> · <a href="#mr">5. Marathi</a> · <a href="#te">6. Telugu</a> · <a href="#ta">7. Tamil</a> · <a href="#kn">8. Kannada</a> · <a href="#bn">9. Bengali</a> · <a href="#gu">10. Gujarati</a> ·
+<a href="#plan">11. Recommended fix plan</a></div>
+
+<h2 id="verdicts">1. Verdicts at a glance</h2>
+<table>
+<tr><th>Language</th><th>Verdict</th><th class="blocker">Blockers</th><th class="rec">Recommended</th><th class="nit">Nits</th><th>Headline finding</th></tr>
+<tr><td>Hindi</td><td>BLOCKERS-FOUND</td><td>5</td><td>15</td><td>6</td><td>Usage-permission screen inverts who gets the capability; Chalisa gloss contradicts the chaupai it quotes</td></tr>
+<tr><td>Marathi</td><td>BLOCKERS-FOUND</td><td>4</td><td>19</td><td>7</td><td>All 26 meanings end in Hindi danda "।"; case-marker-on-placeholder bugs</td></tr>
+<tr><td>Telugu</td><td>BLOCKERS-FOUND</td><td>5</td><td>15</td><td>6</td><td>Persistent notification reads "standing guard <i>over</i> doom-scrolling" — meaning inverted</td></tr>
+<tr><td>Tamil</td><td>BLOCKERS-FOUND</td><td>7</td><td>19</td><td>6</td><td>சாதனை = "achievement" used app-wide for sadhana; Gita 18.66 says "I will kidnap you"</td></tr>
+<tr><td>Kannada</td><td>BLOCKERS-FOUND</td><td>4</td><td>19</td><td>9</td><td>Gita 3.35 inverted ("your own path leads to fear"); broken genitive on the celebration screen</td></tr>
+<tr><td>Bengali</td><td>BLOCKERS-FOUND</td><td>5</td><td>13</td><td>7</td><td>Gita 3.35 inverted; OEM walkthroughs name English buttons that are localized in-app</td></tr>
+<tr><td>Gujarati</td><td>BLOCKERS-FOUND</td><td>6</td><td>16</td><td>5</td><td>Gita 3.35 inverted; first line of the app uses a Hindi verb (ઠહરો) that doesn't exist in Gujarati</td></tr>
+<tr><th>Total</th><th>7/7</th><th class="blocker">36</th><th class="rec">116</th><th class="nit">46</th><th></th></tr>
+</table>
+<p class="small">Also verified clean everywhere: no mojibake in any of the 21 full-text spot-checks; all format placeholders intact and correctly positional in all 7 locales; all plurals structurally valid; Gita 18.66 theology ("let go of every other refuge", not "abandon duty") correct in 6 of 7 languages (Tamil's verb choice is the exception, not its theology).</p>
+
+<h2 id="systemic">2. Cross-language systemic findings (fix as classes, not per-language patches)</h2>
+<ul>
+<li><span class="blocker">S1 — 9 pause-behaviour strings missing from ALL 7 locales.</span> <code>onb_pause_title, settings_row_pause, settings_pause_title, pause_length_label, pause_secs_fmt, pause_interval_toggle, pause_interval_caption, pause_freq_label, pause_mins_fmt</code> — the v1.0.4 pause feature's strings were never swept into any locale. Every non-English user hits an all-English onboarding step 5 and Settings section.</li>
+<li><span class="blocker">S2 — the permission screens were translated from a superseded English source.</span> The 2026-06-16 T3 rewrite (plainer copy, "why" explanations, genericized app names) never reached the locales. Consequences repeated in every language reviewed: <code>perm_usage_title</code> inverts the actor (tells the <i>user</i> to detect app opens, instead of asking permission for <i>Niyam</i>); <code>perm_usage_body</code> drops the privacy assurance "It only sees which app is in front — never what you do inside it" (a Play-policy under-disclosure, not just a fidelity gap); several bodies still hardcode "Instagram, Facebook, YouTube" where English says "your blocked apps"; bodies are verbless purpose fragments. <b>Class fix: retranslate the whole <code>perm_*</code> family in all 7 locales from the current English.</b></li>
+<li><span class="blocker">S3 — Gita 3.35 meaning inverted in Bengali, Kannada, Gujarati</span> (and improvable in Tamil/Hindi): the pronoun "that path" binds to <i>your own</i> path in those languages' word order, reversing <i>para-dharmo bhayāvahaḥ</i>. Fix by naming the referent ("the other's path") explicitly in all languages.</li>
+<li><span class="blocker">S4 — <code>perm_battery_title</code>: "don't close <b>us</b> in the background"</span> — the only first-person self-reference in the app (it is नियम/నియమ్/… everywhere else), and it blames the user for what the OS does. Same fix shape in all 7: "Let Niyam stay awake."</li>
+<li><span class="rec">S5 — app-voice register break in exactly two meanings everywhere:</span> <code>om-namah-shivaya</code> and <code>hare-krishna</code> address the <i>user</i> with informal singular (तुम/నువ్వు/ನೀನು/তুমি/நீ) while the whole UI is respectful-plural. (Scripture speaking to Arjuna in the Gita entries is correct and stays.) Fix both entries in all 7 languages.</li>
+<li><span class="rec">S6 — in-script names/scripture labels follow uniform Sanskrit transliteration, not each language's print convention</span>, and contradict the app's own filter chips on the same screen (pack "భగవద్గీతా" vs chip "భగవద్గీత"; pack "ஸ்தோத்ர" vs chip "ஸ்தோத்திரங்கள்"; pack "मन्त्र" vs Marathi print "मंत्र"…). Root cause is <code>tools/generate_names.py</code> emitting one convention for all. Fix: per-language display-form pass over names + sourceLabels (each language section lists exact changes).</li>
+<li><span class="rec">S7 — "Signed in as" label:</span> all 7 reviewers independently said change it to "Signed-in account" shape — the current forms are dangling sentences above an email value.</li>
+<li><span class="rec">S8 — <code>deity_universal</code>:</span> all 7 said the current word reads as "general/widespread/public", not "not tied to one deity". Per-language proposals in the sections below.</li>
+<li><span class="rec">S9 — Focus intention:</span> change to the ekāgratā word in Hindi, Telugu, Bengali, Gujarati (ध्यान/ధ్యానం reads as <i>meditation</i>); Marathi and Kannada already have it right — keep.</li>
+<li><span class="rec">S10 — Unicode rendering risks to verify on a real device:</span> Tamil visarga U+A789 (Latin-block codepoint → font-fallback/tofu risk; Tamil reviewer recommends ஃ), Telugu candrabindu U+0C00 ×4 in the Chalisa (reviewer recommends anusvara ం), Kannada candrabindu U+0C81 (verify only). Gujarati's candrabindu/anusvara split was checked mark-by-mark and adjudicated <b>correct</b> (matches Gita Press) — that old flag is a false positive.</li>
+<li><span class="rec">S11 — Bengali numerals:</span> go all-Bengali digits (hardcoded Latin "7", "30", "60" sit next to locale-formatted ৪/১৪; Android formats %d as ০-৯ under bn). Device-verify before bulk edit.</li>
+<li><span class="rec">S12 — postpositions/case suffixes glued to placeholders or detached by spaces</span> (Marathi "%2$s चे", Kannada "%2$s ನ %1$d ದಿನಗಳು" — broken genitive on the celebration screen, Gujarati "%1$s માં", Tamil "%1$d இல்"): restructure those format strings to avoid inflecting a placeholder.</li>
+</ul>
+
+<h2 id="english">3. Errors in the ENGLISH reference itself (meaning.en)</h2>
+<ul>
+<li><span class="blocker">ram-raksha-opening:</span> EN says "a hundred million ślokas"; śatakoṭi = 100 crore = <b>a billion</b>. Hindi, Kannada and Telugu translations are all correct — <b>fix the English</b>, keep them.</li>
+<li><span class="blocker">hanuman-chalisa-opening:</span> EN glosses "lord of the three worlds"; the chaupai it sits beside says <i>tihu loka <b>ujāgara</b></i> — "<b>illuminator</b> of the three worlds". Every Hindi reader knows this line by heart. Fix EN + the translations that followed it.</li>
+</ul>
+
+<!-- ============ PER-LANGUAGE ============ -->
+
+<div class="lang"><h2 id="hi">4. Hindi — blockers 5 · recommended 15 · nits 6</h2>
+<h3>Blockers</h3>
+<ul>
+<li>[strings.xml] <b>9 missing pause strings</b> (S1).</li>
+<li>[strings.xml] <code>perm_usage_title</code> — "जानें कब आप ब्लॉक किए ऐप खोलते हैं" → "नियम को देखने दें कि कौन-सा ऐप खुला है" — actor inversion (S2).</li>
+<li>[strings.xml] <code>perm_usage_body</code> — drops the privacy assurance + hardcodes 3 app names → "नियम को यह जानना होता है कि आपने कब कोई ब्लॉक किया गया ऐप खोला, ताकि पहले आपका मंत्र दिख सके। यह सिर्फ़ यह देखता है कि सामने कौन-सा ऐप है — आप उसके अंदर क्या करते हैं, यह कभी नहीं।" (S2).</li>
+<li>[mantras.json] <code>hanuman-chalisa-opening</code> — "तीनों लोकों के स्वामी" → "तीनों लोकों को प्रकाशित करने वाले" (the chaupai says उजागर; see §3).</li>
+<li>[mantras.json] <code>ram-raksha-opening</code> — Hindi "सौ करोड़" is correct; fix the EN (see §3).</li>
+</ul>
+<h3>Recommended</h3>
+<ul>
+<li><code>om-namah-shivaya</code>/<code>hare-krishna</code>: तुम → आप forms in app-voice ("…आप कभी भी दोहरा सकते हैं" / "बस नाम दोहराते रहिए") (S5).</li>
+<li>Honorific pronouns for deities in <code>vishnu-</code>/<code>lalita-sahasranama</code>, <code>krishna-ashtakam</code>: उस/उसे/जिसने → उन/उन्हें/जिन्होंने.</li>
+<li><code>krishna-ashtakam</code> — verbless first sentence; restructure: "वसुदेव के पुत्र, कंस और चाणूर का संहार करने वाले, देवकी के असीम आनंद — उन जगद्गुरु कृष्ण को मैं प्रणाम करता हूँ।"</li>
+<li><code>lalita-sahasranama</code> — "मनकों की तरह फिरते" → "माला के मनकों की तरह एक-एक कर सुमिरे जाते"; "विराजी" → "विराजमान".</li>
+<li><code>purusha-suktam</code> — "अपने व्याप्त सब से भी विशाल" doesn't parse → "जो कुछ उसने भर रखा है, उससे भी विशाल".</li>
+<li><code>gita-2-14</code> — "सहो, और सहन करो" duplicated verb → "धैर्य से स्वीकार करो, और सह जाओ".</li>
+<li><code>gita-3-35</code> — "मर मिटना" (idiom: smitten/devoted) → "प्राण दे देना".</li>
+<li><code>gita-4-7-8</code> — "संसार को फिर सीधा करने" (colloquial "sort out") → "धर्म को फिर से स्थापित करने".</li>
+<li><code>gayatri</code> — "भीतर खींचकर…थामते हैं" → "अपने भीतर धारण करते हैं".</li>
+<li><code>guru-brahma</code> — "उसी गुरु को" → "उन्हीं गुरु को" (honorific consistency).</li>
+<li><code>perm_battery_title</code> — "हमें बैकग्राउंड में बंद न करें" → "नियम को चलता रहने दें" (S4).</li>
+<li><code>settings_row_apps</code>/<code>settings_apps_title</code>/<code>settings_apps_count_fmt</code> — "ब्लॉक किए ऐप्स" → "ब्लॉक किए गए ऐप्स"; count "%1$d ऐप ब्लॉक".</li>
+<li><code>celebration_body</code> — "वही अनुशासन ही" double emphatic → "वही अनुशासन साधना है।"</li>
+<li>Brand consistency: "आपका Niyam खाता" → "आपका नियम खाता" (version row may stay Latin — decide once).</li>
+<li><code>filter_show_count</code> — "दिखाएँ %1$d" → "%1$d दिखाएँ".</li>
+</ul>
+<h3>Nits</h3>
+<ul>
+<li><code>twameva-mata</code> "मेरे सब कुछ" → "मेरा सब कुछ"; "हे देव" → "हे देवाधिदेव".</li>
+<li>Names: "श्रेयान्स्वधर्मो" → "श्रेयान् स्वधर्मः"; "कृष्ण अष्टकम्" → "कृष्णाष्टकम्"; sourceLabel "आदि शङ्कराचार्य" should keep the "attributed" hedge; "बुध कौशिक" → "बुधकौशिक ऋषि".</li>
+<li>"प्रदर्शन भाषा" → "ऐप की भाषा"; "रूप" → "दिखावट".</li>
+<li><code>notif_text</code> "विरुद्ध पहरे पर" → "से बचाने के लिए पहरे पर"; <code>overlay_unlocking_in</code> add unit: "%1$d सेकंड में…".</li>
+<li>Drop English hyphen compounds ("%1$d-दिन की" → "%1$d दिन की"); "सबसे बढ़िया मूल्य" → "सबसे किफ़ायती"; "और योजनाएँ" → "अधिक योजनाएँ".</li>
+<li><code>onb_apps_title</code> "कौन" for apps → "कौन-सा ऐप आपको खींच लेता है?"; "सांस" → "साँस".</li>
+</ul>
+<h3>Adjudications</h3>
+<ul>
+<li>(a) Chalisa "good sense": keep सद्बुद्धि, change the imperative दो → <b>दीजिए</b>. (b) streak: निरंतरता → <b>"लगातार %1$d दिन"</b>. (c) apps title: not sharp, just missing गए. (d) Signed in as → <b>"साइन इन खाता"</b>. (e) Favourites पसंदीदा: <b>keep</b>. (f) universal → <b>ईश्वर</b> (caveat noted: shifts nuance; सर्वदेव closer but rarer). (g) Focus → <b>एकाग्रता</b>. (h) abbreviations: spell out <b>सेकंड</b> (से॰ before से misreads).</li>
+</ul>
+<p class="small">Spot-check: Gita 2.47, Gayatri, Chalisa all character-correct; convention notes only (ज्ञान vs Awadhi ग्यान, सङ्गो vs संगो, danda placement, plain-Hindi shanti line).</p>
+</div>
+
+<div class="lang"><h2 id="mr">5. Marathi — blockers 4 · recommended 19 · nits 7</h2>
+<h3>Blockers</h3>
+<ul>
+<li>[strings.xml] <b>9 missing pause strings</b> (S1).</li>
+<li><code>perm_usage_title</code> — actor inversion → "कोणतं अ‍ॅप उघडं आहे ते नियमला पाहू द्या" (S2).</li>
+<li><code>perm_usage_body</code> — missing privacy sentence; add "…ते फक्त कोणतं अ‍ॅप समोर आहे एवढंच पाहतं — तुम्ही त्यात काय करता ते कधीच नाही." (S2).</li>
+<li><code>onb_apps_title</code> — "तुम्हाला कशात गुंतवून ठेवतं?" has no subject; → "तुम्हाला कोणती अ‍ॅप्स गुंतवून ठेवतात?"</li>
+</ul>
+<h3>Recommended</h3>
+<ul>
+<li><b>All 26 meanings:</b> danda "।" → full stop "." (53 occurrences; the single loudest Hindi-shaped-Marathi tell). Keep "।" inside scripture text.</li>
+<li><b>12 names/sourceLabels:</b> conjunct nasals → anusvara per Marathi print: महामृत्युंजय मंत्र, गायत्री मंत्र, हरे कृष्ण महामंत्र, वक्रतुंड, गणेश वंदना, मांडूक्य, पांडव गीता, ब्रह्मांड पुराण, आदि शंकराचार्य, कलिसंतरण, बंधुरात्मात्मनः, या कुंदेंदु… (keep सर्वधर्मान्परित्यज्य — genuine pada boundary).</li>
+<li><code>overlay_unlocking_in</code> — "%1$d मध्ये उघडत आहे…" → "%1$d सेकंदांत उघडेल…" (unit + future tense; most-seen surface).</li>
+<li><code>celebration_title_fmt</code> / switch dialogs — postposition on placeholder ("गायत्री मंत्र चे") → "%1$d दिवस · %2$s" shapes (S12).</li>
+<li><code>om-namah-shivaya</code> — तू app-voice → "कधीही परत येता येईल अशी पाच अक्षरे" (S5).</li>
+<li><code>gita-3-35</code> — "भरभराटण्यापेक्षा" is not a verb → "भरभराट होण्यापेक्षा".</li>
+<li><code>hanuman-chalisa-opening</code> — "यश" (reads "success") → "कीर्ती".</li>
+<li><code>settings_row_email</code> — "यांच्या नावे साइन इन" → "साइन इन केलेले खाते" (S7).</li>
+<li><code>deity_universal</code> — सार्वत्रिक → "सर्वदेवता" (S8).</li>
+<li><code>signin_google</code>/<code>signin_subtitle</code> — unify postposition: "Google खात्याने…".</li>
+<li><code>notif_text</code> — "डूम-स्क्रोलपासून पहारा देत आहे" (wrong collocation + loanword) → "निरर्थक स्क्रोलपासून तुमचं रक्षण करत आहे."</li>
+<li><code>home_streak_fmt</code> — "%1$d दिवसांची सलगता" → "सलग %1$d दिवस".</li>
+<li>Rows: "प्रदर्शन भाषा" → "अ‍ॅपची भाषा"; "पूर्तता सूचना" → "प्रवास पूर्ण झाल्याची सूचना"; "रूप" → "स्वरूप".</li>
+<li>Library naming: "ग्रंथसंग्रह" (literary, longest nav label) → page "मंत्रसंग्रह", nav "संग्रह".</li>
+<li><code>detail_switch_cancel</code> — "सध्याचाच" → "सध्याचीच" (साधना is feminine).</li>
+<li><code>onb_intention_*</code> — five options mix 3 grammatical shapes → unify as wishes ("मन शांत व्हावं…"); "अस्वस्थ मन" → "चंचल मन".</li>
+<li><code>favourites_empty</code> — dangling adjective + anatomical heart → "अजून एकही आवडता मंत्र जतन केलेला नाही. …हृदयाच्या चिन्हावर टॅप करा."</li>
+<li><code>perm_overlay/battery/accessibility</code> — same S2 pattern: rebuild as "नियमला … करू द्या" + restore dropped clauses.</li>
+<li><code>gayatri</code>/<code>vishnu-sahasranama</code> — literalisms ("आत ओढून", "तोलायला") → "अंतःकरणात धारण करतो", "अर्थ लावायला", "त्या सर्वव्यापी विष्णूची".</li>
+</ul>
+<h3>Nits</h3>
+<ul>
+<li>"सर्व लोकांच्या गुरूला" reads "teacher of all people" → "जगद्गुरू"; "जगाला सरळ करण्यासाठी" → "धर्माची पुन्हा स्थापना करण्यासाठी"; "हे उठतात" → "निर्माण होतात"; ram-raksha conditional restructure (Marathi "शंभर कोटी" is right — fix EN); mixed colloquial/standard endings — standardise; disclosure "ते" → "ही सेवा"; nasadiya ZWNJ inconsistency.</li>
+</ul>
+<h3>Adjudications</h3>
+<ul>
+<li>(a) Signed in as: <b>change</b>. (b) Favourites आवडते: <b>keep</b>. (c) universal: <b>change → सर्वदेवता</b>. (d) Focus एकाग्रता: <b>keep</b> (already right). (e) abbreviations: keep spelled out; "30 सेकंदांखाली" → "30 सेकंदांहून कमी". (f) Chalisa register: <b>keep</b> — best writing in the pack; only यश→कीर्ती.</li>
+</ul>
+<p class="small">Spot-check: all clean incl. correct Marathi eyelash-form "अ‍ॅ" (a sign the file was written by a Marathi hand); plurals + placeholder reorderings verified.</p>
+</div>
+
+<div class="lang"><h2 id="te">6. Telugu — blockers 5 · recommended 15 · nits 6</h2>
+<h3>Blockers</h3>
+<ul>
+<li><code>notif_text</code> — "డూమ్-స్క్రోల్‌కు కాపలాగా నిలిచి ఉంది" reads "standing guard <b>over</b> doom-scrolling" (meaning inverted, on the permanent notification) → "అనవసర స్క్రోలింగ్ నుండి మిమ్మల్ని కాపాడుతోంది."</li>
+<li>[strings.xml] <b>9 missing pause strings</b> (S1).</li>
+<li><code>welcome_subtitle</code> — invents "one minute" + informal imperative → "స్క్రోల్ చేయకముందు ఒక్క క్షణం ఆగండి." (resolves the old "నిమిషం" flag — it was here, not on a permission screen).</li>
+<li><code>twameva-mata</code> — malformed predicative forms ("విద్యవి, ధనానివి, బంధువివి") → "నీవే నా విద్య, నీవే నా ధనం … నీవే నా బంధువు"; same class in <code>gita-6-5</code> ("శత్రువివి" → "శత్రువు").</li>
+<li><code>filter_show_count</code> — "చూపించు %1$d" → "%1$d చూపించు".</li>
+</ul>
+<h3>Recommended</h3>
+<ul>
+<li>Names: add Telugu nominal -ం throughout (మంత్రం, మహామంత్రం, సహస్రనామం, స్తోత్రం, ఋగ్వేదం, యజుర్వేదం, బ్రహ్మాండ పురాణం, మహాభారతం…) — file already does it for half the titles (S6).</li>
+<li>"భగవద్గీతా" ×12 → "భగవద్గీత" (matches the app's own chip); "పాండవ గీత", "గణేశ వందనం".</li>
+<li>"ఉపనిషద్" ×4 → "ఉపనిషత్తు" (chip says ఉపనిషత్తులు).</li>
+<li>Chalisa candrabindu U+0C00 ×4 → anusvara ం (tofu risk; S10).</li>
+<li>"హనుమాన చాలీసా"/"తులసీదాస" → "హనుమాన్ చాలీసా"/"తులసీదాస్".</li>
+<li><code>settings_row_notify</code> "పూర్తి సూచన" (reads "full notification") → "ప్రయాణం పూర్తయిన నోటిఫికేషన్"; "సూచన(లు)" → "నోటిఫికేషన్(లు)" where it means notifications.</li>
+<li>"చురుకైన" for Active (reads "lively/brisk") → "పని చేస్తోంది / అమల్లో ఉంది / యాక్టివ్ సబ్‌స్క్రిప్షన్…".</li>
+<li><code>perm_usage_body</code> — restore privacy clause; "మీరు బ్లాక్ చేసిన యాప్‌లు" instead of hardcoded 3 names (S2); permission bodies need finishing verbs.</li>
+<li><code>perm_battery_title</code> → "నియమ్ మేల్కొని ఉండేలా చూడండి" (S4).</li>
+<li><code>onb_intention_*</code> — make all five noun phrases; fix "నా భక్తిని … చేసుకోండి" mixed person.</li>
+<li><code>signin_privacy_note</code> — verbless ellipsis → "…ఎప్పటికీ నిల్వ చేయం."</li>
+<li>Drop translationese "యొక్క"/"మరియు" (celebration, disclosure, delete-confirm, OEM bodies).</li>
+<li><code>favourites_empty</code> — "హృదయాన్ని నొక్కండి" (press the organ) → "హృదయ గుర్తును నొక్కండి".</li>
+<li><code>gita-3-35</code> — "ధర్మాన్ని…నడపడమే" → "ఆచరించడమే".</li>
+<li><code>om-namah-shivaya</code>/<code>hare-krishna</code> — drop informal నువ్వు in app-voice (S5).</li>
+</ul>
+<h3>Nits</h3>
+<ul>
+<li>ram-raksha: Telugu "వంద కోట్ల" right — fix EN (§3). gita-3-35 "మరణించడమే" is truer than EN's softened "fall" — confirm deliberate. "అడుగు" → "దశ"; "వైదిక" → "వేదాలు"; మళ్ళీ/మళ్లీ spelling; "లేత/ముదురు" → theme names; ASCII danda note; "గణేశా—" vocative → "గణేశుడు—", "విఘ్నహర్తను" → "విఘ్నేశ్వరుని", "ఆది శంకరాచార్యులు" + attr. hedge.</li>
+</ul>
+<h3>Adjudications</h3>
+<ul>
+<li>(a) నిమిషం: <b>change</b> (it's the welcome subtitle). (b) Chalisa: <b>change</b> → "బలాన్ని, సద్బుద్ధిని ప్రసాదించు". (c) Signed in as → <b>"సైన్ ఇన్ అయిన ఖాతా"</b>. (d) Favourites ఇష్టమైనవి: <b>keep</b>. (e) universal → <b>విశ్వజనీనం</b>. (f) Focus → <b>ఏకాగ్రత</b> (దృష్టి risks reading as evil-eye దిష్టి). (g) abbreviations: <b>keep spelled out</b>. (h) deity names: bare stems → <b>శివుడు, విష్ణువు, గణేశుడు, కృష్ణుడు, రాముడు</b>; నీవే for God in twameva.</li>
+</ul>
+<p class="small">Spot-check: Gita 2.47/Gayatri character-perfect; 49 ZWNJs all correct; brand నియమ్ consistent ×11; 18.66 theology exactly right.</p>
+</div>
+
+<div class="lang"><h2 id="ta">7. Tamil — blockers 7 · recommended 19 · nits 6</h2>
+<h3>Blockers</h3>
+<ul>
+<li><b>சாதனை → சாதனா in ~15 strings</b> (<code>home_overline, next_title, celebration_next, overlay_label_fmt, notif_completion_body_fmt, detail_make_current, detail_is_current, detail_switch_*, settings_row_current_sadhana, signin_title, onb_intention_sadhana, intent_sadhana</code>) — the app's core word currently reads "achievement/record" to a Tamil user.</li>
+<li><code>celebration_body</code> — "அந்த ஒழுக்கமே சாதனை" says "that discipline is the <i>achievement</i>", inverting the line's point → "அந்த ஒழுக்கமே உங்கள் சாதனா."</li>
+<li><code>gita-18-66</code> — "உன்னைக் கடத்துவேன்" = "I will kidnap you" → "உன்னை நான் விடுவிப்பேன்" (theology otherwise correct).</li>
+<li><code>signin_privacy_note</code> — grammatically unparseable privacy promise → "…மற்ற செயலிகளில் நீங்கள் என்ன செய்கிறீர்கள் என்பதை ஒருபோதும் சேமிப்பதில்லை."</li>
+<li>[strings.xml] <b>9 missing pause strings</b> (S1).</li>
+<li>Visarga U+A789 "꞉" in 3 spot-check texts — Latin-block codepoint, tofu/fallback risk → ஃ or ":" (device-verify; downgrade to Recommended if it renders) (S10).</li>
+<li><code>settings_notify_blocked</code> — "கணினி அமைப்புகளில்" (computer settings) → "சாதன அமைப்புகளில்".</li>
+</ul>
+<h3>Recommended</h3>
+<ul>
+<li>Source labels: Tamil finals (மந்திரம், ஸ்தோத்திரம், ரிக் வேதம், மகாபாரதம், பிரம்மாண்ட புராணம், ஸஹஸ்ரநாமம், யஜுர் வேதம், அனுஶாஸன பருவம்) — pack currently contradicts itself and the chips (S6).</li>
+<li>Titles take Tamil honorifics: "அனுமன் சாலீசா", "துளசிதாசர்", "ஆதி சங்கரர்", "புத கௌஶிகர்".</li>
+<li><code>paywall_cta</code> "நியம்-ஐ திற" → "எல்லாவற்றையும் திறங்கள்" (curt + "open"≠"unlock"). <i>(Dormant while free — fix rides the file anyway.)</i></li>
+<li>Don't inflect the brand: "நியம்-ஐ/க்கு/இன்" → "நியம் செயலியை/செயலிக்கு…".</li>
+<li><code>om-namah-shivaya</code>/<code>hare-krishna</code> — app-voice நீ → impersonal/polite (S5).</li>
+<li><code>gayatri</code> — "உள்ளே இழுத்து…அசையச் செய்யட்டும்" → "உள்வாங்கி… ஒளிரச் செய்து தூண்டட்டும்" (pracodayāt = impel, not wobble).</li>
+<li><code>gita-6-5</code>/<code>saraswati-vandana</code>/<code>gita-3-35</code> verb fixes ("தாழ்ந்துவிடாதே", "முற்றிலும்", "கடைப்பிடிப்பதே"); name the referent in 3.35 ("பிறர் வழி").</li>
+<li><code>vakratunda</code> — "கணேசா" vocative-as-subject → "விநாயகர்".</li>
+<li>Permission flow: fragments → full clauses; restore dropped privacy sentence (S2); <code>perm_battery_title</code> → "நியம் விழித்திருக்கட்டும்" (S4).</li>
+<li><code>settings_appearance_system</code> "அமைப்பு" (reads "Settings") → "சாதன அமைப்பு"; <code>grant</code> "அளி" → "அனுமதி" (OEM bodies reference it by name ×5).</li>
+<li><code>len_*</code> — "வி" is not a Tamil abbreviation → spell out வினாடி.</li>
+<li><code>deity_universal</code> "பொதுவான" → "பொது" (or "பரம்பொருள்"); <code>cat_vedic</code> "வைதிக" → "வேதங்கள்".</li>
+<li><code>favourites_empty</code> — "இதயத்தைத் தட்டி" (the organ) → "இதயக் குறியீட்டைத் தட்டி".</li>
+<li><code>overlay_unlocking_in</code> — add unit: "%1$d வினாடியில் திறக்கிறது…"; <code>filter_show_count</code> "%1$d-ஐக் காட்டு".</li>
+<li><code>settings_row_email</code> — "இவராக உள்நுழைந்துள்ளீர்கள்" → "உள்நுழைந்துள்ள கணக்கு" (S7).</li>
+<li><code>welcome_subtitle</code> — keep the drowning image, fix "நிறுத்தம்" (bus stop) → "ஒரு கணம் நில்லுங்கள்".</li>
+</ul>
+<h3>Nits</h3>
+<ul>
+<li>"ப்ரீமியம்" → "பிரீமியம்"; "கொள்முதலை மீட்டமை" → "வாங்கியதை மீட்டெடு"; "பார்வையிடு" → "பாருங்கள்"; "அழி" → "நீக்கு"; light theme "வெளிச்சம்" → "வெளிர்" (uncertain of platform term); sandhi doubling in 5 meanings ("உலகைச் சந்திக்கும்"…); two over-long dialog buttons tightened.</li>
+</ul>
+<h3>Adjudications</h3>
+<ul>
+<li>(a) சாதனை: <b>change → சாதனா</b> (blocker). (b) welcome line: keep image, fix நிறுத்தம். (c) திற CTA: <b>change</b>. (d) visarga: <b>change → ஃ</b> (device-verify caveat stated). (e) Signed in as: <b>change</b>. (f) Favourites பிடித்தவை: <b>keep</b>. (g) universal → <b>பொது</b>. (h) abbreviations: <b>change → spell out</b>.</li>
+</ul>
+<p class="small">Spot-check: no mojibake; அ-avagraha convention, ப/த multi-value letters, ஸுமிரௌம்/பரனஉம் vowel distinction all correct; ASCII danda noted as convention.</p>
+</div>
+
+<div class="lang"><h2 id="kn">8. Kannada — blockers 4 · recommended 19 · nits 9</h2>
+<h3>Blockers</h3>
+<ul>
+<li>[strings.xml] <b>9 missing pause strings</b> (S1; verified against the consuming screens — KN has 180 strings vs 190 EN).</li>
+<li><code>celebration_title_fmt</code> + switch dialogs — free-standing masculine genitive "ನ" after placeholder ("ಗಾಯತ್ರೀ ಮಂತ್ರ ನ 14 ದಿನಗಳು") → "%2$s · %1$d ದಿನಗಳು" shapes (S12; the celebration screen is the app's emotional peak).</li>
+<li><code>gita-3-35</code> — "ಆ ದಾರಿ" binds to your own path → "ಏಕೆಂದರೆ ಪರರ ದಾರಿ ಭಯವನ್ನೇ ತರುತ್ತದೆ" (S3).</li>
+<li><code>asato-ma</code> — "ಸುಳ್ಳಿನಿಂದ" narrows asat to a moral lie → "ಅಸತ್ಯದಿಂದ ಸತ್ಯದೆಡೆಗೆ" (every Kannada devotee knows this form).</li>
+</ul>
+<h3>Recommended</h3>
+<ul>
+<li>Labels: "ಉಪನಿಷದ್" → "ಉಪನಿಷತ್ತು" ×4; "ಭಗವದ್ಗೀತಾ" → "ಭಗವದ್ಗೀತೆ" ×7 (+ ಪಾಂಡವ ಗೀತೆ, ಗಣೇಶ ವಂದನೆ) — chips and cards currently contradict (S6).</li>
+<li>Chalisa — "ಒಳ್ಳೆಯ ಬುದ್ಧಿ ಕೊಡು" (scolding idiom) → "ಬಲವನ್ನೂ ಬುದ್ಧಿಯನ್ನೂ ವಿದ್ಯೆಯನ್ನೂ ಕೊಡು" (restores bala-budhi-vidyā).</li>
+<li><code>om-namah-shivaya</code>/<code>hare-krishna</code> — ನೀನು → ನೀವು in app-voice (S5).</li>
+<li><code>gita-18-66</code> — "ನನ್ನೊಬ್ಬನನ್ನೇ ಶರಣು ಹೊಂದು" → "ನನ್ನೊಬ್ಬನಿಗೇ ಶರಣಾಗು" (dative government).</li>
+<li><code>gita-6-6</code> gender/verb disagreement → nominal predicate; <code>mahamrityunjaya</code> "ಬಿಡುಗಡೆಯಾಗುವಂತೆ" (legal release) → "ಕಳಚಿಕೊಳ್ಳುವಂತೆ"; <code>krishna-ashtakam</code> "ಆ ದಿವ್ಯ" → "ಆ ದಿವ್ಯಸ್ವರೂಪ"; <code>vakratunda</code> "ವಿಘ್ನಹರ್ತ" (Marathi/Hindi form) → "ವಿಘ್ನೇಶ್ವರ".</li>
+<li>Latin word + floating case suffix → hyphenate ("Google-ನೊಂದಿಗೆ", "Android-ನ", "Google Play-ನಲ್ಲಿ").</li>
+<li><code>perm_battery_title</code> → "ನಿಯಮ ಎಚ್ಚರವಾಗಿರಲಿ" (S4); <code>perm_usage_body</code> restore privacy clause + finite verbs (S2).</li>
+<li>ಸಾಧನ (device) vs ಸಾಧನೆ collision → use ಫೋನ್ in the 3 account strings.</li>
+<li><code>paywall_plan_monthly_subline</code> dangling adjective → "ಬೇಕಾದಂತೆ — ಯಾವಾಗ ಬೇಕಾದರೂ ರದ್ದುಗೊಳಿಸಿ".</li>
+<li>3 unbreakable long titles → space them ("ಯಾ ಕುಂದೇಂದು ತುಷಾರಹಾರ ಧವಲಾ", "ಸರ್ವಧರ್ಮಾನ್ ಪರಿತ್ಯಜ್ಯ", "ಶ್ರೇಯಾನ್ ಸ್ವಧರ್ಮಃ").</li>
+<li>Favourites number agreement (ಮೆಚ್ಚಿನವುಗಳಿಲ್ಲ); nasadiya tense slips; "ತೂಗಲು" → "ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳಲು"; "ಭಾರವಾದ ಪಾಪ" → "ಮಹಾಪಾಪ".</li>
+</ul>
+<h3>Nits</h3>
+<ul>
+<li>"ಡೂಮ್-ಸ್ಕ್ರಾಲ್" → "ಕೊನೆಯಿಲ್ಲದ ಸ್ಕ್ರಾಲ್"; drop numeral hyphens; "ಹೆಜ್ಜೆ" → "ಹಂತ"; "ಪೂರ್ಣಗೊಳಿಕೆ" → "ಪೂರ್ಣಗೊಂಡಾಗ"; OEM adverbs; title conventions (ಕ�ೃಷ್ಣಾಷ್ಟಕಂ, ರಾಮರಕ್ಷಾ ಸ್ತೋತ್ರಂ, ಹನುಮಾನ್ ಚಾಲೀಸಾ); ram-raksha EN is the error (§3); gayatri "ಚಲನೆ ನೀಡಲಿ" → "ಪ್ರೇರೇಪಿಸಲಿ"; disclosure collect/store verb precision.</li>
+</ul>
+<h3>Adjudications</h3>
+<ul>
+<li>(a) Chalisa: <b>change</b> (restore ವಿದ್ಯೆ). (b) Signed in as → <b>"ಸೈನ್ ಇನ್ ಆಗಿರುವ ಖಾತೆ"</b>. (c) Favourites ಮೆಚ್ಚಿನ-: <b>keep</b>, fix number. (d) universal → <b>ಸರ್ವದೇವ</b>. (e) Focus ಏಕಾಗ್ರತೆ: <b>keep</b> ("the best line in the file"). (f) abbreviations: <b>change → spell out ಸೆಕೆಂಡ್</b>.</li>
+</ul>
+<p class="small">Spot-check: clean (correct Kannada avagraha U+0CBD); device-verify candrabindu U+0C81 ×4 in the Chalisa on low-end OEM fonts (S10).</p>
+</div>
+
+<div class="lang"><h2 id="bn">9. Bengali — blockers 5 · recommended 13 · nits 7</h2>
+<h3>Blockers</h3>
+<ul>
+<li><code>gita-3-35</code> — "সেই পথ" binds to your own path → "…কারণ পরের পথ কেবল ভয়ই ডেকে আনে" (S3).</li>
+<li><code>twameva-mata</code> — "বন্ধু আর সখা" is "friend and friend" → "তুমিই আমার আত্মীয় আর তুমিই সখা" (bandhu = kin here).</li>
+<li><code>perm_usage_title</code> (+ <code>perm_accessibility_title</code>) — actor inversion → "কোন অ্যাপ খোলা আছে নিয়মকে দেখতে দিন" (S2).</li>
+<li>6 OEM bodies — instructions name English buttons ("Grant-এ ট্যাপ করুন") that are localized in-app → "\"অনুমতি দিন\"-এ", "\"সম্পন্ন\"-এ" (OS-level labels correctly stay English).</li>
+<li>[strings.xml] <b>9 missing pause strings</b> (S1).</li>
+</ul>
+<h3>Recommended</h3>
+<ul>
+<li><code>gita-4-7-8</code> — "জগৎকে আবার সোজা করতে" (menacing idiom) → "ধর্মকে আবার প্রতিষ্ঠা করতে".</li>
+<li>Numerals: all-Bengali digits (৭, ৬, ৩০, ৬০, ১), incl. sourceLabels ("ভগবদ্গীতা ২.৪৭") — device-verify caveat (S11).</li>
+<li>Chalisa — "সুমিরৌং"/"মোহিং" anusvara → chandrabindu "সুমিরৌঁ"/"মোহিঁ" (wrong nasal for chanting; the doha already gets বরনউঁ/তিহুঁ right).</li>
+<li><code>om-namah-shivaya</code>/<code>hare-krishna</code> — app-voice তুমি → impersonal (S5); <code>hare-krishna</code> "বোঝার মতো কোনো বাক্য নেই" reads dismissive of the mahāmantra in Gaudiya heartland → "এখানে ব্যাকরণ বিচারের কিছু নেই — শুধু নাম, বারবার."</li>
+<li><code>gita-2-14</code> — "মোকাবিলা করো, আর সহ্য করো" → "ধৈর্য ধরে এদের সহ্য করো" (titikṣā = endurance, not confrontation).</li>
+<li><code>gita-18-66</code> — quote Krishna's line so "আমার" has an antecedent.</li>
+<li>Permission bodies translated from stale EN — retranslate; restore privacy clause (S2); "পটভূমি" (backdrop) → "ব্যাকগ্রাউন্ড"; <code>perm_battery_title</code> → "নিয়মকে জেগে থাকতে দিন" (S4).</li>
+<li><code>settings_appearance_light</code> "উজ্জ্বল" → "হালকা" (pairs with গাঢ়).</li>
+<li><code>filter_show_count</code> → "%1$dটি দেখান"; <code>home_streak_fmt</code> "ধারা" → "টানা %1$d দিন"; <code>detail_make_current</code> "এটিকে আমার সাধনা করুন" (ambiguous) → "এটিই হোক আমার সাধনা".</li>
+</ul>
+<h3>Nits</h3>
+<ul>
+<li>"মনোযোগ প্রয়োজন" calque; brand suffix hyphens (নিয়মকে, নিয়মের); উপনিষদ্/উপনিষদ convention split with chips; "%1$d টি" spacing; সম্পূর্ণ/সম্পন্ন; literal English images ("ওজন করার", "পুঁতির মতো ঘোরে" → জপমালার দানা); krishna-ashtakam জগদ্গুরু + attr. hedge; "প্রদর্শন ভাষা" → "অ্যাপের ভাষা"; "সব মুছে ফেলুন" → "সব ফিল্টার সরান"; "কাহিনি" → "চরিত"; ocean pronoun "সে" → "সাগর".</li>
+</ul>
+<h3>Adjudications</h3>
+<ul>
+<li>(a) numerals: <b>change → Bengali digits</b> (device-verify). (b) Signed in as → <b>"সাইন-ইন করা অ্যাকাউন্ট"</b>. (c) Favourites প্রিয়: <b>keep</b>, fix empty-state. (d) universal: <b>change</b> — "সর্বজনীন" evokes public Durga Puja → "সবার জন্য" or "সর্বব্যাপী". (e) Focus → <b>একাগ্রতা</b> (reject ধ্যান). (f) abbreviations: <b>keep spelled out</b>.</li>
+</ul>
+<p class="small">Spot-check: clean (khanda-ta, avagraha ঽ, ba/va all right); 18.66 theology correct; sandhi-joined titles noted as convention.</p>
+</div>
+
+<div class="lang"><h2 id="gu">10. Gujarati — blockers 6 · recommended 16 · nits 5</h2>
+<h3>Blockers</h3>
+<ul>
+<li>[strings.xml] <b>9 missing pause strings</b> (S1).</li>
+<li><code>gita-3-35</code> — "એ રાહ" points at your own path → "…કેમ કે પારકો ધર્મ ભય લાવનારો છે" (S3).</li>
+<li><code>nasadiya-suktam</code> — "શું હાલ્યું" (walked/departed) → "શું હલ્યું" (stirred) — wrong verb in the most delicate line in the set.</li>
+<li><code>perm_usage_title</code> — actor inversion → "કઈ એપ ખુલી છે એ નિયમને જોવા દો" (S2).</li>
+<li><code>perm_usage_body</code> — privacy assurance entirely absent + 3 hardcoded app names (S2; Play-policy risk).</li>
+<li><code>welcome_subtitle</code> — "ઠહરો" is Hindi, not Gujarati → "સ્ક્રોલ પહેલાં એક ક્ષણ થોભો." (first line of the app).</li>
+</ul>
+<h3>Recommended</h3>
+<ul>
+<li>Titles/labels: Sanskrit orthography → Gujarati (મંત્ર, વંદના, બ્રહ્માંડ, શંકરાચાર્ય, પાંડવ, ઉપનિષદ, વક્રતુંડ, કલિસંતરણ, મહામૃત્યુંજય) — keep Sanskrit forms on verse incipits only (S6).</li>
+<li><code>home_streak_fmt</code> — dangling adjective → "સળંગ %1$d દિવસ".</li>
+<li><code>gita-2-14</code> — "એમને…સામનો કર" → "એમનો…સામનો કર" (case government).</li>
+<li><code>gita-4-7-8</code> — Hindi words બૂરાઈ/મિટાવવા + flat "સીધું કરવા" → "દુષ્ટતાનો નાશ કરવા અને ધર્મને ફરી સ્થાપવા".</li>
+<li><code>gayatri</code>/<code>vishnu-sahasranama</code> — "ઝાલી રાખીએ/ઝાલવાનો" (grip) → "ધારણ કરીએ"/"સ્મરવાનો".</li>
+<li><code>hare-krishna</code> — "બોલાવવું" (summon a person) → "નામ વારંવાર લેવું"; unify infinitive mood.</li>
+<li><code>purusha-suktam</code> — verbless dangle → "— પોતે જેને વ્યાપ્યું છે તે સર્વથી પણ મોટો."</li>
+<li><code>ram-raksha-opening</code> — repair the તો-conditional.</li>
+<li><code>krishna-ashtakam</code> — "એ દિવ્ય" → "એ દેવ"; <code>mahamrityunjaya</code> — "ડીંટડી" (colloquially "nipple") → "ડીંટેથી સહજ છૂટી પડે".</li>
+<li><code>onb_intention_dharma</code> — ungrammatical "જોડાવ અનુભવો" → "જોડાયેલા અનુભવો".</li>
+<li>"અભ્યાસ" (academic study) for practice → "સાધના" (<code>settings_section_sadhana</code>, <code>detail_practice_again</code>).</li>
+<li>Postposition spacing — attach throughout ("4માંથી", "%2$sના", "%1$dમાં") (S12).</li>
+<li><code>overlay_unlocking_in</code> — add unit: "%1$d સેકન્ડમાં ખૂલશે…".</li>
+<li>Stale permission copy family (S2) + <code>perm_battery_title</code> (S4).</li>
+<li>Disclosure: બ્લોક/અવરોધિત drift + coined "સંગ્રહતું નથી" → "સંગ્રહ કરતું નથી".</li>
+</ul>
+<h3>Nits</h3>
+<ul>
+<li>સ્તોત્રમ્/સ્તોત્ર citation convention; " . "/" .. " → ।/॥; "આછો/ઘેરો" → "આછું/ઘેરું" (or લાઇટ/ડાર્ક); "પ્રદર્શન ભાષા" → "ભાષા"; honorific એમને/એમનાં for deities in sahasranāma glosses.</li>
+</ul>
+<h3>Adjudications</h3>
+<ul>
+<li>(a) Chalisa candrabindu-vs-anusvara: <b>KEEP — false positive</b>; checked mark-by-mark, matches Gita Press exactly. (b) Signed in as → <b>"આ ખાતાથી સાઇન ઇન"</b>. (c) Favourites: <b>change પ્રિય → મનપસંદ</b> (પ્રિય alone reads as "dear"/letter salutation). (d) universal → <b>"સર્વ દેવ"</b>. (e) Focus → <b>એકાગ્રતા</b>. (f) abbreviations: <b>keep spelled out</b>.</li>
+</ul>
+<p class="small">Verified clean: no mojibake, no Devanagari leakage, placeholders + plurals intact.</p>
+</div>
+
+<h2 id="plan">11. Recommended fix plan (awaiting founder approval — nothing applied yet)</h2>
+<table>
+<tr><th>Phase</th><th>What</th><th>Size / risk</th></tr>
+<tr><td><b>R1 — Blockers</b></td><td>All 36: the 9 missing strings translated ×7 (63 new strings); full <code>perm_*</code> retranslation ×7 from current English; the 5 meaning inversions/errors (gita-3-35 ×3+, notif_text te, welcome gu/te, twameva bn/te, கடத்துவேன் ta, asato-ma kn, nasadiya gu, Chalisa/RamRaksha EN+hi); சாதனை→சாதனா sweep; bn OEM button names; kn celebration format strings; ta privacy note + கணினி.</td><td>Content + strings only, no code. The visarga/candrabindu items need one emulator render check first.</td></tr>
+<tr><td><b>R2 — Recommended</b></td><td>116 items: names/sourceLabels per-language display-form pass (S6), app-voice register (S5), battery title (S4), Signed-in-as (S7), deity_universal (S8), Focus (S9), bn numerals (S11), placeholder-postposition restructures (S12), plus per-language idiom fixes.</td><td>Content + strings; the S6 name pass touches <code>mantras.json</code> broadly — do as its own reviewed commit.</td></tr>
+<tr><td><b>R3 — Nits</b></td><td>46 polish items.</td><td>Optional; can ride R2 or wait.</td></tr>
+</table>
+<p><b>Open founder decisions inside the fixes:</b> Hindi "universal" gloss (ईश्वर vs सर्वदेव nuance); Marathi library naming (ग्रंथसंग्रह → मंत्रसंग्रह/संग्रह); Bengali digits (all-Bengali vs all-Latin); whether the Telugu deity chips take full nominative forms (శివుడు…). Everything else has a single clear proposal.</p>
+<p class="small">Process note: reviewers were told to review only; diffs above are proposals. The English reference fixes (§3) change <code>meaning.en</code>, which is user-visible for English-language users — flagging explicitly since English text was otherwise out of scope.</p>
+
+</body>
+</html>
