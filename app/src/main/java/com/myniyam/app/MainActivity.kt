@@ -22,6 +22,12 @@ import com.myniyam.app.ui.theme.ThemeState
 
 class MainActivity : ComponentActivity() {
 
+    // Flexible in-app update result — informational only; a declined sheet is
+    // simply re-offered on a later launch by Play's own throttling.
+    private val updateLauncher = registerForActivityResult(
+        androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult()
+    ) { /* no-op: flexible flow needs no handling here */ }
+
     override fun attachBaseContext(newBase: android.content.Context) {
         // Chrome language follows the in-app choice (SP-11). ensureLoaded is
         // idempotent and already the app's blocking warm-up pattern.
@@ -38,6 +44,10 @@ class MainActivity : ComponentActivity() {
         UserPrefs.ensureLoaded(this)
         RemoteConfig.ensureLoaded(this)
         lifecycleScope.launch { RemoteConfig.refresh(this@MainActivity) }
+        // Play in-app updates (flexible): apply a previously downloaded update,
+        // then offer any new one. Best-effort; silent off-Play.
+        com.myniyam.app.update.InAppUpdater.completePendingUpdate(this)
+        com.myniyam.app.update.InAppUpdater.checkAndPrompt(this, updateLauncher)
         // Monetization launch work — all dormant while the app is free for
         // everyone (Entitlements.FREE_FOR_ALL): no purchases to self-heal, no
         // trial to seed, no reminder to anchor.

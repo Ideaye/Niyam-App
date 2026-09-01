@@ -105,6 +105,7 @@ dependencies {
     implementation(libs.supabase.storage)
     implementation(libs.supabase.compose.auth)
     implementation(libs.billing.ktx)
+    implementation(libs.play.app.update.ktx)
     implementation(libs.ktor.client.okhttp)
     // Native Google sign-in (SP-P3): Credential Manager + Google ID.
     implementation(libs.androidx.credentials)
