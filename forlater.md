@@ -99,6 +99,14 @@
 - **Originated from:** Sign-up flow audit (C1 self-audit).
 - **Completed:** 2026-07-08.
 
+### 18. Supabase free-tier auto-pause — decide before launch
+- **What:** Discovered 2026-09-01: the Niyam Supabase project had silently auto-paused (free tier pauses after ~1 week without traffic) — sign-in, sync, and delete-account were dead for all testers since ~July, unnoticed. Restored 2026-09-01 (Relive paused to free the 2-active-project slot, founder-approved). It WILL pause again after ~a week of no traffic until launch.
+- **Decision needed:** upgrade the Ideaye Media org to Pro ($25/mo, no auto-pause — the launch-grade option) before Play submission, or accept re-pauses until launch traffic keeps it warm (and manually restore before any test session).
+- **Also:** local `supabase` CLI is broken (SIGKILL on any invocation) — `brew reinstall supabase` when next needed. Server ops this session went via the Management API instead.
+- **Date added:** 2026-09-01
+- **Originated from:** OTA content push (forlater #1 application).
+- **Trigger to revisit:** Before Play submission, or before the next backend-dependent test session — whichever first.
+
 ### 17. Re-monetization playbook (when "later" arrives)
 - **What:** Pranav (2026-08-31): "make Niyam free for everyone now; later we shall figure how to make it a paid version." The paid machinery was put to sleep, not deleted. Turning it back on requires, in order:
   1. Decide the **grandfather policy** for users who joined while the app was free (the `Entitlements` grandfather rules for current-mantra/current-language already exist; "early users stay free forever" would be a new rule). Also decide trial treatment — free-era users have no `trialStartEpochDay`, so on flip they'd land on FREE with no trial unless seeded.
