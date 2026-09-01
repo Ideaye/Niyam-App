@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niyam iOS — Design Spec (v1)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 920px; margin: 2rem auto; padding: 0 1.2rem; color: #1c1c1c; line-height: 1.55; }
+  h1 { font-size: 1.7rem; border-bottom: 3px solid #E86A33; padding-bottom: .4rem; }
+  h2 { font-size: 1.25rem; margin-top: 2rem; border-bottom: 1px solid #E8DCCD; padding-bottom: .25rem; color: #003223; }
+  h3 { font-size: 1.05rem; color: #333; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .92rem; }
+  th, td { border: 1px solid #ddd; padding: .45rem .6rem; text-align: left; vertical-align: top; }
+  th { background: #F5EBE1; }
+  code { font-family: ui-monospace, Menlo, monospace; font-size: .88em; background: #f6f2ec; padding: .06em .3em; border-radius: 4px; }
+  pre { background: #f6f2ec; padding: .8rem 1rem; border-radius: 8px; overflow-x: auto; font-size: .85rem; }
+  .box { border: 1px solid #E8DCCD; border-left: 5px solid #E86A33; background: #FDF9F3; padding: .8rem 1rem; border-radius: 8px; margin: 1rem 0; }
+  .decision { border-left-color: #003223; }
+  ul { padding-left: 1.3rem; } li { margin: .35rem 0; }
+  .toc { background: #FBF6EF; border: 1px solid #E8DCCD; border-radius: 8px; padding: .8rem 1.2rem; }
+  .toc a { text-decoration: none; color: #003223; }
+  .small { font-size: .85rem; color: #555; }
+  @media print { body { max-width: none; } .box { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>Niyam iOS — Design Spec (v1)</h1>
+<p class="small">2026-09-01 · Founder decision: iOS as a parallel track alongside the Android Play launch; app is free for everyone. This spec is the veto point — no iOS code before approval. Apple constraints below verified against current developer documentation/forums, not memory.</p>
+
+<div class="toc"><b>Contents</b> —
+<a href="#why">1. What iOS Niyam is (and honestly isn't)</a> ·
+<a href="#mech">2. Blocking mechanism</a> ·
+<a href="#scope">3. v1 scope</a> ·
+<a href="#arch">4. Architecture</a> ·
+<a href="#auth">5. Auth & sync</a> ·
+<a href="#content">6. Content & localization</a> ·
+<a href="#ui">7. UI</a> ·
+<a href="#deltas">8. Android↔iOS deltas (honest list)</a> ·
+<a href="#phases">9. Build phases</a> ·
+<a href="#founder">10. Founder actions</a> ·
+<a href="#risks">11. Risks & open questions</a></div>
+
+<h2 id="why">1. What iOS Niyam is — and honestly isn't</h2>
+<p><b>The vow survives; the choreography changes.</b> iOS structurally forbids one app from watching another launch and painting a live overlay over it. What Apple sanctions instead is the <b>Screen Time API</b>: Niyam "shields" the user's chosen apps, and opening one presents a system shield screen that we style. The pause-before-the-scroll happens there — mantra line, sacred moment, Continue — then a grace window opens, exactly mirroring Android's UnlockGrace. The <i>full</i> reading experience (in-script text, ring, meaning, streak recording) lives inside the Niyam app.</p>
+<div class="box"><b>What the shield can and cannot do (verified):</b> customizable = background color + blur, an icon image, title, subtitle, one or two buttons with label/color. NOT possible = gradients, animation, a live countdown, custom views (Apple feedback FB14237883 confirms static-snapshot design), or opening our app directly from the shield button (<code>ShieldActionResponse</code> is only <code>.none/.defer/.close</code>). One quirk: minutes spent staring at the shield count as "usage" of the blocked app in Screen Time stats.</div>
+
+<h2 id="mech">2. Blocking mechanism (the core loop)</h2>
+<ol>
+<li><b>Selection:</b> user picks apps via Apple's <code>FamilyActivityPicker</code>. Apple returns <b>opaque tokens</b> — we never learn which apps they chose, and we cannot pre-list "Instagram/YouTube" the way Android's AppCatalog does. (Privacy-positive; onboarding copy adapts.)</li>
+<li><b>Shield:</b> <code>ManagedSettingsStore.shield.applications = tokens</code>. Opening a shielded app shows our configured shield: bottle-green background, Niyam icon, the current mantra's first line as title, its roman/translation line as subtitle, primary button <i>"I've read it — Continue"</i>.</li>
+<li><b>Pause enforcement:</b> button tap → <code>ShieldActionDelegate</code> responds <code>.defer</code>, waits the configured pause length (15–60s; the shield stays up, static — no visible countdown, an honest iOS compromise), then removes that app's token from the shield set.</li>
+<li><b>Grace:</b> a <code>DeviceActivitySchedule</code> re-shields the app after the 5-minute grace window (same semantics as Android's UnlockGrace: granted only by Continue).</li>
+<li><b>Interval check-in (v1.1, not v1):</b> <code>DeviceActivityMonitor</code> usage-threshold events map cleanly to the 30/60/120-min check-in — deferred to keep v1 tight.</li>
+</ol>
+<p class="small">Extensions required: ShieldConfiguration extension + ShieldAction extension + DeviceActivityMonitor extension, sharing state with the app via an App Group. Each needs the Family Controls entitlement (distribution approval covers app + extensions; Apple reviews the request in days-to-weeks — filed early, see §10).</p>
+
+<h2 id="scope">3. v1 scope</h2>
+<table>
+<tr><th>In v1</th><th>Explicitly out (v1.1+)</th></tr>
+<tr><td>Shield blocking + enforced pause + 5-min grace · onboarding (Welcome → sign-in → language → intention → starter mantra → app selection → Screen Time permission) · Home (practice card, streak, day-N) · Library + filters · Favourites · Mantra detail + switching · Settings (language, appearance, pause length, account: sign out / delete) · Google + Apple sign-in · practice/favourites sync (existing Supabase tables) · OTA content (same bucket/config) · 9 content languages + 8 chrome languages (ported translations) · completion celebration + NextSadhana</td>
+<td>Interval check-in · completion notifications (needs APNs decisions) · Shortcuts-automation "rich mode" (full ring UX) · widgets · paywall/billing (app is free; machinery not ported at all — simpler than Android's dormant code)</td></tr>
+</table>
+
+<h2 id="arch">4. Architecture</h2>
+<ul>
+<li><b>Repo:</b> monorepo — new <code>ios/</code> directory beside <code>app/</code>. One <code>mantras.json</code> source of truth (build step copies it into the iOS bundle). Website/Vercel unaffected.</li>
+<li><b>Stack:</b> Swift 5.10+, SwiftUI, min deployment <b>iOS 16</b> (Screen Time APIs matured there; covers the overwhelming share of active iPhones). SwiftData for read-events (Room's mirror). No third-party deps except <code>supabase-swift</code>.</li>
+<li><b>Targets:</b> app + 3 extensions (§2) + App Group <code>group.com.myniyam.app</code> for shared prefs (current mantra, pause config, grace state).</li>
+<li><b>Bundle id:</b> <code>com.myniyam.app</code> (matches Android's application id; independent namespace on Apple).</li>
+</ul>
+
+<h2 id="auth">5. Auth & sync</h2>
+<ul>
+<li><b>Sign in with Apple is mandatory</b> (App Store rule when third-party login is offered) + Google sign-in for parity. Both native via <code>supabase-swift</code>.</li>
+<li><b>Account identity:</b> Supabase links providers by verified email. Caveat: Apple users who choose "Hide My Email" get a private-relay address → a returning Android user signing into iOS with Apple would create a <i>separate</i> account. Mitigation: onboarding copy nudges "use the same Google account as on Android" for cross-device users; Apple sign-in primarily serves iOS-first users.</li>
+<li><b>Sync:</b> reuse <code>practice_state</code> + <code>favourites</code> tables and Android's push-local-then-sync semantics (push on background, seed on sign-in). Streaks stay device-local (same as Android). Entitlements/billing tables: untouched, dormant.</li>
+<li><b>Delete account:</b> same <code>delete-account</code> Edge Function.</li>
+</ul>
+
+<h2 id="content">6. Content & localization</h2>
+<ul>
+<li>Bundled <code>mantras.json</code> (identical file) + OTA via the same <code>content</code> bucket and <code>app_config.content_version</code>. RemoteConfig keys reused; iOS ignores Android-only keys (blockable_apps — meaningless under opaque tokens; min version gets an iOS sibling key <code>min_supported_build_ios</code>).</li>
+<li>Chrome: port the 8 languages from <code>values-*/strings.xml</code> → <code>Localizable.xcstrings</code> via a conversion script (one-time + re-runnable; keeps Android as the translation source of truth). All the native-review quality lands on iOS for free.</li>
+</ul>
+
+<h2 id="ui">7. UI</h2>
+<p>Ports the founder-approved Android v2 design system — Sunrise/dark gradients, bottle-green/eggshell/orange tokens, Outfit (licensed, bundled), floating 24dp cards, content-below-top-bar composition, 4-tab bottom bar. No new visual design is being proposed; screens map 1:1 to their Android siblings except where iOS idiom demands (system back-swipe, sheet-style pickers, FamilyActivityPicker replacing the app grid). Founder gallery veto happens on TestFlight screenshots at P7, same as Android's emulator galleries.</p>
+
+<h2 id="deltas">8. Android ↔ iOS deltas — the honest list</h2>
+<table>
+<tr><th>Android</th><th>iOS v1</th></tr>
+<tr><td>Full-screen overlay with live 15s ring over the blocked app</td><td>Static system shield: mantra line + button; enforced pause without visible countdown; full ring experience only inside the app</td></tr>
+<tr><td>Full mantra text on the unlock surface</td><td>Roughly title + subtitle worth of text on the shield (first line + one translation line)</td></tr>
+<tr><td>We know the blocked apps (catalog, logos, per-app copy)</td><td>Opaque tokens; we never know which apps; no per-app logos/copy</td></tr>
+<tr><td>Overlay Continue records a read automatically</td><td>Shield can't message the app in real time; reads are recorded in-app (Home practice card), shield Continue grants access only — <b>streak semantics differ, see §11 Q1</b></td></tr>
+<tr><td>Interval check-in (30/60/120 min)</td><td>v1.1 via DeviceActivity thresholds</td></tr>
+<tr><td>Accessibility disclosure/consent flow</td><td>Not needed; replaced by Apple's own Screen Time authorization prompt</td></tr>
+<tr><td>OEM autostart battles</td><td>None — Apple's scheduler is reliable</td></tr>
+</table>
+
+<h2 id="phases">9. Build phases (commit + veto cadence as usual)</h2>
+<table>
+<tr><th>Phase</th><th>Delivers</th><th>Gate</th></tr>
+<tr><td>P0</td><td>Xcode project scaffold, targets/entitlements config, App Group, brand tokens + Outfit, mantras.json bundling script</td><td>—</td></tr>
+<tr><td>P1</td><td>Content layer + Library/Detail/Favourites in SwiftUI (pure UI, simulator-verifiable)</td><td>—</td></tr>
+<tr><td>P2</td><td>Blocking core: authorization, picker, shield config/action, pause + grace via DeviceActivity</td><td><b>Needs paid Apple account (dev entitlement) + a physical iPhone — Screen Time doesn't work in the simulator</b></td></tr>
+<tr><td>P3</td><td>Onboarding flow + permissions</td><td>—</td></tr>
+<tr><td>P4</td><td>Auth (Apple + Google) + sync + delete-account</td><td>Needs Supabase Apple-provider config (§10)</td></tr>
+<tr><td>P5</td><td>Settings, celebration, NextSadhana, practice recording</td><td>—</td></tr>
+<tr><td>P6</td><td>Localization port (8 chrome languages via xcstrings script)</td><td>—</td></tr>
+<tr><td>P7</td><td>Polish + TestFlight build + founder gallery veto</td><td>Distribution entitlement approved</td></tr>
+<tr><td>P8</td><td>App Store listing, privacy labels, screenshots, submission</td><td>Founder console session (kit doc like Play's)</td></tr>
+</table>
+
+<h2 id="founder">10. Founder actions (start this week — the entitlement clock gates P7)</h2>
+<ol>
+<li><b>Enroll</b> at developer.apple.com ($99/yr) — as Ideaye Media (org, needs D-U-N-S) or individual (faster; can migrate later). Recommendation: <b>individual now</b> for speed unless the Ideaye D-U-N-S already exists.</li>
+<li><b>File the Family Controls (distribution) entitlement request</b> the day enrollment clears — I'll draft the request text; it must name the app + every extension bundle id. Approval: days to weeks, unpredictable.</li>
+<li><b>Supabase:</b> enable the Apple provider (needs the Services ID + key from the Apple portal — I'll give exact steps when the account exists).</li>
+<li><b>A physical iPhone</b> for P2+ testing (Screen Time APIs are no-ops in the simulator). Any iPhone on iOS 16+.</li>
+</ol>
+
+<h2 id="risks">11. Risks & open questions</h2>
+<ul>
+<li><b>Q1 — streak semantics (needs founder call at P5):</b> on Android, the overlay Continue records the read. The iOS shield cannot. Options: (a) reads count only when done inside the app (purer, but shield-Continue users build no streak), or (b) the app infers a read when it next opens after a grace grant (approximate). I lean (a) + a Home nudge; decide at P5 with real feel.</li>
+<li><b>Entitlement risk:</b> Apple occasionally rejects Family Controls requests for non-parental-control uses; digital-wellbeing blockers are routinely approved (One Sec, Opal precedents), but it's Apple's discretion. Mitigation: request text positions Niyam squarely as digital wellbeing.</li>
+<li><b>Shield-usage accounting quirk</b> (time on shield counts as app usage in Screen Time stats) — cosmetic, but worth a FAQ line.</li>
+<li><b>Free-tier Supabase auto-pause</b> (forlater #18) bites iOS testing the same as Android — the Pro decision matters more with two clients.</li>
+<li><b>Parallel-track discipline:</b> iOS work must never touch <code>app/</code> (Android) files. The shared surfaces are exactly: <code>mantras.json</code>, Supabase schema/functions, website. Any change to a shared surface gets flagged before making it.</li>
+</ul>
+
+<p class="small">Sources for §1–2 verification: <a href="https://developer.apple.com/documentation/familycontrols/requesting-the-family-controls-entitlement">Apple — Requesting the Family Controls entitlement</a> · <a href="https://medium.com/@juliusbrussee/a-developers-guide-to-apple-s-screen-time-apis-familycontrols-managedsettings-deviceactivity-e660147367d7">Developer's guide to Screen Time APIs</a> · <a href="https://medium.com/@nikkieke001/what-no-one-tells-you-about-building-with-apples-screen-time-api-e061d14d1f66">Screen Time API limitations field report</a> · <a href="https://developer.apple.com/forums/thread/794802">Apple forums — shield usage accounting</a> · <a href="https://developer.apple.com/forums/thread/763488">Apple forums — distribution approval timelines</a>.</p>
+
+</body>
+</html>
