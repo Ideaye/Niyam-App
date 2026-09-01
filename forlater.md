@@ -122,7 +122,13 @@
 
 ## In progress
 
-_(empty)_
+### 19. Niyam iOS app (parallel track)
+- **What:** Native iOS Niyam, free-for-everyone, Screen Time API shield mechanism. Spec at `docs/superpowers/specs/2026-09-01-ios-niyam-design.html` (2026-09-01) — awaiting founder approval; then P0–P8 build.
+- **Founder actions gating progress:** Apple Developer enrollment ($99/yr, this week per Pranav) → file Family Controls distribution entitlement immediately (days–weeks approval, gates TestFlight/App Store at P7; app + extensions) → Supabase Apple sign-in provider config → physical iPhone for P2+ (Screen Time no-op in simulator).
+- **Guard-rail:** iOS work never touches `app/` (Android). Shared surfaces (mantras.json, Supabase schema/functions, website) get flagged before changing.
+- **Status:** IN PROGRESS — spec awaiting approval.
+- **Date added:** 2026-09-01
+- **Originated from:** Founder decision after the free-for-everyone pivot.
 
 ## Done — archived
 
