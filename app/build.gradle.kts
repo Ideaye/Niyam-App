@@ -6,6 +6,14 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
+// Crashlytics activates only when the Firebase config exists — the build (and
+// CI) stays green before the founder creates the Firebase project. Drop
+// google-services.json into app/ to switch it on.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+    apply(plugin = "com.google.firebase.crashlytics")
+}
+
 android {
     namespace = "com.myniyam.app"
     compileSdk = 36
@@ -29,6 +37,19 @@ android {
             "\"${providers.gradleProperty("NIYAM_SUPABASE_ANON_KEY").getOrElse("")}\"")
         buildConfigField("String", "GOOGLE_WEB_CLIENT_ID",
             "\"${providers.gradleProperty("NIYAM_GOOGLE_WEB_CLIENT_ID").getOrElse("")}\"")
+
+        // Telemetry keys (all client-safe publishable keys; empty = that SDK
+        // stays fully dormant — see telemetry/Telemetry.kt for the rules).
+        buildConfigField("String", "POSTHOG_API_KEY",
+            "\"${providers.gradleProperty("NIYAM_POSTHOG_API_KEY").getOrElse("")}\"")
+        buildConfigField("String", "POSTHOG_HOST",
+            "\"${providers.gradleProperty("NIYAM_POSTHOG_HOST").getOrElse("https://us.i.posthog.com")}\"")
+        buildConfigField("String", "META_APP_ID",
+            "\"${providers.gradleProperty("NIYAM_META_APP_ID").getOrElse("")}\"")
+        val metaAppId = providers.gradleProperty("NIYAM_META_APP_ID").getOrElse("")
+        val metaClientToken = providers.gradleProperty("NIYAM_META_CLIENT_TOKEN").getOrElse("")
+        resValue("string", "facebook_app_id", metaAppId)
+        resValue("string", "facebook_client_token", metaClientToken)
     }
 
     signingConfigs {
@@ -106,6 +127,15 @@ dependencies {
     implementation(libs.supabase.compose.auth)
     implementation(libs.billing.ktx)
     implementation(libs.play.app.update.ktx)
+
+    // Telemetry (see telemetry/Telemetry.kt for the hard rules): PostHog for
+    // allowlisted product analytics, Crashlytics for crash reports (inert
+    // without google-services.json), Meta SDK for install attribution (inert
+    // without NIYAM_META_APP_ID).
+    implementation(libs.posthog.android)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.facebook.core)
     implementation(libs.ktor.client.okhttp)
     // Native Google sign-in (SP-P3): Credential Manager + Google ID.
     implementation(libs.androidx.credentials)

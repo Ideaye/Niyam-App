@@ -18,6 +18,17 @@
         android:theme="@style/Theme.Niyam"
         tools:targetApi="34">
 
+        <!-- Meta SDK: fully dormant until NIYAM_META_APP_ID exists (empty
+             resValue otherwise). Auto-init and all collection flags stay OFF
+             here; Telemetry.init() enables them explicitly — and only when a
+             real app id is configured — so nothing runs before our documented
+             activation. -->
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token" />
+        <meta-data android:name="com.facebook.sdk.AutoInitEnabled" android:value="false" />
+        <meta-data android:name="com.facebook.sdk.AutoLogAppEventsEnabled" android:value="false" />
+        <meta-data android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled" android:value="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

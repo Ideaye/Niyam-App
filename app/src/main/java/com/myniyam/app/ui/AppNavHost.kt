@@ -30,6 +30,7 @@ import com.myniyam.app.backend.EntitlementSync
 import com.myniyam.app.backend.PracticeSync
 import com.myniyam.app.billing.Entitlements
 import com.myniyam.app.billing.PaywallScreen
+import com.myniyam.app.telemetry.Telemetry
 import io.github.jan.supabase.auth.status.SessionStatus
 import com.myniyam.app.library.FavouritesScreen
 import com.myniyam.app.library.LibraryScreen
@@ -139,6 +140,7 @@ fun AppNavHost(
                     if (UserPrefs.snapshot().stateOwnerUid == null) {
                         UserPrefs.setStateOwner(reconcileCtx, uid)
                     }
+                    Telemetry.identify(uid)
                     // Entitlement/trial server reconcile is monetization work —
                     // dormant while the app is free for everyone. The C1b owner
                     // stamping above is account hygiene and always runs.
@@ -186,6 +188,7 @@ fun AppNavHost(
                         com.myniyam.app.progress.ProgressRepository.clearAll(signInCtx)
                     }
                     if (signedInUid != null) UserPrefs.setStateOwner(signInCtx, signedInUid)
+                    Telemetry.signinCompleted()
                     if (identityChanged && !Entitlements.FREE_FOR_ALL) {
                         // The wipe cleared premium/trial; re-fetch THIS user's server
                         // entitlement here (ordered after the wipe) so a concurrent
@@ -302,6 +305,7 @@ fun AppNavHost(
                     if (!Entitlements.FREE_FOR_ALL) {
                         UserPrefs.startTrial(ctx, java.time.LocalDate.now().toEpochDay())
                     }
+                    Telemetry.onboardingCompleted()
                     (ctx as? android.app.Activity)?.recreate()
                 }
             })
@@ -323,6 +327,7 @@ fun AppNavHost(
         composable(NiyamRoutes.CELEBRATION) {
             val ctx = LocalContext.current
             val scope = rememberCoroutineScope()
+            LaunchedEffect(Unit) { Telemetry.journeyCompleted() }
             CelebrationScreen(
                 onChooseNext = { navController.navigate(NiyamRoutes.NEXT_SADHANA) },
                 onKeepCurrent = {
@@ -350,9 +355,13 @@ fun AppNavHost(
             NiyamRoutes.MANTRA_DETAIL,
             arguments = listOf(navArgument("mantraId") { type = NavType.StringType })
         ) { backStackEntry ->
+            val detailMantraId = backStackEntry.arguments?.getString("mantraId") ?: ""
             MantraDetailScreen(
-                mantraId = backStackEntry.arguments?.getString("mantraId") ?: "",
-                onSwitched = { navController.popBackStack(NiyamRoutes.HOME, inclusive = false) },
+                mantraId = detailMantraId,
+                onSwitched = {
+                    Telemetry.mantraSwitched(detailMantraId)
+                    navController.popBackStack(NiyamRoutes.HOME, inclusive = false)
+                },
                 onMissing = { navController.popBackStack() },
                 onPaywall = { navController.navigate(NiyamRoutes.PAYWALL) },
                 onBack = { navController.popBackStack() }
@@ -383,6 +392,7 @@ fun AppNavHost(
             val activity = LocalContext.current as? android.app.Activity
             LanguageSettingScreen(
                 onSaved = {
+                    Telemetry.languageChanged(UserPrefs.snapshot().displayLanguage.name)
                     navController.popBackStack()
                     // Chrome locale lives in attachBaseContext — recreate to re-wrap (SP-11).
                     activity?.recreate()

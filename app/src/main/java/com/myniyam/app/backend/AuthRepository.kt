@@ -69,5 +69,7 @@ object AuthRepository {
     private suspend fun wipeLocalUserState(context: Context) {
         UserPrefs.clearAll(context)
         ProgressRepository.clearAll(context)
+        // Analytics identity must not survive an identity change either.
+        com.myniyam.app.telemetry.Telemetry.reset()
     }
 }

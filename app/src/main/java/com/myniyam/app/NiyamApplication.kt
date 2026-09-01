@@ -16,6 +16,8 @@ class NiyamApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        // No-op until telemetry keys exist; see telemetry/Telemetry.kt rules.
+        com.myniyam.app.telemetry.Telemetry.init(this)
         registerForegroundServiceChannel()
         CompletionNotifier.registerChannel(this)
         if (Entitlements.FREE_FOR_ALL) {
