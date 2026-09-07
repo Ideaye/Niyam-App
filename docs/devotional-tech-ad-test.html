@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test Before Building — Ad Test Design</title>
+<style>
+  :root{--ink:#1c1a17;--ink-2:#4a453e;--ink-3:#7a7268;--paper:#fdfbf7;--card:#fff;--rule:#e6dfd3;
+    --sunrise:#c9762a;--green:#1f4d3d;--green-soft:#eaf2ee;--red:#9b2c2c;--red-soft:#fbeceb;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 24px 96px}
+  header.doc{border-bottom:3px solid var(--ink);padding-bottom:28px;margin-bottom:36px}
+  header.doc h1{font-family:var(--serif);font-size:2.5rem;line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}
+  .meta{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em}
+  .meta span{margin-right:18px}
+  h2{font-family:var(--serif);font-size:1.7rem;margin:54px 0 6px;padding-top:14px;border-top:1px solid var(--rule)}
+  h2 .num{font-family:var(--mono);font-size:.72rem;color:var(--sunrise);display:block;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+  h3{font-size:1.1rem;margin:30px 0 8px}
+  p{margin:0 0 14px;max-width:70ch}
+  ul,ol{max-width:70ch;padding-left:22px;margin:0 0 16px} li{margin-bottom:7px}
+  a{color:var(--green);text-underline-offset:2px}
+  code{font-family:var(--mono);font-size:.86em;background:#f2ede4;padding:1px 5px;border-radius:3px}
+  table{border-collapse:collapse;width:100%;margin:20px 0;font-size:.9rem}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);border-bottom:2px solid var(--ink)}
+  tbody tr:nth-child(even){background:#faf6ef}
+  .callout{border-left:4px solid var(--sunrise);background:#fffaf3;padding:16px 20px;margin:22px 0;border-radius:0 6px 6px 0}
+  .callout.kill{border-left-color:var(--red);background:var(--red-soft)}
+  .callout.key{border-left-color:var(--green);background:var(--green-soft)}
+  .callout p:last-child{margin-bottom:0}
+  .callout .label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);display:block;margin-bottom:6px}
+  .free{background:var(--green);color:#f4efe6;border-radius:10px;padding:26px 30px;margin:26px 0}
+  .free .label{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#a8c4b6;display:block;margin-bottom:10px}
+  .free h3{font-family:var(--serif);font-size:1.5rem;color:#fff;margin:0 0 12px}
+  .free p{color:#dfe9e3;max-width:64ch} .free p:last-child{margin-bottom:0} .free strong{color:#fff}
+  .cell{border:1px solid var(--rule);border-radius:8px;padding:16px 20px;margin:14px 0;background:var(--card)}
+  .cell h4{margin:0 0 8px;font-size:.98rem;font-family:var(--mono);letter-spacing:.04em}
+  .cell p{font-size:.93rem;margin-bottom:8px}
+  footer.doc{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  @media (max-width:640px){.wrap{padding:28px 18px 64px}header.doc h1{font-size:1.8rem}table{font-size:.82rem}th,td{padding:7px 8px}}
+  @media print{body{background:#fff;font-size:10.5pt}.wrap{max-width:none;padding:0}
+    h2{break-after:avoid}table,.callout,.cell,.free{break-inside:avoid}
+    .free{background:#eaf2ee;color:#1c1a17;border:2px solid #1f4d3d}
+    .free h3,.free p,.free strong{color:#1c1a17}.free .label{color:#4a453e}
+    a{color:#1c1a17;text-decoration:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="doc">
+  <h1>Test before building</h1>
+  <div class="meta"><span>Ad test design</span><span>2026-08-28</span><span>branch: discuss/devotional-tech</span></div>
+</header>
+
+<div style="background:#9b2c2c;color:#fff;border-radius:10px;padding:24px 30px;margin:0 0 22px">
+  <div style="font-family:ui-monospace,Menlo,monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#f0c9c6;margin-bottom:10px">Correction — 2026-08-29</div>
+  <div style="font-family:'Iowan Old Style',Georgia,serif;font-size:1.45rem;line-height:1.25;margin-bottom:12px">Niyam has never been published. Sections 2 and 4 do not work yet.</div>
+  <p style="margin:0 0 10px;max-width:64ch;color:#f6e6e5">I wrote this assuming Niyam was live on Play. It is not. Four things in this document silently depended on that and are void until launch:</p>
+  <ul style="margin:0 0 12px;max-width:64ch;color:#f6e6e5">
+    <li><strong style="color:#fff">§2 — pull Play Console country data.</strong> There is no data. Nothing has shipped.</li>
+    <li><strong style="color:#fff">§3 — lookalike from your own user list.</strong> There are no users. This was the <em>best</em> targeting route left after the religion-targeting ban, and losing it is the most damaging part of this correction.</li>
+    <li><strong style="color:#fff">§4 — Track A, "sell the real product".</strong> You cannot run install ads for an app that is not on the store.</li>
+    <li><strong style="color:#fff">§2 — survey existing users via Supabase.</strong> No users to survey.</li>
+  </ul>
+  <p style="margin:0;max-width:64ch;color:#f6e6e5">They are not wrong, they are <strong style="color:#fff">premature</strong>. All four activate the day Niyam goes live. Read §0 below first — it replaces §2 as the starting point.</p>
+</div>
+
+<h2 style="border-top:0;margin-top:34px"><span class="num">Section 0 — added 2026-08-29</span>The actual situation, and what follows from it</h2>
+
+<p>You have a finished product — v1.0.6, signed AAB built, backend live, billing wired, eight languages,
+125 tests passing — that <strong>has never been published</strong>. And the last four days have been spent asking
+which <em>new</em> app to build.</p>
+
+<div class="callout key">
+  <span class="label">The point</span>
+  <p>Every question in this whole thread — will the diaspora pay, is there real demand, what is the ARPU,
+  does anyone want a pause before the scroll — is <strong>answerable for free by launching the thing that is
+  already built</strong>, and answerable no other way for less than several hundred dollars and several weeks
+  of proxy measurement.</p>
+  <p>An unlaunched app generates exactly zero information. A launched one generates the entire dataset the
+  ad test was trying to approximate: real installs, by country, with real retention and real paid
+  conversion, continuously, at no media cost.</p>
+</div>
+
+<h3>The gate that may sit between you and production</h3>
+<p>If your Play developer account is a <strong>personal</strong> account created <strong>after 13 November 2023</strong>,
+Google requires a closed test with <strong>at least 12 testers, opted in continuously for 14 days</strong>, before
+you can even apply for production access — and since 2026 it also checks the testers genuinely used the
+app. Organization accounts, and personal accounts opened before that date, are exempt and can publish
+straight to production.</p>
+<p><em>Source quality note: the policy is real and well documented, but most of what is written about it
+online comes from companies that sell tester recruitment, so treat the finer details as</em>
+<span class="grade" style="font-family:var(--mono);font-size:.68rem;font-weight:700;padding:1px 5px;border-radius:3px;background:#fbeceb;color:#9b2c2c;border:1px solid #eec9c6">C</span>
+<em>and confirm against Play Console itself.</em></p>
+<p><strong>Which account you have is the single fact that sets your timeline, and I do not know it.</strong> If the
+gate applies, the clock does not start until the AAB is uploaded — so every day it sits on your Desktop
+is a day added to when you can sell anything at all.</p>
+
+<h3>Revised sequence</h3>
+<table>
+  <thead><tr><th>Step</th><th>When</th><th>What</th></tr></thead>
+  <tbody>
+    <tr><td><strong>0</strong></td><td>Today, free</td><td>Check Play Console: account type and creation date. Determines whether the 12/14 gate applies at all.</td></tr>
+    <tr><td><strong>1</strong></td><td>This week</td><td>Clear the remaining launch blockers — migration 0003, redeploy <code>verify-entitlement</code> and <code>sync-trial</code>, create and activate the three subscription products — and <strong>upload the AAB to closed testing.</strong> If the gate applies, this starts the clock.</td></tr>
+    <tr><td><strong>2</strong></td><td>During the 14 days</td><td><strong>Make the forced wait do double duty.</strong> Small ad spend to a landing page whose call to action is "join the test" — it recruits the 12+ testers Play requires <em>and</em> gives you a message-and-geography read for the same money. Split India vs US/UK from the start.</td></tr>
+    <tr><td><strong>3</strong></td><td>After production access</td><td>Now Track A in §4 is real: geo-differentiated pricing, revenue per install, live data. Run it then.</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <span class="label">On the new app question</span>
+  <p>My honest read: not now. Not because exploring was wrong — the research stands, and it eliminated
+  several expensive mistakes — but because the marginal information from launching vastly exceeds the
+  marginal information from more analysis, and you are currently sitting on a built asset producing
+  none. Revisit the category question with three months of real usage data in hand; every judgement in
+  these documents will be better informed by it. That said, it is your call, not mine.</p>
+</div>
+
+<hr style="border:0;border-top:1px solid var(--rule);margin:40px 0">
+<p style="font-size:.9rem;color:var(--ink-3)"><em>Everything below was written on 2026-08-28 under the
+mistaken assumption that Niyam was live. Left unedited; read it as the post-launch plan.</em></p>
+<h2><span class="num">Section 1</span>Your first question killed the plan</h2>
+
+<p>You asked whether apps like that already exist. They do — and finding out took one search round I
+should have run before recommending anything.</p>
+
+<h3>The slow-voice practice product exists, and it's free</h3>
+<table>
+  <thead><tr><th>App</th><th>What it already does</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Srimad Gita</strong></td><td>Playback <strong>0.5x–2x</strong>, any verse or range on continuous loop, <strong>configurable pause between repetitions so you can chant along</strong>, synchronised line-by-line highlighting, offline, all 700 verses, audio "reviewed against traditional paatha standards"</td></tr>
+    <tr><td><strong>Memorize Shloka</strong></td><td>Repeat single line / two lines / whole verse, pause playback, transliteration, synonyms, translations</td></tr>
+    <tr><td><strong>Shloka Recitation</strong>, <strong>Sloka Saagar</strong></td><td>Recitations by experienced practitioners; 500+ slokas with audio and video, meanings, Indian languages + English</td></tr>
+  </tbody>
+</table>
+<p>That is, feature for feature, the product you described.</p>
+
+<div class="callout kill">
+  <span class="label">And the differentiator I proposed is also taken</span>
+  <p><strong>Vāgbodhinī</strong> — from Dr. Prathosh A.P.'s lab at <strong>IISc Bengaluru</strong> — is a public-beta
+  tutor that combines chant playback with <strong>syllable-by-syllable scoring, verifying recitation against
+  the known text.</strong> That is precisely the wedge I said YouTube could not copy.</p>
+  <p>It sits on a purpose-built Sanskrit speech stack, all released:</p>
+  <ul>
+    <li><strong>Vāgdhenu</strong> — metre-aware TTS for chanted recitation, expert rating ~4.6/5, weights on GitHub and Hugging Face with a live demo</li>
+    <li><strong>Su-śrotā</strong> — Sanskrit recogniser (IndicConformer-CTC), word error <strong>86% → 34%</strong>, character error <strong>24% → 16%</strong>, open-source with a live tool</li>
+  </ul>
+  <p>Two consumer apps already ship from it: <strong>Bhāgavata-VāNi</strong> (web, iOS, Android, free) and
+  <strong>Vedavani</strong> (iOS, Android). The recogniser improves off consented user data — so it compounds.</p>
+</div>
+
+<h3>Where I was wrong, in both directions</h3>
+<p>I said Sanskrit pronunciation scoring might not be achievable. <strong>I was too pessimistic on the
+technology and far too optimistic on the opportunity.</strong> Scoring against a <em>known</em> text is forced
+alignment, not open-vocabulary recognition — a much easier problem than the 62.3% phoneme-accuracy
+figure I was reasoning from. It works well enough. But that no longer helps us: it has been built, by
+people with Sanskrit-speech credentials we cannot assemble, and <strong>given away with the model weights</strong>.
+A moat that is open-source is not a moat.</p>
+
+<div class="callout">
+  <span class="label">Recommendation withdrawn</span>
+  <p>The shloka tutor is dead as a business. <code>devotional-tech-recommendation.html</code> is marked
+  superseded and kept unedited as a record.</p>
+  <p><strong>And note the pattern:</strong> two turns, two factual reversals — DevDham was already dead, and
+  now this. My desk research keeps lagging reality by months. <strong>That is the strongest possible argument
+  for your instinct to go to market rather than trust another document.</strong></p>
+</div>
+
+<h2><span class="num">Section 2</span>Do this before spending a rupee</h2>
+
+<div class="free">
+  <span class="label">Free · today · possibly conclusive</span>
+  <h3>You may already own the answer. Check Play Console first.</h3>
+  <p>Niyam has been shipping worldwide through Google Play. Play Console already reports
+  <strong>installs, retention, and revenue broken down by country</strong>. Before designing any experiment,
+  pull that: how many US, UK, Canada and Australia installs do you have, what do they retain like against
+  India, and — if any bought — what did they pay?</p>
+  <p>The entire diaspora thesis rests on one claim: <strong>these users pay multiples of Indian users.</strong>
+  You may have months of real evidence for or against it sitting in a dashboard, for free, with no ad
+  spend and no landing page. <strong>Do this first.</strong> An ad test that contradicts your own live data
+  would be worthless anyway.</p>
+</div>
+
+<p>Second free source: <strong>your existing users.</strong> You have their emails through Supabase auth. A
+three-question survey to your international users beats cold traffic on anything about motivation, and
+costs nothing. (Sending it is your call — I won't email anyone on your behalf.)</p>
+
+<h2><span class="num">Section 3</span>The constraint that will break a naive ad test</h2>
+
+<div class="callout kill">
+  <span class="label">You cannot target Hindus. On either platform.</span>
+  <p><strong>Meta:</strong> from 19 January 2022, detailed targeting options referencing religion were removed
+  outright — you cannot target religious practices, groups, or observances. Enforcement has since
+  tightened; as of 15 January 2025 even religion-related keyword targeting is blocked.</p>
+  <p><strong>Google:</strong> policy prohibits selecting or targeting personalised ads, or using audience data,
+  based on religious belief. Religious belief is a <em>sensitive interest category</em> — you may use
+  predefined Google audiences but <strong>not advertiser-curated ones</strong>. Ads touching it get flagged
+  "Religious belief in personalized advertising" and run with targeting restrictions applied.</p>
+</div>
+
+<p>So "run an ad to Hindus in the US, UK and India" is not a thing you can buy. What you can buy:</p>
+
+<table>
+  <thead><tr><th>Route</th><th>Strength</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Lookalike from your own Niyam user list</strong></td><td><strong>Best available</strong></td><td>Your own first-party data, uploaded as a custom audience. This is the one route the policy leaves fully open, and you already have the asset.</td></tr>
+    <tr><td><strong>Geographic</strong></td><td>Strong</td><td>Radius targeting on dense diaspora areas — Edison &amp; Jersey City NJ, Fremont &amp; Sunnyvale CA, Harrow &amp; Wembley &amp; Leicester UK, Brampton ON. Legal, precise, cheap.</td></tr>
+    <tr><td><strong>Language</strong></td><td>Moderate</td><td>Hindi / Gujarati / Tamil speakers. Language is not a protected category.</td></tr>
+    <tr><td><strong>YouTube placement</strong></td><td>Moderate</td><td>Placing on specific devotional channels is placement targeting, not audience targeting — a different policy surface. Verify before relying on it.</td></tr>
+    <tr><td>Interest proxies (Bollywood, cricket, Indian cuisine)</td><td>Weak</td><td>Very leaky. Use only to broaden reach, never as the primary cut.</td></tr>
+  </tbody>
+</table>
+<p><strong>Also expect creative-level friction.</strong> Ad copy naming deities, mantras or worship may itself
+trip the religious-belief flag on Google. Budget time for disapprovals and rewrites; do not schedule this
+against a hard deadline.</p>
+
+<h2><span class="num">Section 4</span>Track A — the test worth running</h2>
+
+<p>You have something almost nobody running a smoke test has: <strong>a real, shipped, purchasable product.</strong>
+So don't fake-door it. Sell it, and measure money.</p>
+
+<div class="cell">
+  <h4>Design</h4>
+  <p><strong>Two geographies, real installs, real prices, real conversions.</strong> Identical creative and
+  identical landing experience; the only deliberate variable is country and price point.</p>
+  <table>
+    <thead><tr><th>Cell</th><th>Geo</th><th>Price</th><th>Targeting</th></tr></thead>
+    <tbody>
+      <tr><td>A1</td><td>India (tier-1 metros)</td><td>Current India pricing</td><td>Geo + language + lookalike</td></tr>
+      <tr><td>A2</td><td>US — diaspora-dense metros</td><td><strong>3–5x</strong> the India price</td><td>Geo radius + lookalike</td></tr>
+      <tr><td>A3</td><td>UK — London + Leicester</td><td><strong>3–5x</strong> the India price</td><td>Geo radius + lookalike</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="cell">
+  <h4>The metric that matters</h4>
+  <p>Not clicks. Not installs. <strong>Paid conversion rate per install, and revenue per install, by geo.</strong>
+  Clicks measure curiosity; the entire research pack shows this category drowns in curiosity that never
+  converts — 40M downloads against 3.5M monthly actives.</p>
+</div>
+
+<div class="cell">
+  <h4>Decide the thresholds before you spend, not after</h4>
+  <ul>
+    <li><strong>Thesis confirmed:</strong> US/UK revenue per install ≥ <strong>3x</strong> India's, at ≥3x the price. Diaspora is your market; reprice and reposition immediately.</li>
+    <li><strong>Ambiguous:</strong> 1.5–3x. Real but not transformative. Worth a second, larger round before acting.</li>
+    <li><strong>Thesis dead:</strong> &lt;1.5x. The 10x ARPU figure does not transfer to your product, and every diaspora-based plan in these documents loses its foundation. That is a genuinely valuable finding — it would save you a year.</li>
+  </ul>
+</div>
+
+<div class="cell">
+  <h4>Budget</h4>
+  <p>Start at <strong>$300–600 total</strong>, weighted toward the US and UK cells because clicks there cost
+  far more. Run 10–14 days minimum so weekday/weekend effects wash out.</p>
+  <p><em>I am not confident about current CPCs in these segments and I have not researched them — treat
+  the figure as a starting stake, not a forecast. Set a hard daily cap and check spend on day two.</em></p>
+</div>
+
+<h2><span class="num">Section 5</span>Track B — only if you still want a new-concept read</h2>
+<p>If you want to test a concept that doesn't exist yet, the honest version is a landing page with a
+stated price and an email capture, where the "Subscribe" button leads immediately to "not live yet —
+join the list". <strong>No money is taken for a product that does not exist.</strong> That line is not negotiable,
+and it's also what keeps you the right side of app-store and ad-platform policy.</p>
+<p>But be clear about what it can tell you. A click on a promise costs nothing, so it measures appeal, not
+demand. And for the shloka tutor specifically, the result is now <strong>uninterpretable</strong> — interest would
+be confounded with the free incumbents already serving that need. If you want Track B, point it at a
+proposition we have <em>not</em> already found an incumbent for.</p>
+
+<h2><span class="num">Section 6</span>What this test can and cannot tell you</h2>
+<table>
+  <thead><tr><th>Can</th><th>Cannot</th></tr></thead>
+  <tbody>
+    <tr><td>Relative willingness to pay across geographies</td><td>Long-run retention or lifetime value</td></tr>
+    <tr><td>Whether diaspora price points clear at all</td><td>Whether users would switch from a free incumbent</td></tr>
+    <tr><td>Which message pulls hardest</td><td>Whether they'd still pay in month three</td></tr>
+    <tr><td>Real cost of acquisition in each market</td><td>Whether a <em>different</em> product would do better</td></tr>
+  </tbody>
+</table>
+<p>Two weeks of ad data is a directional read on one hypothesis. Treat it as that.</p>
+
+<h2><span class="num">Section 7</span>Division of labour</h2>
+<p><strong>What I can do:</strong> write the ad creative and variants, build the landing pages against your
+existing site, wire email capture into Supabase, set up the tracking and the measurement plan, and
+analyse the results when they come back.</p>
+<p><strong>What I will not do:</strong> create ad accounts, enter payment details, spend your money, or publish
+the ads. Those are yours — they are irreversible, they are outward-facing, and one of them involves your
+card. I'll hand you everything ready to launch and you press the button.</p>
+
+<h2><span class="num">Section 8</span>Order of operations</h2>
+<ol>
+  <li><strong>Pull Play Console country data.</strong> Free, today, and may settle the question outright.</li>
+  <li>If it's inconclusive, confirm you're willing to spend $300–600 and to run the ad accounts yourself.</li>
+  <li>I build: landing pages, creative variants, tracking, and a pre-registered analysis plan with the thresholds in §4 fixed <em>before</em> launch.</li>
+  <li>You launch and fund it. 10–14 days.</li>
+  <li>I analyse against the pre-set thresholds — no post-hoc reinterpretation of a disappointing result.</li>
+</ol>
+
+<footer class="doc">
+  Niyam · test design · branch <code>discuss/devotional-tech</code> · 2026-08-28<br>
+  Companions: <code>devotional-tech-research-pack.html</code> / <code>.md</code> (evidence) ·
+  <code>devotional-tech-recommendation.html</code> (superseded) · <code>devotional-tech-sources.txt</code>
+</footer>
+
+</div>
+</body>
+</html>

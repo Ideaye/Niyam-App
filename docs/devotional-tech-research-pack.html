@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devotional Tech in India — Research Pack</title>
+<style>
+  :root{
+    --ink:#1c1a17; --ink-2:#4a453e; --ink-3:#7a7268;
+    --paper:#fdfbf7; --card:#ffffff; --rule:#e6dfd3;
+    --sunrise:#c9762a; --sunrise-soft:#fdf2e4;
+    --green:#1f4d3d; --green-soft:#eaf2ee;
+    --red:#9b2c2c; --red-soft:#fbeceb;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 24px 96px}
+  header.doc{border-bottom:3px solid var(--ink);padding-bottom:28px;margin-bottom:36px}
+  header.doc h1{font-family:var(--serif);font-size:2.6rem;line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}
+  .meta{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em}
+  .meta span{margin-right:18px;white-space:nowrap}
+  .standfirst{font-size:1.08rem;color:var(--ink-2);margin-top:18px;max-width:62ch}
+  h2{font-family:var(--serif);font-size:1.75rem;margin:56px 0 6px;padding-top:14px;
+     border-top:1px solid var(--rule);letter-spacing:-.01em}
+  h2 .num{font-family:var(--mono);font-size:.72rem;color:var(--sunrise);display:block;
+          letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+  h3{font-size:1.12rem;margin:34px 0 8px;color:var(--ink)}
+  h4{font-size:.98rem;margin:24px 0 6px;color:var(--green)}
+  p{margin:0 0 14px;max-width:70ch}
+  ul,ol{max-width:70ch;padding-left:22px;margin:0 0 16px}
+  li{margin-bottom:6px}
+  a{color:var(--green);text-decoration-color:#bcd0c6;text-underline-offset:2px}
+  a:hover{color:var(--sunrise)}
+  code{font-family:var(--mono);font-size:.86em;background:#f2ede4;padding:1px 5px;border-radius:3px}
+  pre{font-family:var(--mono);font-size:.79rem;line-height:1.55;background:#211f1c;color:#e8e2d6;
+      padding:20px 22px;border-radius:8px;overflow-x:auto;margin:20px 0}
+  table{border-collapse:collapse;width:100%;margin:20px 0;font-size:.9rem}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;
+     color:var(--ink-3);border-bottom:2px solid var(--ink)}
+  tbody tr:nth-child(even){background:#faf6ef}
+  .grade{font-family:var(--mono);font-size:.68rem;font-weight:700;padding:1px 5px;border-radius:3px;
+         vertical-align:middle;white-space:nowrap}
+  .gA{background:var(--green-soft);color:var(--green);border:1px solid #c3d8cd}
+  .gB{background:var(--sunrise-soft);color:var(--sunrise);border:1px solid #efd6b6}
+  .gC{background:var(--red-soft);color:var(--red);border:1px solid #eec9c6}
+  .callout{border-left:4px solid var(--sunrise);background:#fffaf3;padding:16px 20px;margin:22px 0;border-radius:0 6px 6px 0}
+  .callout.key{border-left-color:var(--green);background:var(--green-soft)}
+  .callout.warn{border-left-color:var(--red);background:var(--red-soft)}
+  .callout p:last-child{margin-bottom:0}
+  .callout .label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;
+                  color:var(--ink-3);display:block;margin-bottom:6px}
+  nav.toc{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px 26px;margin-bottom:12px}
+  nav.toc h2{border:0;margin:0 0 10px;padding:0;font-size:1.05rem;font-family:var(--sans);
+             font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:var(--ink-3)}
+  nav.toc ol{list-style:none;padding:0;margin:0;columns:2;column-gap:32px}
+  nav.toc li{margin-bottom:5px;break-inside:avoid;font-size:.92rem}
+  .thesis{border:1px solid var(--rule);border-radius:8px;padding:18px 22px;margin:18px 0;background:var(--card)}
+  .thesis h3{margin-top:0}
+  .thesis dl{margin:0;font-size:.94rem}
+  .thesis dt{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;
+             color:var(--ink-3);margin-top:10px}
+  .thesis dd{margin:2px 0 0}
+  .gap{border-left:3px solid var(--rule);padding-left:18px;margin:22px 0}
+  .gap h3{margin-top:0}
+  .src h3{font-size:.8rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;
+          color:var(--ink-3);margin-top:28px}
+  .src ul{list-style:none;padding:0;font-size:.88rem;max-width:none}
+  .src li{margin-bottom:9px;padding-left:14px;text-indent:-14px}
+  footer.doc{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule);
+             font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  @media (max-width:640px){
+    .wrap{padding:28px 18px 64px} header.doc h1{font-size:1.9rem}
+    nav.toc ol{columns:1} table{font-size:.82rem} th,td{padding:7px 8px}
+  }
+  @media print{
+    body{background:#fff;font-size:10.5pt}
+    .wrap{max-width:none;padding:0}
+    nav.toc{break-after:page}
+    h2{break-after:avoid;break-inside:avoid} h3,h4{break-after:avoid}
+    table,pre,.thesis,.callout{break-inside:avoid}
+    pre{background:#f4f1ec;color:#1c1a17;border:1px solid #ddd}
+    a{color:#1c1a17;text-decoration:none}
+    .src a::after{content:" (" attr(href) ")";font-size:8pt;color:#666;word-break:break-all}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="doc">
+  <h1>Devotional Tech in India</h1>
+  <div class="meta">
+    <span>Research pack</span><span>2026-08-28</span><span>branch: discuss/devotional-tech</span>
+  </div>
+  <p class="standfirst">Source material for a study of Indian devotional user behaviour, the existing
+  devotional-app market, and what could be built. This is discussion input — not a plan, and not a
+  recommendation. Its most useful property is that the weak numbers are labelled as weak.</p>
+</header>
+
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#use">0 · How to use this pack</a></li>
+    <li><a href="#conf">1 · Confidence key</a></li>
+    <li><a href="#user">2 · The Indian devotional user</a></li>
+    <li><a href="#market">3 · The market as it exists</a></li>
+    <li><a href="#gaps">4 · What is not being built</a></li>
+    <li><a href="#theses">5 · Candidate theses</a></li>
+    <li><a href="#questions">6 · Questions for NotebookLM</a></li>
+    <li><a href="#sources">7 · Sources</a></li>
+    <li><a href="#holes">8 · Known holes</a></li>
+  </ol>
+</nav>
+
+<h2 id="use"><span class="num">Section 0</span>How to use this pack</h2>
+<ol>
+  <li>Create a NotebookLM notebook called <strong>“Devotional Tech India”</strong>.</li>
+  <li>Add <code>devotional-tech-research-pack.md</code> as a source. <em>NotebookLM does not accept HTML</em> —
+      this page is for reading, the Markdown twin is for ingestion.</li>
+  <li>Add the 37 URLs in <code>devotional-tech-sources.txt</code> as individual web sources, so NotebookLM
+      reads the originals rather than only my summaries of them.</li>
+  <li>Ask it the questions in §6.</li>
+</ol>
+<div class="callout">
+  <span class="label">Read this adversarially</span>
+  <p>The most valuable thing NotebookLM can do with this pack is disagree with §2.4 and §3.3.
+  Both sections rest on company-supplied figures that are internally in tension.</p>
+</div>
+
+<h2 id="conf"><span class="num">Section 1</span>Confidence key</h2>
+<table>
+  <thead><tr><th style="width:80px">Grade</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><span class="grade gA">A</span></td><td><strong>Measured / primary.</strong> Large-sample survey, regulator, government data, or audited filing.</td></tr>
+    <tr><td><span class="grade gB">B</span></td><td><strong>Credible journalism.</strong> Reputable outlet — usually company-supplied numbers with editorial checking.</td></tr>
+    <tr><td><span class="grade gC">C</span></td><td><strong>Directional only.</strong> Vendor blogs, market-research press releases, startup-database aggregation, SEO content.</td></tr>
+  </tbody>
+</table>
+<div class="callout warn">
+  <span class="label">Working rule</span>
+  <p><strong>No <span class="grade gC">C</span> number goes into a deck, a plan, or a decision.</strong> They appear here to show
+  the shape of the conversation, not to be relied on. A large share of what circulates about this
+  category is <span class="grade gC">C</span> dressed as <span class="grade gA">A</span>.</p>
+</div>
+
+<h2 id="user"><span class="num">Section 2</span>Part I — The Indian devotional user</h2>
+
+<h3>2.1 The religiosity baseline <span class="grade gA">A</span></h3>
+<p>Pew Research Center, <em>Religion in India: Tolerance and Segregation</em> (fieldwork Nov 2019 – Mar 2020,
+n = 29,999 adults, face-to-face, 17 languages):</p>
+<ul>
+  <li><strong>59%</strong> of Hindus pray daily</li>
+  <li><strong>57%</strong> perform puja daily, at home or at a temple</li>
+  <li>Sharp regional variance — <strong>South Indian Hindus ~30%</strong> daily prayer vs 59% nationally</li>
+  <li><strong>84%</strong> of Indian adults say religion is “very important” in their lives</li>
+</ul>
+<p><strong>Caveat that matters:</strong> the fieldwork is over six years old. It predates UPI saturation, the
+Ram Mandir consecration (2024), and Maha Kumbh 2025 — three events that plausibly moved both practice
+and its digital expression. Treat the <em>structure</em> as durable and the <em>levels</em> as stale.</p>
+<div class="callout key">
+  <span class="label">Implication</span>
+  <p>The behaviour already exists, offline, at daily frequency, at population scale. Devotional tech is not
+  creating a habit — it is intermediating one. That is a far easier product problem than habit creation,
+  and a far harder differentiation problem, <strong>because the habit does not need you.</strong> A user who
+  stops using your app does not stop praying.</p>
+</div>
+
+<h3>2.2 The digital baseline</h3>
+<ul>
+  <li>~<strong>936M</strong> internet users <span class="grade gC">C</span></li>
+  <li>&gt;50% prefer browsing in their mother tongue; ~<strong>73%</strong> consume regional-language content <span class="grade gC">C</span></li>
+  <li>Average monthly data per user ~<strong>24 GB</strong> in 2025, up from <strong>62 MB</strong> in 2014 <span class="grade gB">B</span></li>
+  <li>Tier 2/3 cities drive the majority of new commercial demand <span class="grade gC">C</span></li>
+</ul>
+<p>The reliable core beneath the soft numbers: <strong>India is mobile-only, vernacular-first, and
+data-cheap.</strong> Everything else here is directional.</p>
+
+<h3>2.3 The attention picture</h3>
+<ul>
+  <li>Indians average ~<strong>3.2 hours/day</strong> on social apps (Esya Centre, 2023) <span class="grade gB">B</span></li>
+  <li><strong>11–37%</strong> of Indian adolescents show problematic/addictive social media use, depending on scale <span class="grade gB">B</span></li>
+  <li><strong>Jan 2025:</strong> draft DPDP rules require verifiable parental consent for under-18 social media <span class="grade gA">A</span></li>
+  <li>82.2% of children aged 14–16 can use a smartphone; 76% use it for social media vs 57% for education <span class="grade gC">C</span></li>
+</ul>
+<div class="callout key">
+  <span class="label">Implication — and the one place Niyam already stands alone</span>
+  <p>There is a real, felt, increasingly <em>policy-legible</em> attention problem in India. And essentially
+  nobody in devotional tech is addressing it. Every funded player is competing to add another feed,
+  another notification, another livestream. <strong>The category is part of the attention problem, not a
+  response to it.</strong></p>
+</div>
+
+<h3>2.4 Money behaviour — the most important section in this pack</h3>
+<p>The macro framing is that India is a high-volume, low-ARPU market (pricing index ~0.6x global)
+<span class="grade gC">C</span>. That is true and mostly useless. The category’s own numbers are far more instructive.</p>
+<h4>Sri Mandir / AppsForBharat — category leader, June 2025 <span class="grade gB">B</span></h4>
+<table>
+  <tbody>
+    <tr><td>Lifetime downloads</td><td><strong>40M+</strong></td></tr>
+    <tr><td>Monthly active users</td><td><strong>3.5M</strong> (international ~90,000)</td></tr>
+    <tr><td>Revenue run rate</td><td><strong>~$12M/yr</strong></td></tr>
+    <tr><td>Domestic ARPU</td><td>₹600–800 (~$7–9)</td></tr>
+    <tr><td>International ARPU</td><td><strong>₹7,000 (~$81)</strong></td></tr>
+    <tr><td>Diaspora share of revenue</td><td>~20%</td></tr>
+    <tr><td>Temple take rate</td><td>20–25%</td></tr>
+    <tr><td>6-month retention (claimed)</td><td>~55%</td></tr>
+    <tr><td>Tier-1 / tier-2 split</td><td>~50/50</td></tr>
+    <tr><td>Under-35 share (India)</td><td>30%</td></tr>
+    <tr><td>Total raised · profitability target</td><td>~$53.4M over 7 rounds · 2027–28</td></tr>
+  </tbody>
+</table>
+<p>And from March 2023 <span class="grade gB">B</span>: 10M downloads, 3M MAU, ~$1M ARR — and the key line,
+<strong>nearly 20% of chadhava revenue came from under 2% of chadhava users.</strong></p>
+
+<h4>Three structural facts fall out</h4>
+<p><strong>(1) It is a whale business, not a subscription business.</strong> Revenue concentration resembles
+mobile gaming more than Spotify. The median user monetises at approximately zero. Any plan assuming
+broad, modest, recurring payment from Indian devotional users is arguing against the only real data
+we have.</p>
+<p><strong>(2) The diaspora user is worth ~10x the domestic user.</strong> ₹7,000 vs ₹600–800.
+Prayer-to-offering conversion is 20–25% in India but ~50% in the US. A product built in India and
+<em>sold to</em> the diaspora is a structurally different business from one sold in India — different price
+points, retention maths, and marketing. Most Indian faith-tech treats diaspora revenue as a happy
+accident rather than the design target.</p>
+<p><strong>(3) The funnel leaks catastrophically — and the retention claim needs interrogating.</strong></p>
+<pre>                    Mar 2023        Jun 2025        change
+ Downloads           10M             40M+            4.0x
+ MAU                  3M              3.5M           1.17x
+ MAU / downloads      30%             ~9%            collapsed</pre>
+<div class="callout warn">
+  <span class="label">The number to argue about</span>
+  <p>Downloads quadrupled; monthly actives rose 17%. MAU/downloads fell from ~30% to ~9%. That sits
+  awkwardly beside a claimed <strong>~55% six-month retention</strong>. Both can be true only if the large
+  majority of installs never enter a measured cohort — i.e. retention is computed on <em>activated</em>
+  users, not installs. If ~9% is closer to the category’s real engagement rate, then the download
+  figures everyone quotes are measuring <strong>curiosity, not devotion</strong>.</p>
+</div>
+
+<h3>2.5 The generational split</h3>
+<p>Two different products currently share one category label.</p>
+<p><strong>The daily-practice core (roughly 40–60+).</strong> Sri Mandir usage picks up at <strong>4am</strong> and peaks
+around <strong>7am</strong>, tracking a real prayer routine <span class="grade gB">B</span>. Users who try a feature in a given
+week are ~2x more likely to use it 7/7 days than once <span class="grade gB">B</span>. This cohort wants ritual
+fidelity, familiar navigation, and their own language. They punish redesigns.</p>
+<p><strong>The seeking entrant (roughly 18–25).</strong> Enters through astrology, kundli, compatibility,
+planetary remedies, “manifestation”, angel numbers <span class="grade gC">C</span> — though corroborated by
+Astrotalk’s actual scale. Described in the sources as spirituality-as-customisable-coping-mechanism,
+and as cultural reclamation (Sanskrit, rudraksha, learning aarti from a grandmother).</p>
+<p>Note that this second group’s stated motivation — anxiety, overwhelm, need for grounding — is the
+same motivation that drives digital-wellbeing behaviour. <strong>Nobody has connected those two.</strong></p>
+
+<h2 id="market"><span class="num">Section 3</span>Part II — The market as it exists</h2>
+
+<h3>3.1 Category map</h3>
+<pre>FAITH TECH INDIA — FIVE STACKS
+
+1. RITUAL TRANSACTION RAILS       e-puja · chadhava · darshan booking · prasad delivery
+   Sri Mandir · VAMA · Utsav · DevDham · SmartPuja · 99Pandit
+   -> Marketplace economics. Take rate 20-25%. Ops-heavy: real priests, real logistics,
+      real fulfilment hubs. This is where nearly all the funding has gone.
+
+2. ASTROLOGY MARKETPLACES         paid consultation minutes
+   Astrotalk · InstaAstro · Melooha
+   -> The only proven LARGE-scale monetisation in Indian faith tech. Talktime economics.
+      An order of magnitude bigger than everything else here combined.
+
+3. CONTENT &amp; PRACTICE             aarti · bhajan · chalisa · Gita · guided meditation
+   Sadhguru/Isha · Gita Press apps · T-Series Bhakti Sagar · long-tail Chalisa apps
+   -> Enormous usage, almost no monetisation. Ad-supported, non-profit, or loss-leader.
+
+4. DEVOTIONAL COMMERCE            malas · idols · rudraksha · subscription boxes
+   Japam · Abhimantrit (DevDham) · in-app stores
+   -> Best gross margin, worst defensibility. Amazon and every temple shop compete.
+
+5. TEMPLE INFRASTRUCTURE          queue mgmt · e-hundi · donation rails · CRM
+   Temple Connect · payment stacks (Easebuzz, Finlo) · state e-hundi programmes
+   -> B2B / B2G. Slow, sticky, unglamorous, real. Least crowded.</pre>
+
+<h3>3.2 Player snapshot</h3>
+<table>
+  <thead><tr><th>Player</th><th>Founded</th><th>Scale</th><th>Funding</th><th>Model</th><th>Gr.</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Sri Mandir</strong> (AppsForBharat)</td><td>2020</td><td>40M+ dl · 3.5M MAU · ~$12M RR</td><td>~$53.4M</td><td>e-puja + chadhava + astrology + commerce</td><td><span class="grade gB">B</span></td></tr>
+    <tr><td><strong>Astrotalk</strong></td><td>2017</td><td>15,000+ astrologers · 40M+ users served</td><td>— (profitable)</td><td>Astrologer marketplace, per-minute</td><td><span class="grade gB">B</span></td></tr>
+    <tr><td><strong>VAMA</strong></td><td>2020</td><td>250+ temples · 300+ astrologers</td><td>~$7.4M</td><td>e-puja, e-darshan, astrology, commerce</td><td><span class="grade gC">C</span></td></tr>
+    <tr><td><strong>Utsav App</strong></td><td>2021</td><td>100k+ active · 10k communities</td><td>₹42 Cr</td><td>Virtual puja + physical prasad</td><td><span class="grade gC">C</span></td></tr>
+    <tr style="background:#fbeceb"><td><strong>DevDham</strong> <span class="grade gC" style="background:#9b2c2c;color:#fff;border-color:#9b2c2c">SHUT DOWN</span></td><td>2020</td><td>claimed 500+ temples · 2,000 pandits · 18 states</td><td>~$1M total</td><td>Darshan + puja + donations + D2C</td><td><span class="grade gB">B</span></td></tr>
+    <tr><td><strong>InstaAstro</strong></td><td>2021</td><td>5,000+ astrologers · 5M+ customers</td><td>₹18.5 Cr</td><td>Astrology, subscription-leaning</td><td><span class="grade gC">C</span></td></tr>
+    <tr><td><strong>Temple Connect</strong></td><td>2016</td><td>7,000+ temples onboarded</td><td>—</td><td>Temple infrastructure / B2B</td><td><span class="grade gC">C</span></td></tr>
+    <tr><td><strong>Japam</strong></td><td>2022</td><td>300,000+ customers</td><td>—</td><td>D2C spiritual jewellery</td><td><span class="grade gC">C</span></td></tr>
+    <tr><td><strong>Sadhguru / Isha</strong></td><td>—</td><td>7.9M+ dl · <em>Miracle of Mind</em> 1M in 15 hrs</td><td>non-profit</td><td>Free, volunteer-built, 12 languages</td><td><span class="grade gB">B</span></td></tr>
+  </tbody>
+</table>
+
+<h3>3.3 The funding picture — and the thing it hides</h3>
+<ul>
+  <li>India FaithTech funding: <strong>$4.3M (2023) → ~$50.7M (2024)</strong> <span class="grade gC">C</span></li>
+  <li>Corroborated independently: ~$50.5M in India in 2024; India is the <strong>2nd largest religious-tech
+      market by funding after the US</strong>, ~15% of global religious-tech investment since 2020 <span class="grade gB">B</span></li>
+  <li>Top 10 religious apps in India, H1 2025: <strong>+60% MAU, +50% downloads</strong> — while the global top 10
+      fell 15% MAU / 2% downloads <span class="grade gB">B</span></li>
+  <li>Claims of “900+ spiritual tech startups” and “India spiritual market worth $58.56bn” are
+      <span class="grade gC">C</span> aggregator figures. Do not repeat them as fact.</li>
+</ul>
+<div class="callout warn">
+  <span class="label">What the funding narrative hides</span>
+  <p><strong>Astrotalk, FY25:</strong> revenue <strong>₹1,214 Cr</strong> (+85% YoY), adjusted PBT <strong>₹285 Cr</strong>,
+  profit ~₹250 Cr, ARR ~₹1,600 Cr as of Aug 2025, IPO signalled. That is roughly <strong>an order of
+  magnitude larger than the entire funded devotional-app cohort combined</strong> — and profitable, while
+  Sri Mandir targets profitability in 2027–28.</p>
+  <p><strong>Astrology, not devotion, is what actually pays in Indian faith tech today.</strong> Any thesis has
+  to answer: why isn’t this just a worse Astrotalk? And: are we confusing a large <em>cultural</em> market
+  with a large <em>payable</em> one?</p>
+</div>
+
+<h3>3.4 What users actually complain about <span class="grade gB">B</span>/<span class="grade gC">C</span></h3>
+<ul>
+  <li>Aggressive upsell pop-ups and free-trial nags interrupting devotional flow</li>
+  <li>Login loops</li>
+  <li>Undelivered prasad / merchandise orders; unresponsive support</li>
+  <li>Unclear priest vetting and quality moderation</li>
+  <li>Broken gamification accounting (“I did not receive the Punya Mudra for 29 &amp; 30 December”)</li>
+  <li>Redesigns that break familiar navigation — hits the older core hardest</li>
+</ul>
+<div class="callout key">
+  <span class="label">The pattern is the finding</span>
+  <p>The characteristic failure mode of devotional tech is that <strong>commerce contaminates the sacred
+  moment.</strong> Users tolerate paying. They resent being <em>sold to</em> mid-prayer. This is the most
+  consistent and most actionable signal in the pack — and it is a design constraint, not a marketing one.</p>
+</div>
+
+<h3>3.5 The trust problem <span class="grade gB">B</span></h3>
+<ul>
+  <li>Government advisories on fake pilgrimage-booking sites; Ram Mandir consecration donation scams</li>
+  <li>A live scriptural objection that remote puja is not valid puja — it should be performed in the home,
+      with a priest present, with fire and smoke</li>
+  <li>“No refunds under any circumstances” identified as a scam marker on temple-mimicking sites</li>
+  <li>The industry’s verification answer so far is ad-hoc: live-stream the ritual over Zoom / private YouTube</li>
+</ul>
+<p>Nobody has built the trust layer as a <strong>product</strong>. It exists today as a per-vendor promise, not as
+infrastructure — striking, given that the core transaction is “give a stranger money to do something
+religious you cannot witness”.</p>
+
+<h2 id="gaps"><span class="num">Section 4</span>Part III — What is not being built</h2>
+
+<div class="gap">
+  <h3>Gap 1 — Practice depth (sadhana), not ritual transaction</h3>
+  <p>Every funded player converges on e-puja, chadhava, astrology. All three are <strong>episodic and
+  transactional</strong>. None deepen a practice over time. There is no product taking a user from “I light a
+  lamp” to “I have a sustained daily sadhana”, with structure, progression and accountability. Content
+  apps have the material but no progression; transaction apps have engagement but no depth.</p>
+  <p><em>Why it’s still open:</em> depth doesn’t monetise per-event, and per-event is what the funding rewards.</p>
+</div>
+
+<div class="gap">
+  <h3>Gap 2 — Transmission (teaching, especially to children)</h3>
+  <p>Real demand visible in the long tail: shloka memorisation apps, online shloka classes serving
+  US/Canada/Dubai/Australia/Singapore, “Hindu parenting” content, animated dharmic stories, Gita
+  podcasts. Served today by tiny apps, Webflow sites and Zoom tutors — <strong>no venture-backed player is
+  here at all.</strong></p>
+  <p><em>Why it’s still open:</em> it’s an education product wearing a religion label, and the category’s
+  investors have been underwriting marketplaces.</p>
+</div>
+
+<div class="gap">
+  <h3>Gap 3 — The attention problem <em>← Niyam already lives here</em></h3>
+  <p>3.2 hrs/day on social apps; a peer-reviewed adolescent problem-use range of 11–37%; draft
+  parental-consent rules for under-18s. The devotional category’s response has been to build more feeds.
+  <strong>There is no meaningful product framing devotion as an answer to distraction</strong> — which is exactly
+  Niyam’s premise, “a pause before the scroll”.</p>
+  <p><em>Why it’s still open:</em> it is a <em>restraint</em> product in a category funded for <em>engagement</em>.
+  The business models point in opposite directions.</p>
+</div>
+
+<div class="gap">
+  <h3>Gap 4 — The diaspora as a first-class market, not an ARPU accident</h3>
+  <p>₹7,000 vs ₹600–800. 50% offering-conversion in the US vs 20–25% in India. Sri Mandir grew 25–30%
+  MoM internationally after merely <em>opening access</em> in Jan 2025. Nobody has built <strong>for</strong> the
+  diaspora: the parent whose child doesn’t speak the language, the timezone-shifted aarti, the person
+  marking a festival 8,000 km from anyone who observes it.</p>
+  <p><em>Why it’s still open:</em> founders build for the market outside their window, and diaspora revenue
+  arrives unbidden — so it never becomes the brief.</p>
+</div>
+
+<div class="gap">
+  <h3>Gap 5 — Trust as infrastructure</h3>
+  <p>Verified priests, verified temples, verifiable performance, escrow, refunds, dispute resolution,
+  provenance of the offering. Today: per-vendor promises and a Zoom link. A plausible
+  <strong>arms-supplier</strong> business — the layer every devotional marketplace needs and none can credibly
+  self-certify.</p>
+  <p><em>Why it’s still open:</em> it’s infrastructure — slow, and it requires a neutrality a marketplace can’t have.</p>
+</div>
+
+<div class="gap">
+  <h3>Gap 6 — Life events and samskaras</h3>
+  <p>Death rites, shraddha, naming, thread ceremony, house-warming, first rice — high-stakes, high-spend,
+  high-anxiety moments where families genuinely don’t know what to do and will pay for competence.
+  Currently served by WhatsApp groups, a family priest, and panic.</p>
+  <p><em>Why it’s still open:</em> episodic (bad retention optics) and emotionally heavy (hard to market).</p>
+</div>
+
+<div class="callout">
+  <span class="label">Also unserved</span>
+  <p>The <strong>#1 religious app in India is a Bible app</strong> — Sri Mandir is #2 overall, #1 among Hindu apps.
+  India’s non-Hindu faiths are almost entirely unaddressed by Indian faith-tech startups. Noted as a fact
+  about where founders point, not as a recommendation.</p>
+</div>
+
+<h2 id="theses"><span class="num">Section 5</span>Part IV — Candidate theses</h2>
+<p>Five, stated as bets, with their failure modes. <strong>None is a recommendation yet</strong> — they exist to be
+argued with.</p>
+
+<div class="thesis">
+  <h3>A · Niyam as a devotional habit OS</h3>
+  <dl>
+    <dt>The bet</dt><dd>The pause before the scroll is a wedge, not a product. Own the moment of interrupted attention, then earn the right to own the daily practice around it.</dd>
+    <dt>Who</dt><dd>The 25–45 urban Indian who is both genuinely observant and genuinely losing hours to a phone.</dd>
+    <dt>Why now</dt><dd>Nobody in devotional tech is on the restraint side; policy and public sentiment are moving toward attention as a legitimate problem.</dd>
+    <dt>Money</dt><dd>Subscription — the one place in this category where subscription is defensible, because the value is continuous rather than episodic.</dd>
+    <dt>Why it fails</dt><dd>Restraint products have brutal retention; the user who succeeds no longer needs you. Whale economics don’t apply, so ARPU stays at Indian levels.</dd>
+    <dt>Relation to Niyam</dt><dd>Straight-line extension of what already exists.</dd>
+  </dl>
+</div>
+
+<div class="thesis">
+  <h3>B · The dharma tutor (diaspora-first)</h3>
+  <dl>
+    <dt>The bet</dt><dd>Gap 2 × Gap 4. The highest-willingness-to-pay user in this market is a diaspora parent afraid their child will lose the thread — and education is the one category where Indian families reliably spend.</dd>
+    <dt>Who</dt><dd>Hindu parents in the US/UK/UAE/Canada/Australia with children aged 4–14.</dd>
+    <dt>Why now</dt><dd>₹7,000 ARPU is already demonstrated in this cohort for <em>transactions</em>; education commands more than transactions.</dd>
+    <dt>Money</dt><dd>Subscription at real diaspora price points ($10–15/mo, not ₹99), possibly with live classes on top.</dd>
+    <dt>Why it fails</dt><dd>Education is hard, content-heavy and slow; competing with grandparents, temples and weekend schools that are free.</dd>
+    <dt>Relation to Niyam</dt><dd>Adjacent, not extension. Shares the content assets (mantras, meanings, 8 languages) and nothing else.</dd>
+  </dl>
+</div>
+
+<div class="thesis">
+  <h3>C · The trust layer</h3>
+  <dl>
+    <dt>The bet</dt><dd>Gap 5. Be the verification and escrow infrastructure the category needs — priest identity, temple authorisation, proof-of-performance, refunds.</dd>
+    <dt>Money</dt><dd>Per-transaction fee on other people’s transactions; B2B.</dd>
+    <dt>Why it fails</dt><dd>You need the marketplaces to adopt you, and the biggest would rather self-certify. Chicken-and-egg on a slow clock.</dd>
+    <dt>Relation to Niyam</dt><dd>None. A different company.</dd>
+  </dl>
+</div>
+
+<div class="thesis">
+  <h3>D · Sadhana companion — depth over breadth</h3>
+  <dl>
+    <dt>The bet</dt><dd>Gap 1. One practice, done properly, over months — structure, progression, teaching, a real teacher behind it. The opposite of a feed.</dd>
+    <dt>Money</dt><dd>Subscription; possibly guru/lineage partnership.</dd>
+    <dt>Why it fails</dt><dd>The population wanting <em>structured</em> practice is far smaller than the one wanting a lamp to tap — and Isha gives away something adjacent, free, at enormous scale.</dd>
+    <dt>Relation to Niyam</dt><dd>Natural second act; shares the mantra library and the pause mechanic.</dd>
+  </dl>
+</div>
+
+<div class="thesis">
+  <h3>E · Samskara — the life-event concierge</h3>
+  <dl>
+    <dt>The bet</dt><dd>Gap 6. Show up competently at the moments families are most lost and most willing to spend.</dd>
+    <dt>Money</dt><dd>High-ticket transactions, ops-heavy.</dd>
+    <dt>Why it fails</dt><dd>Episodic by nature; demand rebuilt every time; ops quality <em>is</em> the product and it’s hard.</dd>
+    <dt>Relation to Niyam</dt><dd>None.</dd>
+  </dl>
+</div>
+
+<div class="callout warn">
+  <span class="label">What I would not build</span>
+  <p><strong>Another e-puja / chadhava marketplace.</strong> Sri Mandir has 40M downloads, ₹175 Cr of fresh
+  capital, fulfilment hubs in 20 temple towns, and a 20–25% take rate. No wedge left at the transaction layer.</p>
+  <p><strong>Another astrology marketplace.</strong> Astrotalk is profitable at ₹1,214 Cr and heading for an IPO
+  with 15,000 astrologers. This is over.</p>
+  <p><strong>A devotional feed.</strong> It contributes to the problem in §2.3 and monetises at content-app rates —
+  i.e. near zero.</p>
+</div>
+
+<h2 id="questions"><span class="num">Section 6</span>Part V — Questions to put to NotebookLM</h2>
+<ol>
+  <li>Reconcile Sri Mandir’s claimed ~55% six-month retention with an MAU/downloads ratio that fell from ~30% to ~9% between Mar 2023 and Jun 2025. Which figure is load-bearing?</li>
+  <li>Is the “India spiritual market = $58bn” claim traceable to any primary source, or is it circular citation between aggregators?</li>
+  <li>How much of Sri Mandir’s growth ($1M → $12M run rate) is new users vs deeper monetisation of the same whales?</li>
+  <li>What evidence exists that Indian devotional users will pay a <em>recurring subscription</em>, as opposed to per-event transactions?</li>
+  <li>Astrotalk is ~10x the rest of the category and profitable. What does it do that devotional apps don’t — and is the difference the product, or the perceived stakes of the question being asked?</li>
+  <li>What is the actual size and composition of the Hindu diaspora willing to pay $10–15/month, by country?</li>
+  <li>Where is the evidence for Gen Z Indian spirituality being a <em>paying</em> behaviour rather than a <em>content-consumption</em> behaviour?</li>
+  <li>Which of the six gaps in §4 has a company already attacking it that this pack missed?</li>
+  <li>What are the regulatory risks specific to devotional commerce in India — temple trust regulation, state control of religious endowments, DPDP, Play Store policy on religious content?</li>
+  <li><strong>What does the failure record look like?</strong> Which Indian faith-tech startups have shut down or stalled, and why? <em>(This pack is missing survivorship-bias correction entirely — its biggest hole.)</em></li>
+  <li>Is there any credible measurement of devotional app usage independent of company-supplied figures?</li>
+  <li>If the attention problem (§2.3) and the young-seeker motivation (§2.5) are the same underlying anxiety, what product follows from treating them as one thing?</li>
+</ol>
+
+<h2 id="sources"><span class="num">Section 7</span>Sources</h2>
+<div class="src">
+  <h3>Primary / measured <span class="grade gA">A</span></h3>
+  <ul>
+    <li>Pew Research Center — <a href="https://www.pewresearch.org/religion/2021/06/29/religion-in-india-tolerance-and-segregation/">Religion in India: Tolerance and Segregation</a> (2021)</li>
+    <li>Pew — <a href="https://www.pewresearch.org/religion/2021/06/29/religious-practices-2/">Religious practices in India</a></li>
+    <li>Pew — <a href="https://www.pewresearch.org/wp-content/uploads/sites/20/2021/06/PF_06.29.21_India.full_.report.pdf">full report PDF</a></li>
+    <li>PMC — <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11845006/">Smartphone use and addiction in school-going adolescents</a> (peer-reviewed)</li>
+  </ul>
+  <h3>Credible journalism <span class="grade gB">B</span></h3>
+  <ul>
+    <li>TechCrunch — <a href="https://techcrunch.com/2025/06/30/sri-mandir-keeps-investors-hooked-as-digital-devotion-grows">Sri Mandir keeps investors hooked as digital devotion grows</a> (Jun 2025)</li>
+    <li>TechCrunch — <a href="https://techcrunch.com/2024/09/09/sri-mandir-is-on-a-quest-to-digitize-indias-devotional-journey/">Digitizing India’s devotional journey</a> (Sep 2024)</li>
+    <li>Tigerfeathers — <a href="https://www.tigerfeathers.in/p/10-million-users-and-rising-fast">10 Million Users And Rising Fast</a> (Mar 2023, deep dive)</li>
+    <li>Business Standard — <a href="https://www.business-standard.com/companies/start-ups/appsforbharat-raises-rs-175-crore-series-c-to-expand-devotion-platform-125063001067_1.html">AppsForBharat ₹175 Cr Series C</a></li>
+    <li>Outlook Business — <a href="https://www.outlookbusiness.com/news/astrotalk-reports-85-revenue-growth-in-fy25-as-tier-i-cities-boost-platform-activity">Astrotalk 85% revenue growth FY25</a></li>
+    <li>BW Disrupt — <a href="https://www.bwdisrupt.com/article/astrotalk-revenue-jumps-85-to-rs-1-214-cr-591016">Astrotalk revenue ₹1,214 Cr</a></li>
+    <li>Inc42 — <a href="https://inc42.com/buzz/spiritual-tech-startup-utsav-raises-%E2%82%B936-cr-to-expand-temple-network/">Utsav raises ₹36 Cr Series A</a></li>
+    <li>The National — <a href="https://www.thenationalnews.com/news/uae/2025/03/15/indian-yogi-sadhgurus-free-meditation-app-beats-chatgpt-for-first-million-downloads/">Sadhguru’s Miracle of Mind beat ChatGPT to 1M downloads</a></li>
+    <li>Storyboard18 — <a href="https://www.storyboard18.com/digital/indias-social-media-user-boom-raises-concerns-over-youth-screen-time-88504.htm">India’s social media boom and youth screen time</a></li>
+    <li>Tribune India — <a href="https://www.tribuneindia.com/news/india/centre-alerts-public-about-online-booking-scams-targeting-pilgrims-tourists">Centre alerts public about pilgrim booking scams</a></li>
+    <li>Deccan Herald — <a href="https://www.deccanherald.com/opinion/how-should-india-tackle-social-media-addiction-3338946">How should India tackle social media addiction</a></li>
+  </ul>
+  <h3>Analysis / secondary <span class="grade gB">B</span>/<span class="grade gC">C</span></h3>
+  <ul>
+    <li>The India Notes — <a href="https://newsletter.theindianotes.com/p/sri-mandir-ux-audit">Sri Mandir UX audit</a></li>
+    <li>Inc42 — <a href="https://inc42.com/startups/9-spiritual-tech-startups-transforming-indias-faith-market/">9 spiritual tech startups transforming India’s faith market</a></li>
+    <li>StartupTalky — <a href="https://startuptalky.com/top-spiritual-tech-startups-india/">Top spiritual tech startups in India</a></li>
+    <li>Startup Chai — <a href="https://www.startupchai.in/p/the-weekend-insight-from-temples-to-tech-how-india-s-spiritual-roots-are-seeding-startups">From temples to tech</a></li>
+    <li>Sensor Tower — <a href="https://app.sensortower.com/overview/com.mandir?country=IN">Sri Mandir India overview</a></li>
+    <li>Kimola — <a href="https://kimola.com/reports/unlock-spiritual-insights-with-our-sri-mandir-app-feedback-report-google-play-hi-145283">Sri Mandir Google Play feedback report (Hindi reviews)</a></li>
+    <li>RedSeer — <a href="https://redseer.com/articles/the-3-2bn-bharat-opportunity-how-tier-2-cities-are-driving-indias-interactive-media-boom/">Tier 2+ cities and India’s interactive media boom</a></li>
+    <li>Adapty — <a href="https://adapty.io/blog/state-of-in-app-subscriptions-2025-in-10-minutes/">State of in-app subscriptions 2025</a></li>
+    <li>LocalCircles — <a href="https://www.localcircles.com/a/press/page/children-social-media-addiction/">Children and social media addiction</a></li>
+  </ul>
+  <h3>Diaspora / transmission demand signals (qualitative long-tail)</h3>
+  <ul>
+    <li><a href="https://www.sanskritfromhome.org/course-details/online-shloka-class-7188">Sanskrit From Home — online shloka classes for children</a></li>
+    <li><a href="https://apps.apple.com/us/app/memorize-shloka/id6443863948">Memorize Shloka (App Store)</a></li>
+    <li><a href="https://shlokaloka.com/">ShlokaLoka</a> · <a href="https://atmikapp.com/">AtmikApp</a></li>
+    <li><a href="https://www.deshvidesh.com/hindu-parenting-in-the-usa-raising-dharmic-children-in-a-modern-world/">Desh Videsh — Hindu parenting in the USA</a></li>
+  </ul>
+  <p style="font-size:.86rem;color:var(--ink-3)">Full de-duplicated URL list for NotebookLM ingestion:
+  <code>docs/devotional-tech-sources.txt</code> (37 URLs).</p>
+</div>
+
+<h2 id="holes"><span class="num">Section 8</span>Known holes in this pack</h2>
+<p>Stated plainly so NotebookLM — and we — can attack them.</p>
+<ol>
+  <li><strong>No survivorship-bias correction.</strong> Everything here is about companies that raised money and survived. The failure record is absent.</li>
+  <li><strong>No independent usage measurement.</strong> Almost every engagement number traces back to the company that benefits from it.</li>
+  <li><strong>Pew data is 6+ years old</strong> and predates the events most likely to have moved it.</li>
+  <li><strong>Nothing on ops unit economics</strong> — what a fulfilment hub costs, what priest supply costs, what the real contribution margin on a chadhava is.</li>
+  <li><strong>Nothing on regulation</strong> — state control of temple endowments varies enormously by state and is a live political issue.</li>
+  <li><strong>Nothing on non-Hindu Indian faiths</strong>, despite a Bible app being #1 in India.</li>
+  <li><strong>Gen Z spirituality claims are almost entirely <span class="grade gC">C</span></strong> — trend pieces citing each other. Astrotalk’s revenue line is the only hard corroboration.</li>
+</ol>
+
+<footer class="doc">
+  Niyam · discussion document · branch <code>discuss/devotional-tech</code> · 2026-08-28<br>
+  Companion files: <code>devotional-tech-research-pack.md</code> (NotebookLM source) ·
+  <code>devotional-tech-sources.txt</code> (37 URLs)
+</footer>
+
+</div>
+</body>
+</html>

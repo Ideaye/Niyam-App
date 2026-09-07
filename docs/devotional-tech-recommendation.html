@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which App To Build — Recommendation &amp; Audit</title>
+<style>
+  :root{
+    --ink:#1c1a17; --ink-2:#4a453e; --ink-3:#7a7268;
+    --paper:#fdfbf7; --card:#ffffff; --rule:#e6dfd3;
+    --sunrise:#c9762a; --sunrise-soft:#fdf2e4;
+    --green:#1f4d3d; --green-soft:#eaf2ee;
+    --red:#9b2c2c; --red-soft:#fbeceb;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 24px 96px}
+  header.doc{border-bottom:3px solid var(--ink);padding-bottom:28px;margin-bottom:36px}
+  header.doc h1{font-family:var(--serif);font-size:2.5rem;line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}
+  .meta{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em}
+  .meta span{margin-right:18px;white-space:nowrap}
+  h2{font-family:var(--serif);font-size:1.7rem;margin:54px 0 6px;padding-top:14px;
+     border-top:1px solid var(--rule);letter-spacing:-.01em}
+  h2 .num{font-family:var(--mono);font-size:.72rem;color:var(--sunrise);display:block;
+          letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+  h3{font-size:1.1rem;margin:32px 0 8px}
+  p{margin:0 0 14px;max-width:70ch}
+  ul,ol{max-width:70ch;padding-left:22px;margin:0 0 16px}
+  li{margin-bottom:7px}
+  a{color:var(--green);text-underline-offset:2px}
+  code{font-family:var(--mono);font-size:.86em;background:#f2ede4;padding:1px 5px;border-radius:3px}
+  table{border-collapse:collapse;width:100%;margin:20px 0;font-size:.9rem}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;
+     color:var(--ink-3);border-bottom:2px solid var(--ink)}
+  tbody tr:nth-child(even){background:#faf6ef}
+  .verdict{background:var(--green);color:#f4efe6;border-radius:10px;padding:28px 32px;margin:0 0 8px}
+  .verdict .label{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+                  color:#a8c4b6;display:block;margin-bottom:10px}
+  .verdict h2{font-family:var(--serif);font-size:1.9rem;color:#fff;margin:0 0 12px;border:0;padding:0}
+  .verdict p{color:#dfe9e3;margin-bottom:0;max-width:64ch}
+  .verdict strong{color:#fff}
+  .conf{display:inline-block;font-family:var(--mono);font-size:.72rem;background:rgba(255,255,255,.14);
+        border:1px solid rgba(255,255,255,.3);padding:3px 9px;border-radius:20px;margin-top:14px;color:#fff}
+  .callout{border-left:4px solid var(--sunrise);background:#fffaf3;padding:16px 20px;margin:22px 0;border-radius:0 6px 6px 0}
+  .callout.kill{border-left-color:var(--red);background:var(--red-soft)}
+  .callout.key{border-left-color:var(--green);background:var(--green-soft)}
+  .callout p:last-child{margin-bottom:0}
+  .callout .label{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;
+                  color:var(--ink-3);display:block;margin-bottom:6px}
+  .risk{border:1px solid var(--rule);border-left:5px solid var(--rule);border-radius:0 8px 8px 0;
+        padding:16px 20px;margin:14px 0;background:var(--card)}
+  .risk.sev-kill{border-left-color:var(--red)}
+  .risk.sev-high{border-left-color:var(--sunrise)}
+  .risk.sev-med{border-left-color:#c9b02a}
+  .risk h3{margin:0 0 6px;font-size:1rem}
+  .risk .sev{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+             padding:2px 7px;border-radius:3px;margin-left:8px;vertical-align:2px}
+  .sev-kill .sev{background:var(--red);color:#fff}
+  .sev-high .sev{background:var(--sunrise);color:#fff}
+  .sev-med .sev{background:#8a7a1e;color:#fff}
+  .risk p{font-size:.94rem;margin-bottom:8px}
+  .risk .mit{font-size:.9rem;color:var(--ink-2);border-top:1px dashed var(--rule);padding-top:8px;margin-top:10px}
+  .mit b{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+  footer.doc{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule);
+             font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  @media (max-width:640px){.wrap{padding:28px 18px 64px}header.doc h1{font-size:1.8rem}
+    .verdict{padding:22px}.verdict h2{font-size:1.45rem}table{font-size:.82rem}th,td{padding:7px 8px}}
+  @media print{body{background:#fff;font-size:10.5pt}.wrap{max-width:none;padding:0}
+    h2{break-after:avoid}table,.risk,.callout,.verdict{break-inside:avoid}
+    .verdict{background:#eaf2ee;color:#1c1a17;border:2px solid #1f4d3d}
+    .verdict h2,.verdict p,.verdict strong{color:#1c1a17}.verdict .label{color:#4a453e}
+    a{color:#1c1a17;text-decoration:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="doc">
+  <h1>Which app to build</h1>
+  <div class="meta"><span>Recommendation + audit</span><span>2026-08-28</span><span>branch: discuss/devotional-tech</span></div>
+</header>
+
+<div style="background:#9b2c2c;color:#fff;border-radius:10px;padding:22px 28px;margin:0 0 30px">
+  <div style="font-family:ui-monospace,Menlo,monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#f0c9c6;margin-bottom:10px">Superseded — 2026-08-28, same day</div>
+  <div style="font-family:'Iowan Old Style',Georgia,serif;font-size:1.5rem;line-height:1.25;margin-bottom:12px">This recommendation is withdrawn.</div>
+  <p style="margin:0;max-width:64ch;color:#f6e6e5">The wedge it rests on — pronunciation feedback as the thing YouTube cannot do — already exists.
+  <strong style="color:#fff">Vāgbodhinī</strong>, from Dr. Prathosh A.P.'s lab at <strong style="color:#fff">IISc Bengaluru</strong>, is a public-beta tutor doing
+  syllable-by-syllable recitation scoring, backed by a purpose-built Sanskrit speech stack that is
+  <strong style="color:#fff">open-sourced with published weights</strong>. Slow-playback practice apps (Srimad Gita, Memorize Shloka,
+  Sloka Saagar) already ship the listen-and-repeat feature free. Read
+  <code style="background:rgba(255,255,255,.15);padding:1px 5px;border-radius:3px">devotional-tech-ad-test.html</code> instead. Kept unedited below as a record of the reasoning that was wrong.</p>
+</div>
+<div class="verdict">
+  <span class="label">The answer</span>
+  <h2>A shloka tutor for diaspora Hindu families — parent-bought, child-used, pronunciation-first.</h2>
+  <p>The one thing a diaspora parent cannot give their child themselves and cannot get from YouTube:
+  <strong>the ability to recite correctly, and to know it is correct.</strong> Everything else in this
+  category is either taken, ops-heavy, or doesn't monetise.</p>
+  <span class="conf">My confidence this is the right pick: ~55–60%. Not high. Read §5 before acting.</span>
+</div>
+
+<h2><span class="num">Section 1</span>How everything else got eliminated</h2>
+
+<p>Three hard constraints do most of the work. You are one non-coding founder with LLM agents, no ops
+function, no capital, and — evidenced by the unresolved native-speaker review backlog in
+<code>forlater.md</code> — <strong>content authenticity is already your bottleneck, not code.</strong></p>
+
+<div class="callout kill">
+  <span class="label">The decisive new finding</span>
+  <p>Both documented deaths in Indian faith tech were <strong>ops-heavy supply-side aggregators</strong>.
+  <strong>My Tirth India</strong> (temples + priests + hotels + travel agents) shut in Aug 2024 on a funding
+  crisis. <strong>DevDham</strong> — which I wrongly listed as alive in yesterday's pack — shut down after
+  founder exits, having raised ~$1M and claimed 500+ temples and 2,000 pandits.</p>
+  <p>Sri Mandir survives that same model only because it raised <strong>$53M</strong> and built its own
+  fulfilment hubs in 20 temple towns. <strong>Anything requiring a supply side is off the table for you.</strong></p>
+</div>
+
+<table>
+  <thead><tr><th>Candidate</th><th>Verdict</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>E-puja / chadhava marketplace</td><td><strong>Dead</strong></td><td>Needs priests, temples, logistics. This is precisely what killed My Tirth and DevDham. Sri Mandir owns it with $53M.</td></tr>
+    <tr><td>Samskara / life-event concierge</td><td><strong>Dead</strong></td><td>Most ops-heavy option on the board. Same failure mode, higher stakes.</td></tr>
+    <tr><td>Astrology marketplace</td><td><strong>Dead</strong></td><td>Astrotalk: ₹1,214 Cr revenue, profitable, 15,000 astrologers, IPO-bound. Two-sided cold start against that is not a plan.</td></tr>
+    <tr><td>Trust / verification layer</td><td><strong>Wrong shape</strong></td><td>B2B infrastructure needs the marketplaces to adopt you; the biggest would rather self-certify. Slow clock, no consumer distribution.</td></tr>
+    <tr><td>Sadhana companion (depth)</td><td><strong>Weak</strong></td><td>Isha gives away something adjacent, free, at 7.9M+ downloads, with a guru brand you cannot manufacture.</td></tr>
+    <tr><td>Hindu festival / panchang app</td><td><strong>Weakened badly</strong></td><td><strong>Drik Panchang: 4.5M downloads, free.</strong> The almanac layer is taken, and its free-ness is evidence this information does not monetise.</td></tr>
+    <tr><td><strong>Shloka tutor, diaspora-first</strong></td><td><strong>Survives</strong></td><td>Zero ops. Content asset already exists. Buyer is wealthy and proven to spend on exactly this. No dominant app incumbent.</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="num">Section 2</span>Why this one survives</h2>
+
+<h3>The buyer is the best-evidenced payer in the entire category</h3>
+<ul>
+  <li><strong>~5.9M Hindus</strong> across US (3.37M), UK (1.07M), Canada (828k), Australia (684k) <em>[A]</em></li>
+  <li><strong>Indian American median household income: $151,200</strong> (2023) — roughly double the US median <em>[A, Pew]</em></li>
+  <li>Sri Mandir already extracts <strong>₹7,000/yr ARPU</strong> from this cohort vs ₹600–800 in India — <strong>~10x</strong> <em>[B]</em></li>
+  <li>Prayer-to-payment conversion is <strong>~50% in the US vs 20–25% in India</strong> <em>[B]</em></li>
+</ul>
+
+<h3>The demand is proven by revealed behaviour, not by trend pieces</h3>
+<p>Chinmaya Mission's Bala Vihar — weekend dharma classes for children — grew in the Bay Area chapter
+alone from <strong>6 children in 1981 to over 2,150 today</strong>, running Sept–June with paid language classes
+alongside. Diaspora parents demonstrably give up their weekends and their money for this. That is a far
+stronger signal than any "Gen Z is turning spiritual" article in the research pack.</p>
+
+<h3>You already own the hard part of the content</h3>
+<p>Niyam has ~208 mantras with verified transliterations, authored meanings, and UI across 8 languages.
+For a shloka-teaching product that <em>is</em> the core corpus. Unlike a festival product — where Gujarati,
+Tamil, Bengali and Marwari households do genuinely different things and getting it wrong is offensive —
+<strong>a shloka is a shloka.</strong> The content forks far less by region, which is what makes it tractable
+for a team of one.</p>
+
+<h3>The wedge YouTube cannot copy</h3>
+<p>YouTube has infinite "learn the Hanuman Chalisa" videos and they are free. What no video can do is
+<strong>tell a specific child whether they just said it correctly.</strong> A diaspora parent who does not read
+Devanagari has no way to correct their own child. That is the sharpest, most specific unmet need I found
+anywhere in this research, and it is a software problem rather than an ops problem.</p>
+
+<h2><span class="num">Section 3</span>What the product actually is</h2>
+<ul>
+  <li><strong>Account holder is the parent.</strong> An adult buys, manages, and sees progress. Children use it in a mode the parent opens. No child accounts, no child-collected data, no social layer, no ads.</li>
+  <li><strong>Core loop:</strong> hear a reference recitation → see the line in Devanagari + transliteration + meaning → recite it → get feedback → repeat until it holds.</li>
+  <li><strong>Progression:</strong> line by line, then verse, then whole text. Short daily units, not lessons.</li>
+  <li><strong>Meaning is first-class,</strong> not an appendix. The value proposition to a diaspora parent is "my child knows what they are saying" — that is the thing they most fear losing.</li>
+  <li><strong>Positioned as complement to Bala Vihar, never as replacement.</strong> Bala Vihar meets once a week. This covers the other six days. Framing it as a substitute picks a fight with an institution you cannot beat and do not want to.</li>
+  <li><strong>Priced at real diaspora price points</strong> — think $6–10/month or $60–80/year, not ₹99. The entire thesis collapses if you price it for India.</li>
+</ul>
+
+<h2><span class="num">Section 4</span>The business, roughly</h2>
+<table>
+  <tbody>
+    <tr><td>Reachable households (4 countries, ~5.9M Hindus, est. ~1.5M households with children under 15)</td><td>~1.5M <em>[my estimate, C]</em></td></tr>
+    <tr><td>Paying penetration to be a real business at 1%</td><td>~15,000 subscribers</td></tr>
+    <tr><td>At $70/yr</td><td>~$1.05M ARR</td></tr>
+    <tr><td>Ops cost</td><td>Near zero — no priests, no logistics, no inventory</td></tr>
+    <tr><td>Main cost</td><td>Content authoring + review, and speech infrastructure</td></tr>
+  </tbody>
+</table>
+<p><em>The household estimate is mine and is <strong>not</strong> researched — treat it as arithmetic, not data.
+Verifying it is a task, not an assumption to build on.</em></p>
+
+<h2><span class="num">Section 5</span>Deep audit — where this breaks</h2>
+<p>Ordered by how likely each is to kill the thing. The first two are serious enough that I would not
+write a line of code before resolving them.</p>
+
+<div class="risk sev-kill">
+  <h3>1. Sanskrit pronunciation scoring may simply not work<span class="sev">could kill it</span></h3>
+  <p>This is the feature the entire differentiation rests on, and <strong>I am genuinely uncertain it is
+  achievable.</strong> Off-the-shelf speech recognition (Whisper, Google STT, Apple's on-device models) is
+  not trained on Sanskrit recitation. Sanskrit has phonemic distinctions — retroflex vs dental, aspirated
+  vs unaspirated, long vs short vowels, visarga — that general ASR collapses or ignores. Scoring a
+  <em>child's</em> Sanskrit, with a child's vocal tract and an accent shaped by English, is harder still.</p>
+  <p>Doing this properly is likely forced phoneme alignment against a reference recitation with a
+  custom or fine-tuned acoustic model — closer to a research project than an API call. The honest
+  fallback is much cruder: did they attempt the whole line, roughly in time, roughly in the right shape.
+  <strong>That fallback may not be worth paying for.</strong></p>
+  <p class="mit"><b>Resolve first</b> Spend a week, before anything else, testing whether any available
+  model can reliably distinguish a correct recitation from a subtly wrong one on ten Chalisa lines. If it
+  cannot, this product loses its wedge and the recommendation changes.</p>
+</div>
+
+<div class="risk sev-kill">
+  <h3>2. It drags you into child-directed app regulation you deliberately avoided<span class="sev">could kill it</span></h3>
+  <p>You just spent a Play Console session deliberately marking Niyam 18+ and unchecking 16–17 to stay
+  out of DPDP and Families obligations. This product walks straight back in. A shloka app for children is
+  <strong>child-directed by appeal</strong>, which is what Play's Families policy actually tests — not merely
+  who holds the account. That means: US <strong>COPPA</strong>, UK <strong>Age Appropriate Design Code</strong>,
+  India <strong>DPDP</strong> verifiable parental consent, Google Play Families policy review, and a materially
+  stricter bar on ads, IAP presentation, and data.</p>
+  <p>It is survivable — no ads, no child accounts, no analytics on children, parent-gated purchase — but
+  it is real, recurring compliance work, and it is the exact burden you decided against three months ago.</p>
+  <p class="mit"><b>Decide explicitly</b> This is a founder call, not a technical one. If the answer is
+  "not willing", this recommendation is void and the runner-up in §7 takes over.</p>
+</div>
+
+<div class="risk sev-high">
+  <h3>3. Content authenticity is already your known weak point<span class="sev">high</span></h3>
+  <p><code>forlater.md</code> item #1 has been open since June: 208 machine-generated meaning blocks
+  across 7 languages still awaiting native-speaker review, because no reviewers were available. This
+  product multiplies that obligation and raises the stakes — an inaccurate meaning taught to an adult is
+  embarrassing; taught to a child as authoritative, it is something else. And you would need
+  <em>recitation</em> audio of unimpeachable quality, which cannot be generated.</p>
+  <p class="mit"><b>Implication</b> You need at least one credentialed human — a Sanskrit teacher or
+  pandit — attached to this product before launch, not after. That is a real dependency you do not
+  currently have, and it partially reintroduces a supply side.</p>
+</div>
+
+<div class="risk sev-high">
+  <h3>4. Two audiences, one product — the classic kids-app trap<span class="sev">high</span></h3>
+  <p>The parent pays; the child decides whether it survives. Children's education apps have notoriously
+  brutal retention — the parent subscribes in a burst of intention and the child abandons it in three
+  weeks. You must satisfy an adult's sense of authenticity <em>and</em> a nine-year-old's tolerance for
+  boredom, and those two pull in opposite directions. Making it fun risks the parent judging it
+  irreverent; making it reverent risks the child quitting.</p>
+  <p class="mit"><b>Watch for</b> If early testing shows children need gamification to stay, and parents
+  recoil at gamified scripture, the product has no viable centre.</p>
+</div>
+
+<div class="risk sev-high">
+  <h3>5. You throw away your only genuinely hard technical asset<span class="sev">high</span></h3>
+  <p>Niyam's accessibility-service engine — launch interception, overlay, interval check-in, service
+  survival across OEM battery killers — is difficult, working, tested, and shipped. <strong>None of it
+  transfers.</strong> Only the mantra corpus does. You would be restarting on the hardest part of the
+  engineering while abandoning the part you already won.</p>
+  <p class="mit"><b>Counterweight</b> This is the strongest argument for §6 instead of a new app.</p>
+</div>
+
+<div class="risk sev-med">
+  <h3>6. Bala Vihar is a beloved incumbent, not an absent one<span class="sev">medium</span></h3>
+  <p>It is free or near-free, in-person, socially embedded, and run by people the parents already trust.
+  You cannot beat it. You can only be the six days it isn't. That caps the product's ambition and means
+  your best distribution channel is also your competitor — which makes partnership awkward.</p>
+</div>
+
+<div class="risk sev-med">
+  <h3>7. Distribution requires community work you may not want to do<span class="sev">medium</span></h3>
+  <p>There is no cheap paid channel to diaspora Hindu parents. The real channels are temples, Bala Vihar
+  chapters, WhatsApp groups, and festival moments — all of which require showing up as a person, in
+  communities, repeatedly. That is founder-time-intensive and unglamorous, and it is a different job from
+  the one you have been doing.</p>
+</div>
+
+<div class="risk sev-med">
+  <h3>8. Diaspora willingness-to-pay is inferred, not tested<span class="sev">medium</span></h3>
+  <p>The ₹7,000 ARPU figure is Sri Mandir's, for <em>ritual transactions</em>, reported by the company to a
+  journalist. It is not evidence that the same people will pay a recurring subscription for education
+  software. I am extrapolating across both product category and payment model. <strong>That extrapolation
+  is the foundation of the whole recommendation and it is untested.</strong></p>
+  <p class="mit"><b>Which is why</b> §6 exists.</p>
+</div>
+
+<h2><span class="num">Section 6</span>The cheaper thing to do first</h2>
+<div class="callout key">
+  <span class="label">Strong advice</span>
+  <p>Before building anything new, <strong>test the diaspora thesis using Niyam, which already exists.</strong>
+  Niyam already ships worldwide through Play. Set diaspora-appropriate pricing, point a landing page at
+  Hindu parents in the US/UK/Canada, and see whether that audience converts and pays at multiples of the
+  Indian rate.</p>
+  <p>This costs days, not months. And it tests <strong>risk #8 — the single assumption the entire new-app
+  recommendation rests on</strong> — using an asset you have already built and shipped. If diaspora Hindus
+  won't pay a premium for your product, the shloka tutor's business case evaporates before you have spent
+  anything on it. If they will, you have both a validated thesis and a revenue base to build from.</p>
+</div>
+
+<h2><span class="num">Section 7</span>If the answer to risk #2 is "no"</h2>
+<p>If you are not willing to re-enter child-directed app regulation, the recommendation changes to the
+runner-up: <strong>the same product, aimed at adults instead of children</strong> — diaspora adults who never
+learned, or have forgotten, and are quietly embarrassed about it. Same corpus, same pronunciation
+mechanic, same price point, no COPPA, no Families policy, no two-audience trap.</p>
+<p>It is a weaker business — the emotional urgency of "my child will lose this" is far stronger than "I
+should know this" — but it is meaningfully simpler and it removes the two kill-risks at once. If risk #1
+also fails, then I would not build a new app at all, and §6 becomes the whole answer.</p>
+
+<h2><span class="num">Section 8</span>What would change my mind</h2>
+<ul>
+  <li>Pronunciation scoring proves unworkable in a week of testing → recommendation void (§7 or §6).</li>
+  <li>You are unwilling to take on child-directed compliance → drop to the adult version.</li>
+  <li>Diaspora pricing test on Niyam shows no premium willingness-to-pay → the whole diaspora thesis fails and I would go back to Niyam's own attention wedge.</li>
+  <li>A credentialed Sanskrit reviewer cannot be secured → do not ship; the authenticity risk is not survivable in a devotional product.</li>
+  <li>Evidence surfaces that an existing app already does pronunciation feedback well → re-run §1 entirely.</li>
+</ul>
+
+<h2><span class="num">Section 9</span>What I need from you</h2>
+<ol>
+  <li><strong>Risk #2 — are you willing to build a child-directed app</strong> and take on COPPA / UK AADC / DPDP / Play Families? Yes or no changes the answer.</li>
+  <li><strong>Do you want me to run the pronunciation-scoring feasibility test</strong> (risk #1) before anything else? It is the cheapest way to find out if this is real.</li>
+  <li><strong>Do you want the §6 diaspora pricing test on Niyam</strong> regardless of which app you choose? I think you should, and it is nearly free.</li>
+</ol>
+<p>None of these should be answered from the deck. All three are cheap to resolve empirically, and I have
+deliberately not started any of them without your call.</p>
+
+<footer class="doc">
+  Niyam · decision document · branch <code>discuss/devotional-tech</code> · 2026-08-28<br>
+  Companions: <code>devotional-tech-research-pack.html</code> / <code>.md</code> (evidence, §9 addendum has the corrections) ·
+  <code>devotional-tech-sources.txt</code>
+</footer>
+
+</div>
+</body>
+</html>
